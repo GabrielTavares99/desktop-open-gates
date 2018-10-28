@@ -13,11 +13,14 @@
 <body>
 <h1>Redefinição de Senha</h1>
 <h2>BLA BLÁ BLÁ BLÁ</h2>
-    <form>
-        <label>EMAIL</label>
-        <input type="email" name="email*">
+    <form action="redefinicao-senha?tarefa=EnviarEmailCodigoRedefinicao" method="post">
+        <label>EMAIL*</label>
+        <input type="email" name="email">
         <input type="submit" value="Enviar Código">
-        <input type="submit" value="Cancelar">
+        <form action="/" method="get">
+            <input type="submit" value="Cancelar">
+        </form>
     </form>
+
 </body>
 </html>
