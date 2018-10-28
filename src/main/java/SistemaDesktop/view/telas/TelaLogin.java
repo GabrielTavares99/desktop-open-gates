@@ -1,7 +1,9 @@
 package SistemaDesktop.view.telas;
 
 import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.view.botoes.BotaoSubmissao;
 import SistemaDesktop.view.labels.LabelFormulario;
+import SistemaDesktop.view.listeners.FazerLoginListener;
 import SistemaDesktop.view.paineis.PainelFormularioLogin;
 
 import javax.swing.*;
@@ -17,6 +19,7 @@ public class TelaLogin extends TelaCustom {
     JLabel lbl_username, lbl_password;
     JButton btn_enviar;
     List<JComponent> itens_formulario_login = new ArrayList<>();
+
     public TelaLogin(String title) {
         super(title);
         pn_geral = new JPanel();
@@ -43,10 +46,11 @@ public class TelaLogin extends TelaCustom {
         txt_password = new JTextField();
         itens_formulario_login.add(txt_password);
 
-        btn_enviar = new JButton("SUBMETER");
+        btn_enviar = new BotaoSubmissao("SUBMETER");
+        btn_enviar.addActionListener(new FazerLoginListener(this));
         itens_formulario_login.add(btn_enviar);
 
-        pn_formulario_login.setLayout(new GridLayout(itens_formulario_login.size(),1));
+        pn_formulario_login.setLayout(new GridLayout(itens_formulario_login.size(), 1));
         TelasUtil.addItensToTela(pn_formulario_login, itens_formulario_login);
 // -----------------------------------------------------------------------
 
