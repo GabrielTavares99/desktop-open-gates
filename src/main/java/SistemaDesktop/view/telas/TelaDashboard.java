@@ -30,7 +30,7 @@ public class TelaDashboard extends TelaCustom {
     JPanel pn_menu = new PainelMenu();
 
     JPanel pn_matricula = new PainelMatricula();
-    JPanel pn_cadastrar = new PainelCadastro();
+    JPanel pn_cadastrar_funcionario = new PainelCadastro();
     JPanel pn_relatorio = new PainelRelatorio();
 
     List<JComponent> lista_menu = new ArrayList<>();
@@ -48,13 +48,17 @@ public class TelaDashboard extends TelaCustom {
         lista_menu.add(lbl_trocar_senha);
         TelasUtil.addItensToTela(pn_menu, lista_menu);
 
-        pn_cadastrar.add(lbl_feature_cadastrar_funcionario);
-        pn_cadastrar.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class.getName()));
+        pn_cadastrar_funcionario.add(lbl_feature_cadastrar_funcionario);
+        pn_cadastrar_funcionario.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));
+
         pn_matricula.add(lbl_feature_fazer_matricula);
+        pn_matricula.addMouseListener(new PainelFeatureListener(TelaMatricula.class));
+
         pn_relatorio.add(lbl_feature_ver_relatorio);
+        pn_relatorio.addMouseListener(new PainelFeatureListener(TelaRelatorioEntradaSaida.class));
 
         lista_menu_feature.add(pn_matricula);
-        lista_menu_feature.add(pn_cadastrar);
+        lista_menu_feature.add(pn_cadastrar_funcionario);
         lista_menu_feature.add(pn_relatorio);
         pn_funcoes.setLayout(new GridLayout(1, lista_menu_feature.size()));
         pn_funcoes.setBounds(100, 120, 600, 300);

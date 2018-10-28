@@ -12,8 +12,15 @@ public abstract class TelaCustom extends JFrame {
         setLocationRelativeTo(null);
         setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
         setLayout(null);
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
+    public TelaCustom() {
+        setTitle("");
+        setLocationRelativeTo(null);
+        setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
+        setLayout(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
 
 }

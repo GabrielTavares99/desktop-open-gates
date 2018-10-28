@@ -1,6 +1,7 @@
 package SistemaDesktop.view.listeners;
 
 import SistemaDesktop.view.telas.TelaDashboard;
+import SistemaDesktop.view.telas.TelaTransicao;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,13 +12,13 @@ public class FazerLoginListener implements ActionListener {
     private JFrame telaLogin;
 
     public FazerLoginListener(JFrame telaLogin){
-
         this.telaLogin = telaLogin;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         new TelaDashboard("DASHBOARD");
-        telaLogin.dispose();
+        telaLogin.hide();
     }
 }

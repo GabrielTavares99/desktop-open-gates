@@ -4,5 +4,6 @@ public class TelaCadastroFuncionario extends TelaCustom {
 
     public TelaCadastroFuncionario(String title) {
         super(title);
+        setVisible(true);
     }
 }

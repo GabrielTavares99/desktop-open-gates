@@ -1,23 +1,25 @@
 package SistemaDesktop.view.listeners;
 
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class PainelFeatureListener implements MouseListener {
 
-    private String tela;
+    private Class tela;
 
-    public PainelFeatureListener(String tela) {
+    public PainelFeatureListener(Class tela) {
         this.tela = tela;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         try {
-            Class.forName(tela);
-        } catch (ClassNotFoundException e1) {
+            Constructor<?> constructor = tela.getConstructor(String.class);
+            Object instance = constructor.newInstance("open gates");
+        } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e1) {
             e1.printStackTrace();
         }
     }
