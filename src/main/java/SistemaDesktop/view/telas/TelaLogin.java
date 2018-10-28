@@ -2,6 +2,7 @@ package SistemaDesktop.view.telas;
 
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.botoes.BotaoSubmissao;
+import SistemaDesktop.view.labels.LabelEsqueciSenha;
 import SistemaDesktop.view.labels.LabelFormulario;
 import SistemaDesktop.view.listeners.FazerLoginListener;
 import SistemaDesktop.view.paineis.PainelFormularioLogin;
@@ -14,7 +15,7 @@ import java.util.List;
 public class TelaLogin extends TelaCustom {
     JLabel lbl_open_gates;
     JPanel pn_geral, pn_formulario_login;
-    JLabel lbl_esqueci_senha;
+    JLabel lbl_esqueci_senha = new LabelEsqueciSenha(this, "Esqueci Senha");
     JTextField txt_username, txt_password;
     JLabel lbl_username, lbl_password;
     JButton btn_enviar;
@@ -39,6 +40,8 @@ public class TelaLogin extends TelaCustom {
 
         txt_username = new JTextField();
         itens_formulario_login.add(txt_username);
+
+        itens_formulario_login.add(lbl_esqueci_senha);
 
         lbl_password = new LabelFormulario("SENHA");
         itens_formulario_login.add(lbl_password);

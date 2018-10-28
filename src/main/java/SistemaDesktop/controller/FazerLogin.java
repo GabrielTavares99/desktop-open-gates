@@ -12,7 +12,7 @@ public class FazerLogin implements Tarefa {
         String senha = request.getParameter("senha");
         if (!email.equalsIgnoreCase("user")) {
             request.setAttribute("mensagemLogin", "CREDENCIAIS INVÁLIDAS");
-            return "/?badCredentials=true";
+            return "/";
         }
         return (PAGINAS_HTML + "dashboard.jsp");
     }

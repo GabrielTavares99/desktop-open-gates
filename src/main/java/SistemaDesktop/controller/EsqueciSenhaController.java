@@ -11,13 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/login")
-public class LoginController extends HttpServlet {
+@WebServlet(urlPatterns = "/esqueci-senha")
+public class EsqueciSenhaController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pagina = ControllerUtil.getPagina(req, resp);
-//        resp.sendRedirect(pagina);
         RequestDispatcher requestDispatcher = req.getRequestDispatcher(pagina);
         requestDispatcher.forward(req, resp);
     }
