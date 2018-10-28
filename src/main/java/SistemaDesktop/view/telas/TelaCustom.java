@@ -1,4 +1,4 @@
-package SistemaDesktop.view;
+package SistemaDesktop.view.telas;
 
 import javax.swing.*;
 
