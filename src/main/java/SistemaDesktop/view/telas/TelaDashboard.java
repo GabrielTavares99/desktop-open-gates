@@ -6,7 +6,7 @@ import SistemaDesktop.view.labels.LabelMenu;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.listeners.PainelFeatureListener;
-import SistemaDesktop.view.paineis.PainelCadastro;
+import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
 import SistemaDesktop.view.paineis.PainelMatricula;
 import SistemaDesktop.view.paineis.PainelMenu;
 import SistemaDesktop.view.paineis.PainelRelatorio;
@@ -31,7 +31,7 @@ public class TelaDashboard extends TelaCustom {
     JPanel pn_menu = new PainelMenu();
 
     JPanel pn_matricula = new PainelMatricula();
-    JPanel pn_cadastrar_funcionario = new PainelCadastro();
+    JPanel pn_cadastrar_funcionario = new PainelCadastroFuncionario();
     JPanel pn_relatorio = new PainelRelatorio();
 
     List<JComponent> lista_menu = new ArrayList<>();
