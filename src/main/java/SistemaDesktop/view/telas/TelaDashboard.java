@@ -20,56 +20,56 @@ import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
 
 public class TelaDashboard extends TelaCustom {
 
-    JLabel lbl_saudacao = new LabelSaudacao("BOA ???");
-    JLabel lbl_titulo = new LabelTitulo("DASHBOARD");
-    JLabel lbl_sair = new LabelMenu("LOG OUT");
-    JLabel lbl_trocar_senha = new LabelMenu("PASSWORD");
-    JLabel lbl_feature_fazer_matricula = new LabelMenu("FAZER MATRICULA");
-    JLabel lbl_feature_cadastrar_funcionario = new LabelMenu("CADASTRAR FUNCIOPNARIO");
-    JLabel lbl_feature_ver_relatorio = new LabelMenu("VER RELATORIO");
+    JLabel lblSaudacao = new LabelSaudacao("BOA ???");
+    JLabel lblTitulo = new LabelTitulo("DASHBOARD");
+    JLabel lblSair = new LabelMenu("LOG OUT");
+    JLabel lblTrocarSenha = new LabelMenu("PASSWORD");
+    JLabel lblFeatureFazerMatricula = new LabelMenu("FAZER MATRICULA");
+    JLabel lblFeatureCadastrarFuncionario = new LabelMenu("CADASTRAR FUNCIOPNARIO");
+    JLabel lblFeatureVerRelatorio = new LabelMenu("VER RELATORIO");
 
-    JPanel pn_geral = new JPanel();
-    JPanel pn_funcoes = new JPanel();
-    JPanel pn_menu = new PainelMenu();
+    JPanel pnGeral = new JPanel();
+    JPanel pnFuncoes = new JPanel();
+    JPanel pnMenu = new PainelMenu();
 
-    JPanel pn_matricula = new PainelMatricula();
-    JPanel pn_cadastrar_funcionario = new PainelCadastroFuncionario();
-    JPanel pn_relatorio = new PainelRelatorio();
+    JPanel pnMatricula = new PainelMatricula();
+    JPanel pnCadastrarFuncionario = new PainelCadastroFuncionario();
+    JPanel pnRelatorio = new PainelRelatorio();
 
     List<JComponent> lista_menu = new ArrayList<>();
-    List<JComponent> lista_menu_feature = new ArrayList<>();
+    List<JComponent> listaMenuFeature = new ArrayList<>();
 
     public TelaDashboard(String title) {
         super(title);
         TELA_ANTERIOR = this;
-        pn_geral.setLayout(null);
-        pn_geral.add(lbl_saudacao);
-        pn_geral.add(lbl_titulo);
+        pnGeral.setLayout(null);
+        pnGeral.add(lblSaudacao);
+        pnGeral.add(lblTitulo);
 
-        pn_menu.setLayout(new GridLayout(2, 1));
-        lista_menu.add(lbl_sair);
-        lista_menu.add(lbl_trocar_senha);
-        TelasUtil.addItensToTela(pn_menu, lista_menu);
+        pnMenu.setLayout(new GridLayout(2, 1));
+        lista_menu.add(lblSair);
+        lista_menu.add(lblTrocarSenha);
+        TelasUtil.addItensToTela(pnMenu, lista_menu);
 
-        pn_cadastrar_funcionario.add(lbl_feature_cadastrar_funcionario);
-        pn_cadastrar_funcionario.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));
+        pnCadastrarFuncionario.add(lblFeatureCadastrarFuncionario);
+        pnCadastrarFuncionario.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));
 
-        pn_matricula.add(lbl_feature_fazer_matricula);
-        pn_matricula.addMouseListener(new PainelFeatureListener(TelaMatricula.class));
+        pnMatricula.add(lblFeatureFazerMatricula);
+        pnMatricula.addMouseListener(new PainelFeatureListener(TelaMatricula.class));
 
-        pn_relatorio.add(lbl_feature_ver_relatorio);
-        pn_relatorio.addMouseListener(new PainelFeatureListener(TelaRelatorioEntradaSaida.class));
+        pnRelatorio.add(lblFeatureVerRelatorio);
+        pnRelatorio.addMouseListener(new PainelFeatureListener(TelaRelatorioEntradaSaida.class));
 
-        lista_menu_feature.add(pn_matricula);
-        lista_menu_feature.add(pn_cadastrar_funcionario);
-        lista_menu_feature.add(pn_relatorio);
-        pn_funcoes.setLayout(new GridLayout(1, lista_menu_feature.size()));
-        pn_funcoes.setBounds(100, 120, 600, 300);
-        TelasUtil.addItensToTela(pn_funcoes, lista_menu_feature);
+        listaMenuFeature.add(pnMatricula);
+        listaMenuFeature.add(pnCadastrarFuncionario);
+        listaMenuFeature.add(pnRelatorio);
+        pnFuncoes.setLayout(new GridLayout(1, listaMenuFeature.size()));
+        pnFuncoes.setBounds(100, 120, 600, 300);
+        TelasUtil.addItensToTela(pnFuncoes, listaMenuFeature);
 
-        pn_geral.add(pn_funcoes);
-        pn_geral.add(pn_menu);
-        setContentPane(pn_geral);
+        pnGeral.add(pnFuncoes);
+        pnGeral.add(pnMenu);
+        setContentPane(pnGeral);
         setVisible(true);
     }
 }
