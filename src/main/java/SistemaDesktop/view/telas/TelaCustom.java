@@ -5,6 +5,8 @@ import javax.swing.*;
 import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_HEIGHT;
 import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
 
+//TESTE GIT
+
 public abstract class TelaCustom extends JFrame {
 
     public TelaCustom(String title) {
