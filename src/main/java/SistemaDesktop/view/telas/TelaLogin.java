@@ -16,14 +16,14 @@ import java.util.List;
 
 public class TelaLogin extends TelaCustom {
 
-    private JLabel lblOpenGates = new LabelLogoLogin("OPEN GATES");
-    private JPanel pn_geral = new JPanel();
-    private JPanel pn_formulario_login;
-    private JLabel lbl_esqueci_senha = new LabelEsqueciSenha(this, "Esqueci Senha");
     JTextField txt_username, txt_password;
     JLabel lbl_username, lbl_password;
     JButton btn_enviar;
     List<JComponent> itens_formulario_login = new ArrayList<>();
+    private JLabel lblOpenGates = new LabelLogoLogin("OPEN GATES");
+    private JPanel pn_geral = new JPanel();
+    private JPanel pn_formulario_login;
+    private JLabel lbl_esqueci_senha = new LabelEsqueciSenha(this, "Esqueci Senha");
 
     public TelaLogin(String title) {
         super(title);
@@ -56,7 +56,6 @@ public class TelaLogin extends TelaCustom {
 
         pn_formulario_login.setLayout(new GridLayout(itens_formulario_login.size(), 1));
         TelasUtil.addItensToTela(pn_formulario_login, itens_formulario_login);
-// -----------------------------------------------------------------------
 
         pn_geral.add(pn_formulario_login);
         setContentPane(pn_geral);

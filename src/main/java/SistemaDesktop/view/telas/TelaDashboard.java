@@ -16,6 +16,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
+
 public class TelaDashboard extends TelaCustom {
 
     JLabel lbl_saudacao = new LabelSaudacao("BOA ???");
@@ -37,9 +39,9 @@ public class TelaDashboard extends TelaCustom {
     List<JComponent> lista_menu = new ArrayList<>();
     List<JComponent> lista_menu_feature = new ArrayList<>();
 
-
     public TelaDashboard(String title) {
         super(title);
+        TELA_ANTERIOR = this;
         pn_geral.setLayout(null);
         pn_geral.add(lbl_saudacao);
         pn_geral.add(lbl_titulo);
