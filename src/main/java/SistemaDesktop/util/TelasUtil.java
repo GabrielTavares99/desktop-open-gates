@@ -9,4 +9,6 @@ public class TelasUtil {
             jPanel.add(component);
         }
     }
+
+    public static JFrame TELA_ANTERIOR;
 }
