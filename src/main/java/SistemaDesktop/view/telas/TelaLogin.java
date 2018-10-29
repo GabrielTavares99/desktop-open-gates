@@ -26,6 +26,7 @@ public class TelaLogin extends TelaCustom {
     private JLabel lbl_esqueci_senha = new LabelEsqueciSenha(this, "Esqueci Senha");
 
     public TelaLogin(String title) {
+
         super(title);
         pn_geral.setLayout(null);
 

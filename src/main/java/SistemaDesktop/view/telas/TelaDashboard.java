@@ -46,10 +46,6 @@ public class TelaDashboard extends TelaCustom {
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
 
-        pnMenu.setLayout(new GridLayout(2, 1));
-        lista_menu.add(lblSair);
-        lista_menu.add(lblTrocarSenha);
-        TelasUtil.addItensToTela(pnMenu, lista_menu);
 
         pnCadastrarFuncionario.add(lblFeatureCadastrarFuncionario);
         pnCadastrarFuncionario.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));
