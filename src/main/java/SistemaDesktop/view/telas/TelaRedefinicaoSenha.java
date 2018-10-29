@@ -1,14 +1,8 @@
 package SistemaDesktop.view.telas;
 
-import SistemaDesktop.view.paineis.PainelRedefinicaoSenha;
+import javax.swing.*;
 
-public class TelaRedefinicaoSenha extends TelaCustom {
+public class TelaRedefinicaoSenha {
 
-    public TelaRedefinicaoSenha(String title) {
-
-        super(title);
-        setVisible(true);
-
-        PainelRedefinicaoSenha pn_redefinicaoSenha = new PainelRedefinicaoSenha ();
-    }
+    String emailRecuperacao = JOptionPane.showInputDialog (null,"Preencha com seu email para receber seu código de segurança", "Recuperar Senha",JOptionPane.QUESTION_MESSAGE);
 }
