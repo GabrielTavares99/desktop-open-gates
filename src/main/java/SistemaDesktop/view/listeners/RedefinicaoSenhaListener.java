@@ -16,7 +16,8 @@ public class RedefinicaoSenhaListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new TelaRedefinicaoSenha("REDEFINIÇÃO SENHA");
+        new TelaRedefinicaoSenha();
+
         frame.dispose();
     }
 
