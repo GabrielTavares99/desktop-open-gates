@@ -1,5 +1,4 @@
 package SistemaDesktop.view.telas;
-//TESTE GIT
 
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelMenu;
@@ -16,8 +15,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
-
 public class TelaDashboard extends TelaCustom {
 
     JLabel lblSaudacao = new LabelSaudacao("BOA ???");
@@ -25,7 +22,7 @@ public class TelaDashboard extends TelaCustom {
     JLabel lblSair = new LabelMenu("LOG OUT");
     JLabel lblTrocarSenha = new LabelMenu("PASSWORD");
     JLabel lblFeatureFazerMatricula = new LabelMenu("FAZER MATRICULA");
-    JLabel lblFeatureCadastrarFuncionario = new LabelMenu("CADASTRAR FUNCIOPNARIO");
+    JLabel lblFeatureCadastrarFuncionario = new LabelMenu("CADASTRAR FUNCIONARIO");
     JLabel lblFeatureVerRelatorio = new LabelMenu("VER RELATORIO");
 
     JPanel pnGeral = new JPanel();
@@ -41,7 +38,7 @@ public class TelaDashboard extends TelaCustom {
 
     public TelaDashboard(String title) {
         super(title);
-        TELA_ANTERIOR = this;
+        TelasUtil.TELA_ANTERIOR = this;
         pnGeral.setLayout(null);
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
