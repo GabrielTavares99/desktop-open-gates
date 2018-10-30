@@ -1,6 +1,6 @@
 package SistemaDesktop.view.listeners;
 
-import SistemaDesktop.view.telas.TelaRedefinicaoSenha;
+import SistemaDesktop.view.telas.TelaEnvioCodigoRedefinicaoSenha;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -16,8 +16,7 @@ public class RedefinicaoSenhaListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new TelaRedefinicaoSenha();
-
+        new TelaEnvioCodigoRedefinicaoSenha();
         frame.dispose();
     }
 

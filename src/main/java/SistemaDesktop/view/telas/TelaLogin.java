@@ -16,50 +16,47 @@ import java.util.List;
 
 public class TelaLogin extends TelaCustom {
 
-    JTextField txt_username, txt_password;
-    JLabel lbl_username, lbl_password;
-    JButton btn_enviar;
-    List<JComponent> itens_formulario_login = new ArrayList<>();
+    JTextField txtUsername, txtpassword;
+    JLabel lblUsername = new LabelFormulario("USERNAME");
+    JLabel lblPassword = new LabelFormulario("Password");
+    JButton btnEnviar;
+    List<JComponent> itensFormularioLogin = new ArrayList<>();
     private JLabel lblOpenGates = new LabelLogoLogin("OPEN GATES");
-    private JPanel pn_geral = new JPanel();
-    private JPanel pn_formulario_login;
-    private JLabel lbl_esqueci_senha = new LabelEsqueciSenha(this, "Esqueci Senha");
+    private JPanel pnGeral = new JPanel();
+    private JPanel pnFormularioLogin;
+    private JLabel lblEsqueciSenha = new LabelEsqueciSenha(this, "Esqueci Senha");
 
     public TelaLogin(String title) {
 
         super(title);
-        pn_geral.setLayout(null);
+        pnGeral.setLayout(null);
 
-//        LOGO
-        pn_geral.add(lblOpenGates);
+        pnGeral.add(lblOpenGates);
 
-//        FORMULÁRIO CADASTRO
-        pn_formulario_login = new PainelFormularioLogin();
-        pn_formulario_login.setBounds(200, 60, 400, 400);
+        pnFormularioLogin = new PainelFormularioLogin();
+        pnFormularioLogin.setBounds(200, 60, 400, 400);
 
-        lbl_username = new LabelFormulario("USERNAME");
-        itens_formulario_login.add(lbl_username);
+        itensFormularioLogin.add(lblUsername);
 
-        txt_username = new JTextField();
-        itens_formulario_login.add(txt_username);
+        txtUsername = new JTextField();
+        itensFormularioLogin.add(txtUsername);
 
-        itens_formulario_login.add(lbl_esqueci_senha);
+        itensFormularioLogin.add(lblEsqueciSenha);
 
-        lbl_password = new LabelFormulario("SENHA");
-        itens_formulario_login.add(lbl_password);
+        itensFormularioLogin.add(lblPassword);
 
-        txt_password = new JTextField();
-        itens_formulario_login.add(txt_password);
+        txtpassword = new JTextField();
+        itensFormularioLogin.add(txtpassword);
 
-        btn_enviar = new BotaoSubmissao("SUBMETER");
-        btn_enviar.addActionListener(new FazerLoginListener(this));
-        itens_formulario_login.add(btn_enviar);
+        btnEnviar = new BotaoSubmissao("SUBMETER");
+        btnEnviar.addActionListener(new FazerLoginListener(this));
+        itensFormularioLogin.add(btnEnviar);
 
-        pn_formulario_login.setLayout(new GridLayout(itens_formulario_login.size(), 1));
-        TelasUtil.addItensToTela(pn_formulario_login, itens_formulario_login);
+        pnFormularioLogin.setLayout(new GridLayout(itensFormularioLogin.size(), 1));
+        TelasUtil.addItensToTela(pnFormularioLogin, itensFormularioLogin);
 
-        pn_geral.add(pn_formulario_login);
-        setContentPane(pn_geral);
+        pnGeral.add(pnFormularioLogin);
+        setContentPane(pnGeral);
         setVisible(true);
     }
 
