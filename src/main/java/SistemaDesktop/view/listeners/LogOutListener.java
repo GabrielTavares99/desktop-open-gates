@@ -10,7 +10,7 @@ import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
 public class LogOutListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
-        new TelaLogin("");
+        new TelaLogin();
         TELA_ANTERIOR.dispose();
     }
 
