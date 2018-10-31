@@ -27,9 +27,8 @@ public class TelaLogin extends TelaCustom {
     private JPanel pnFormularioLogin = new PainelFormularioLogin();
     private JLabel lblEsqueciSenha = new LabelEsqueciSenha(this, ESQUECI_SENHA);
 
-    public TelaLogin(String title) {
-
-        super(title);
+    public TelaLogin() {
+        super();
         pnGeral.setLayout(null);
         pnGeral.add(lblOpenGates);
 

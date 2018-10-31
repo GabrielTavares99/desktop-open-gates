@@ -36,13 +36,12 @@ public class TelaDashboard extends TelaCustom {
     List<JComponent> lista_menu = new ArrayList<>();
     List<JComponent> listaMenuFeature = new ArrayList<>();
 
-    public TelaDashboard(String title) {
-        super(title);
+    public TelaDashboard() {
+        super();
         TelasUtil.TELA_ANTERIOR = this;
         pnGeral.setLayout(null);
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
-
 
         pnCadastrarFuncionario.add(lblFeatureCadastrarFuncionario);
         pnCadastrarFuncionario.addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));

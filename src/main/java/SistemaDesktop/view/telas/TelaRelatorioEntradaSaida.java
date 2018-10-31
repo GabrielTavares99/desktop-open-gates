@@ -1,15 +1,16 @@
 package SistemaDesktop.view.telas;
-//TESTE GIT
 
 import SistemaDesktop.view.labels.LabelTitulo;
 
 import javax.swing.*;
 
-public class TelaRelatorioEntradaSaida extends TelaCustom {
-    JLabel lblTitulo = new LabelTitulo("RELATORIO ENTRADA E SAIDA");
+import static SistemaDesktop.config.Constantes.TITULO_TELA_RELATORIO_ENTRADA_SAIDA;
 
-    public TelaRelatorioEntradaSaida(String title) {
-        super(title);
+public class TelaRelatorioEntradaSaida extends TelaCustom {
+    JLabel lblTitulo = new LabelTitulo(TITULO_TELA_RELATORIO_ENTRADA_SAIDA);
+
+    public TelaRelatorioEntradaSaida() {
+        super();
         add(lblTitulo);
         setVisible(true);
     }
