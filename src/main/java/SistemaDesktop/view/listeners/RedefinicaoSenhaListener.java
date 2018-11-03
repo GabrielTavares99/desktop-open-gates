@@ -13,7 +13,9 @@ import java.awt.event.MouseListener;
 public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     private JFrame frame;
+    private Cursor cursor;
     private TipoRedefinicaoSenha tipoRedefinicaoSenha;
+
 
     public RedefinicaoSenhaListener(JFrame frame, TipoRedefinicaoSenha tipoRedefinicaoSenha) {
         this.frame = frame;
@@ -22,7 +24,8 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
+        frame.dispose();
     }
 
     @Override
@@ -45,8 +48,6 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
     public void mouseExited(MouseEvent e) {
         frame.setCursor(cursor);
     }
-
-    private Cursor cursor;
 
     @Override
     public void actionPerformed(ActionEvent e) {

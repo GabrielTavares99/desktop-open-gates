@@ -1,12 +1,13 @@
 package SistemaDesktop.view.listeners;
 
 
+import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.view.telas.TelaDashboard;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-
-import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
 
 public class PainelFeatureListener implements MouseListener {
 
@@ -21,6 +22,7 @@ public class PainelFeatureListener implements MouseListener {
         try {
             Constructor<?> constructor = novaTela.getConstructor();
             Object instance = constructor.newInstance();
+            TelasUtil.TELA_DASHBOARD.dispose();
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e1) {
             e1.printStackTrace();
         }

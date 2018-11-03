@@ -1,14 +1,12 @@
 package SistemaDesktop.view.telas;
 
-import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.view.MenuBar;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
-import SistemaDesktop.view.listeners.LogoutListener;
-import SistemaDesktop.view.listeners.RedefinicaoSenhaListener;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
-import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
 import SistemaDesktop.view.paineis.PainelFuncaoMatricula;
+import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
 import SistemaDesktop.view.paineis.PainelRelatorio;
 
 import javax.swing.*;
@@ -28,11 +26,10 @@ public class TelaDashboard extends TelaCustom {
     JPanel pnFuncoesDashboard = new PainelFuncoesDashboard();
     List<JComponent> listaMenuFeature = new ArrayList<>();
     JFrame tela = this;
-    JMenuBar menuSuperior = new JMenuBar();
 
     public TelaDashboard() {
         super();
-        TelasUtil.TELA_ANTERIOR = this;
+        TelasUtil.TELA_DASHBOARD = this;
         pnGeral.setLayout(null);
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
@@ -46,18 +43,8 @@ public class TelaDashboard extends TelaCustom {
         pnFuncoesDashboard.setLayout(new GridLayout(1, NUMERO_FUNCOES));
         TelasUtil.addItensToTela(pnFuncoesDashboard, listaMenuFeature);
 
-        JMenu conta = new JMenu("Minha Conta");
-        menuSuperior.add(conta);
-        JMenuItem itemMenuTrocarSenha = new JMenuItem("Trocar Senha");
-        JMenuItem itemMenuSair = new JMenuItem("SAIR");
-        conta.add(itemMenuTrocarSenha);
-        conta.add(itemMenuSair);
-        itemMenuSair.addActionListener(new LogoutListener(tela));
-        itemMenuTrocarSenha.addActionListener(new RedefinicaoSenhaListener(tela, TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA));
-        itemMenuTrocarSenha.addMouseListener(new RedefinicaoSenhaListener(tela, TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA));
-
+        setJMenuBar(new MenuBar(tela));
         pnGeral.add(pnFuncoesDashboard);
-        setJMenuBar(menuSuperior);
         setContentPane(pnGeral);
         setVisible(true);
     }

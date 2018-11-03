@@ -1,5 +1,6 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.view.MenuBar;
 import SistemaDesktop.view.labels.LabelTitulo;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ public class TelaRelatorioEntradaSaida extends TelaCustom {
     public TelaRelatorioEntradaSaida() {
         super();
         add(lblTitulo);
+        setJMenuBar(new MenuBar(tela));
         setVisible(true);
     }
 }

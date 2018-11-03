@@ -1,5 +1,6 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.view.MenuBar;
 import SistemaDesktop.view.labels.LabelTitulo;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class TelaCadastroFuncionario extends TelaCustom {
     public TelaCadastroFuncionario() {
         super();
         add(lblTitulo);
+        setJMenuBar(new MenuBar(tela));
         setVisible(true);
     }
 }
