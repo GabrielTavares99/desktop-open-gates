@@ -17,7 +17,7 @@ public class ViewSettings {
     public static int LABEL_DEFAULT_HEIGHT = 40;
     public static int LABEL_DEFAULT_WIDTH = 200;
 
-    public static Color PAINEL_DEFAULT_COLOR = new Color(193, 61, 54);
+    public static Color PAINEL_DEFAULT_COLOR = new Color(116, 193, 188,10);
 
 
 }
