@@ -1,24 +1,28 @@
 package SistemaDesktop.view.listeners;
 
-import SistemaDesktop.view.telas.TelaEnvioCodigoRedefinicaoSenha;
+import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
+import SistemaDesktop.view.telas.TelaRedefinicaoSenha;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class RedefinicaoSenhaListener implements MouseListener {
+public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     private JFrame frame;
+    private TipoRedefinicaoSenha tipoRedefinicaoSenha;
 
-    public RedefinicaoSenhaListener(JFrame frame) {
+    public RedefinicaoSenhaListener(JFrame frame, TipoRedefinicaoSenha tipoRedefinicaoSenha) {
         this.frame = frame;
+        this.tipoRedefinicaoSenha = tipoRedefinicaoSenha;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new TelaEnvioCodigoRedefinicaoSenha();
-        frame.dispose();
+
     }
 
     @Override
@@ -43,4 +47,10 @@ public class RedefinicaoSenhaListener implements MouseListener {
     }
 
     private Cursor cursor;
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
+        frame.dispose();
+    }
 }

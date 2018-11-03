@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PainelMatricula extends PainelCustom {
-
-
+    
     JLabel lblArquivoFotos;
     JLabel lblDescricaoArquivoFoto = new JLabel("arquivo.zip");
     JLabel lblArquivoCSV;

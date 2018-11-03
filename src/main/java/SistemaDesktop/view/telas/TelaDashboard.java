@@ -1,9 +1,11 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.listeners.LogoutListener;
+import SistemaDesktop.view.listeners.RedefinicaoSenhaListener;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
 import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
 import SistemaDesktop.view.paineis.PainelFuncaoMatricula;
@@ -46,11 +48,13 @@ public class TelaDashboard extends TelaCustom {
 
         JMenu conta = new JMenu("Minha Conta");
         menuSuperior.add(conta);
-        JMenuItem trocar_senha = new JMenuItem("Trocar Senha");
-        JMenuItem saida = new JMenuItem("SAIR");
-        conta.add(trocar_senha);
-        conta.add(saida);
-        saida.addActionListener(new LogoutListener(tela));
+        JMenuItem itemMenuTrocarSenha = new JMenuItem("Trocar Senha");
+        JMenuItem itemMenuSair = new JMenuItem("SAIR");
+        conta.add(itemMenuTrocarSenha);
+        conta.add(itemMenuSair);
+        itemMenuSair.addActionListener(new LogoutListener(tela));
+        itemMenuTrocarSenha.addActionListener(new RedefinicaoSenhaListener(tela, TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA));
+        itemMenuTrocarSenha.addMouseListener(new RedefinicaoSenhaListener(tela, TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA));
 
         pnGeral.add(pnFuncoesDashboard);
         setJMenuBar(menuSuperior);

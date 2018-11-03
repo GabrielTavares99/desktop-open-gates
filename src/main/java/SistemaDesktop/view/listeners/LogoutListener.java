@@ -19,5 +19,6 @@ public class LogoutListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         new TelaLogin();
+        tela.dispose();
     }
 }
