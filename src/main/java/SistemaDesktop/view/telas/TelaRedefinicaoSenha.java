@@ -3,13 +3,12 @@ package SistemaDesktop.view.telas;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.listeners.VoltarRedefinicaoSenhaListener;
-import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.PainelFormularioRedefinicaoSenha;
 
 import javax.swing.*;
 
 public class TelaRedefinicaoSenha extends TelaCustom {
-    JMenuBar menuBar = new MenuSuperior();
+    JMenuBar menuSuperior = new JMenuBar();
 
     public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha) {
         super();
@@ -17,8 +16,16 @@ public class TelaRedefinicaoSenha extends TelaCustom {
         add(lblTitulo);
         add(new PainelFormularioRedefinicaoSenha(tipoRedefinicaoSenha));
 
-        JMenuItem sair = new JMenuItem("SAIR");
-        sair.addMouseListener(new VoltarRedefinicaoSenhaListener(tipoRedefinicaoSenha));
+        JMenu menuSair = new JMenu("VOLTAR");
+        menuSuperior.add(menuSair);
+//        JMenuItem sair = new JMenuItem("SAIR");
+//        menuSair.add(sair);
+        setJMenuBar(menuSuperior);
+//        menuSuperior.add(menuSair);
+
+        menuSair.addMouseListener(new VoltarRedefinicaoSenhaListener(tipoRedefinicaoSenha));
+
+        add(menuSuperior);
 
         setVisible(true);
     }

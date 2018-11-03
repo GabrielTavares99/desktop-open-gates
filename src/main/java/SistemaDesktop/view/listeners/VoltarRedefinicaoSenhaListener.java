@@ -35,9 +35,9 @@ public class VoltarRedefinicaoSenhaListener implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)){
-
+            System.out.println("1");
         }else {
-
+            System.out.println("2");
         }
     }
 }
