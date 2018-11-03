@@ -3,6 +3,7 @@ package SistemaDesktop.view.telas;
 
 import SistemaDesktop.model.ModeloTabela;
 import SistemaDesktop.view.labels.LabelTitulo;
+import SistemaDesktop.view.paineis.PainelMatricula;
 
 import javax.swing.*;
 
@@ -17,10 +18,10 @@ public class TelaMatricula extends TelaCustom {
     JTable tabela = new JTable();
     String[] colunasNomes;
     ModeloTabela modeloTabela;
+    JPanel pnMatricula;
     public TelaMatricula() {
         super();
         add(lblTitulo);
-
 
         colunasNomes = new String[]{"Arquivo","Data e Hora","Nº Matriculados","ERROS"};
         List<Object> objects = new ArrayList<>();
@@ -28,9 +29,10 @@ public class TelaMatricula extends TelaCustom {
         tabela.setModel(modeloTabela);
         JScrollPane scroolPane = new JScrollPane(tabela);
         scroolPane.setBounds(50,100,700,200);
-        this.add(scroolPane);
+        add(scroolPane);
 
-
+        pnMatricula = new PainelMatricula();
+        add(pnMatricula);
 
         TELA_ANTERIOR = this;
         setVisible(true);

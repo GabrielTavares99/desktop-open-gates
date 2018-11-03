@@ -6,7 +6,7 @@ import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.listeners.LogoutListener;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
 import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
-import SistemaDesktop.view.paineis.PainelMatricula;
+import SistemaDesktop.view.paineis.PainelFuncaoMatricula;
 import SistemaDesktop.view.paineis.PainelRelatorio;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class TelaDashboard extends TelaCustom {
 
         NUMERO_FUNCOES = 3;
         PAINEL_FUNCAO_WIDTH = (600 / NUMERO_FUNCOES);
-        listaMenuFeature.add(new PainelMatricula());
+        listaMenuFeature.add(new PainelFuncaoMatricula());
         listaMenuFeature.add(new PainelCadastroFuncionario());
         listaMenuFeature.add(new PainelRelatorio());
 
