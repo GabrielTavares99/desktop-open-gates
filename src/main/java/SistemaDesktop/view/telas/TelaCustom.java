@@ -16,7 +16,7 @@ public abstract class TelaCustom extends JFrame {
         setLocationRelativeTo(null);
         pack();
         setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
-        setContentPane(fundo);
+//        setContentPane(fundo);
         setLayout(null);
 
         setResizable(false);
