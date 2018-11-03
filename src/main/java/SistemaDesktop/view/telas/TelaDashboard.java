@@ -18,7 +18,7 @@ import static SistemaDesktop.config.Constantes.*;
 
 public class TelaDashboard extends TelaCustom {
 
-    JLabel lblSaudacao = new LabelSaudacao("BOA ???");
+    JLabel lblSaudacao = new LabelSaudacao("Fulaninho");
     JLabel lblTitulo = new LabelTitulo(DASHBOARD);
     JLabel lblSair = new LabelMenu("LOG OUT");
     JLabel lblTrocarSenha = new LabelMenu(PASSWORD);
