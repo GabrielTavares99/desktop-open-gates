@@ -19,9 +19,8 @@ public class PainelFeatureListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         try {
-            Constructor<?> constructor = novaTela.getConstructor(String.class);
-            Object instance = constructor.newInstance("open gates");
-            TELA_ANTERIOR.dispose();
+            Constructor<?> constructor = novaTela.getConstructor();
+            Object instance = constructor.newInstance();
         } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException | InstantiationException e1) {
             e1.printStackTrace();
         }

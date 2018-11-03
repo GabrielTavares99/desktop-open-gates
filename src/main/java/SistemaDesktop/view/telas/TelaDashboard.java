@@ -1,10 +1,10 @@
 package SistemaDesktop.view.telas;
 
 import SistemaDesktop.util.TelasUtil;
-import SistemaDesktop.view.labels.LabelMenu;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
+import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
 import SistemaDesktop.view.paineis.PainelMatricula;
 import SistemaDesktop.view.paineis.PainelRelatorio;
 
@@ -14,24 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static SistemaDesktop.config.Constantes.DASHBOARD;
-import static SistemaDesktop.config.Constantes.VER_RELATORIO;
 
 public class TelaDashboard extends TelaCustom {
 
+    public static int NUMERO_FUNCOES = 0;
+    public static int PAINEL_FUNCAO_WIDTH = 0;
     JLabel lblSaudacao = new LabelSaudacao("Fulaninho");
     JLabel lblTitulo = new LabelTitulo(DASHBOARD);
-    JLabel lblFeatureFazerMatricula = new LabelMenu("FAZER MATRICULA");
-    JLabel lblFeatureCadastrarFuncionario = new LabelMenu("CADASTRAR FUNCIONARIO");
-    JLabel lblFeatureVerRelatorio = new LabelMenu(VER_RELATORIO);
-
     JPanel pnGeral = new JPanel();
-    JPanel pnFuncoes = new JPanel();
-
-    JPanel pnMatricula = new PainelMatricula();
-    JPanel pnCadastrarFuncionario = new PainelCadastroFuncionario();
-    JPanel pnRelatorio = new PainelRelatorio();
-
-    List<JComponent> lista_menu = new ArrayList<>();
+    JPanel pnFuncoesDashboard = new PainelFuncoesDashboard();
     List<JComponent> listaMenuFeature = new ArrayList<>();
 
     public TelaDashboard() {
@@ -41,16 +32,14 @@ public class TelaDashboard extends TelaCustom {
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
 
-        pnCadastrarFuncionario.add(lblFeatureCadastrarFuncionario);
-        pnMatricula.add(lblFeatureFazerMatricula);
-        pnRelatorio.add(lblFeatureVerRelatorio);
+        NUMERO_FUNCOES = 3;
+        PAINEL_FUNCAO_WIDTH = (600 / NUMERO_FUNCOES);
+        listaMenuFeature.add(new PainelMatricula());
+        listaMenuFeature.add(new PainelCadastroFuncionario());
+        listaMenuFeature.add(new PainelRelatorio());
 
-        listaMenuFeature.add(pnMatricula);
-        listaMenuFeature.add(pnCadastrarFuncionario);
-        listaMenuFeature.add(pnRelatorio);
-
-        pnFuncoes.setLayout(new GridLayout(1, listaMenuFeature.size()));
-        TelasUtil.addItensToTela(pnFuncoes, listaMenuFeature);
+        pnFuncoesDashboard.setLayout(new GridLayout(1, NUMERO_FUNCOES));
+        TelasUtil.addItensToTela(pnFuncoesDashboard, listaMenuFeature);
 
         JMenuBar menuBar = new JMenuBar();
         JMenu conta = new JMenu("Minha Conta");
@@ -59,7 +48,8 @@ public class TelaDashboard extends TelaCustom {
         JMenuItem saida = new JMenuItem("SAIR");
         conta.add(trocar_senha);
         conta.add(saida);
-        pnGeral.add(pnFuncoes);
+
+        pnGeral.add(pnFuncoesDashboard);
         setJMenuBar(menuBar);
         setContentPane(pnGeral);
         setVisible(true);

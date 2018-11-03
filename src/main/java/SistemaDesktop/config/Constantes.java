@@ -3,8 +3,8 @@ package SistemaDesktop.config;
 public class Constantes {
 
     public static String TITULO_TELA_LOGIN = "TELA LOGIN";
-    public static String TITULO_TELA_CADASTRO_FUNCIONARIO = "TELA LOGIN";
-    public static String TITULO_TELA_RELATORIO_ENTRADA_SAIDA = "TELA LOGIN";
+    public static String TITULO_TELA_CADASTRO_FUNCIONARIO = "TITULO_TELA_CADASTRO_FUNCIONARIO";
+    public static String TITULO_TELA_RELATORIO_ENTRADA_SAIDA = "TITULO_TELA_RELATORIO_ENTRADA_SAIDA";
     public static String TITULO_TELA_MATRICULA = "TELA LOGIN";
     public static String USERNAME = "Username";
     public static String MATRICULA = "Matricula";
