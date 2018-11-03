@@ -9,8 +9,7 @@ public class CampoTextoCustom extends JTextField {
 
     public CampoTextoCustom(){
         setSize(CAMPO_TEXTO_DEFAULT_WIDTH, CAMPO_TEXTO_DEFAULT_HEIGHT);
-
-
+        setHorizontalAlignment(SwingConstants.CENTER);
     }
 
 }

@@ -3,6 +3,7 @@ package SistemaDesktop.view.listeners;
 import SistemaDesktop.view.telas.TelaEnvioCodigoRedefinicaoSenha;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -32,11 +33,14 @@ public class RedefinicaoSenhaListener implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        cursor = frame.getCursor();
+        frame.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        frame.setCursor(cursor);
     }
+
+    private Cursor cursor;
 }

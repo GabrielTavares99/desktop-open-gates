@@ -18,7 +18,7 @@ public abstract class TelaCustom extends JFrame {
         setContentPane(fundo);
         setLayout(null);
 
-
+        setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 

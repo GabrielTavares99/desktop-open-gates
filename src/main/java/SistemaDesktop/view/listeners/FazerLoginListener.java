@@ -3,13 +3,16 @@ package SistemaDesktop.view.listeners;
 import SistemaDesktop.view.telas.TelaDashboard;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class FazerLoginListener implements ActionListener {
+public class FazerLoginListener implements ActionListener, MouseListener {
 
     private JFrame telaLogin;
-
+    private Cursor cursor;
     public FazerLoginListener(JFrame telaLogin) {
         this.telaLogin = telaLogin;
     }
@@ -18,5 +21,31 @@ public class FazerLoginListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         new TelaDashboard();
         telaLogin.hide();
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        cursor = telaLogin.getCursor();
+        telaLogin.setCursor(Cursor.HAND_CURSOR);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        telaLogin.setCursor(cursor);
     }
 }
