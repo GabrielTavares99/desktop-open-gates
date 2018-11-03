@@ -2,6 +2,8 @@ package SistemaDesktop.view.botoes;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import static SistemaDesktop.config.ViewSettings.*;
 
 public abstract class BotaoCustom extends JButton {
@@ -10,6 +12,8 @@ public abstract class BotaoCustom extends JButton {
         setText(descricao);
         setSize(BOTAO_DEFAULT_WIDTH, BOTAO_DEFAULT_HEIGHT);
         setBackground(BOTAO_DEFAULT_COLOR);
+        setForeground(Color.WHITE);
+        setFont(new Font("Serif", Font.BOLD, 20));
 
     }
 

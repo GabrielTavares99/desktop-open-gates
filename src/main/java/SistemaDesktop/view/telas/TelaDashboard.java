@@ -3,6 +3,8 @@ package SistemaDesktop.view.telas;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
+import SistemaDesktop.view.listeners.LogoutListener;
+import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
 import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
 import SistemaDesktop.view.paineis.PainelMatricula;
@@ -24,6 +26,8 @@ public class TelaDashboard extends TelaCustom {
     JPanel pnGeral = new JPanel();
     JPanel pnFuncoesDashboard = new PainelFuncoesDashboard();
     List<JComponent> listaMenuFeature = new ArrayList<>();
+    JFrame tela = this;
+    JMenuBar menuBar = new MenuSuperior();
 
     public TelaDashboard() {
         super();
@@ -41,13 +45,14 @@ public class TelaDashboard extends TelaCustom {
         pnFuncoesDashboard.setLayout(new GridLayout(1, NUMERO_FUNCOES));
         TelasUtil.addItensToTela(pnFuncoesDashboard, listaMenuFeature);
 
-        JMenuBar menuBar = new JMenuBar();
+
         JMenu conta = new JMenu("Minha Conta");
         menuBar.add(conta);
         JMenuItem trocar_senha = new JMenuItem("Trocar Senha");
         JMenuItem saida = new JMenuItem("SAIR");
         conta.add(trocar_senha);
         conta.add(saida);
+        saida.addActionListener(new LogoutListener(tela));
 
         pnGeral.add(pnFuncoesDashboard);
         setJMenuBar(menuBar);

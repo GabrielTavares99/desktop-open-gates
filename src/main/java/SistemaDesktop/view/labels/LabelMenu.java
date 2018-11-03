@@ -12,7 +12,5 @@ public class LabelMenu extends LabelCustom {
     public LabelMenu(JFrame tela) {
         super();
         setBounds(0, 0, 100, 200);
-        addMouseListener(new LogoutListener(tela));
-
     }
 }
