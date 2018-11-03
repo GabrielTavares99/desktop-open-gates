@@ -26,7 +26,7 @@ public class TelaRedefinicaoSenha extends TelaCustom {
         setJMenuBar(menuSuperior);
 //        menuSuperior.add(menuSair);
 
-        menuSair.addMouseListener(new VoltarRedefinicaoSenhaListener(tipoRedefinicaoSenha));
+        menuSair.addMouseListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha));
 
         add(menuSuperior);
 
