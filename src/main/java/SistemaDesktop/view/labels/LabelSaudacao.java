@@ -1,5 +1,7 @@
 package SistemaDesktop.view.labels;
 
+import SistemaDesktop.util.TelasUtil;
+
 import java.util.Date;
 
 import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
@@ -17,6 +19,7 @@ public class LabelSaudacao extends LabelCustom {
             saudacao = "Boa Tarde, %s";
         else
             saudacao = "Boa Noite, %s";
+        saudacao = String.format(saudacao, TelasUtil.USUARIO_LOGADO.getNome());
         setText(String.format(saudacao, nome));
         setBounds(TELA_DEFAULT_WIDTH-200,0,200,30);
     }

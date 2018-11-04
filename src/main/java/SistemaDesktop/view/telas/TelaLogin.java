@@ -18,8 +18,8 @@ import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
 
 public class TelaLogin extends TelaCustom {
 
-    JTextField txtUsername = new CampoTextoFormulario();
-    JTextField txtPassword = new CampoSenhaFormulario();
+    public static JTextField txtUsername = new CampoTextoFormulario();
+    public static JTextField txtPassword = new CampoSenhaFormulario();
     JLabel lblUsername = new LabelFormulario(USERNAME);
     JLabel lblPassword = new LabelFormulario(PASSWORD);
     JButton btnEnviar = new BotaoSubmissao(this, ENTRAR);
@@ -47,7 +47,7 @@ public class TelaLogin extends TelaCustom {
         ImageIcon img = new ImageIcon(getClass().getResource("../images/open-gates-com-texto.png"));
         img.setImage(img.getImage().getScaledInstance(128, 140, 100));
         lblOpenGates = new JLabel(img);
-        lblOpenGates.setBounds(MEIO_TELA_X-64, 30, 128, 140);
+        lblOpenGates.setBounds(MEIO_TELA_X - 64, 30, 128, 140);
         pnGeral.add(lblOpenGates);
 
         pnGeral.add(pnFormularioLogin);
