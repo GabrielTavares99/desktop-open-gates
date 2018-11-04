@@ -1,5 +1,6 @@
-package SistemaDesktop;
+package SistemaDesktop.model;
 
+import SistemaDesktop.SistemaDesktop;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.AcaoPortaria;
 

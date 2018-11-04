@@ -19,4 +19,8 @@ public class TelasUtil {
     }
 
     public static JFrame TELA_ANTERIOR;
+    public static String URL_CSV;
+    public static String URL_ARQUIVO_FOTOS;
+
+
 }

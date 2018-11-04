@@ -1,21 +1,29 @@
 package SistemaDesktop.view.paineis;
 
+import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.view.listeners.SelecionarArquivoFotos;
+import SistemaDesktop.view.listeners.SelecionarCsvListener;
+
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PainelMatricula extends PainelCustom {
-    
+
     JLabel lblArquivoFotos;
-    JLabel lblDescricaoArquivoFoto = new JLabel("arquivo.zip");
+    public static JLabel lblDescricaoArquivoFoto = new JLabel("---");
+    public static JLabel lblDescricaoArquivoCSV = new JLabel("---");
     JLabel lblArquivoCSV;
-    JLabel lblDescricaoArquivoCSV = new JLabel("arquivo2.csv");
     JButton btnBuscarArquivoFotos = new JButton("PROCURAR");
     JButton btnBuscarArquivoCSV = new JButton("PROCURAR");
     JPanel painelArquivoFotos = new JPanel();
     JPanel pnArquivoCSV = new JPanel();
     JButton fazerMatricula = new JButton("MATRICULAR");
 
-    public PainelMatricula() {
+    public PainelMatricula(JFrame tela) {
         super();
         setBounds(50, 315, 700, 300);
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -57,10 +65,11 @@ public class PainelMatricula extends PainelCustom {
         btnBuscarArquivoCSV.setBounds(0, 130, 200, 30);
         pnArquivoCSV.add(btnBuscarArquivoCSV);
 
-
         fazerMatricula.setBounds(500, 200, 150, 30);
-        add(fazerMatricula);
 
+        btnBuscarArquivoCSV.addActionListener(new SelecionarCsvListener(tela));
+        btnBuscarArquivoFotos.addActionListener(new SelecionarArquivoFotos(tela));
+        add(fazerMatricula);
         add(pnArquivoCSV);
         add(painelArquivoFotos);
 

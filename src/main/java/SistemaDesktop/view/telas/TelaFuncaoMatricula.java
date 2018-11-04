@@ -32,7 +32,7 @@ public class TelaFuncaoMatricula extends TelaCustom {
         scroolPane.setBounds(50, 100, 700, 200);
         add(scroolPane);
 
-        pnMatricula = new PainelMatricula();
+        pnMatricula = new PainelMatricula(tela);
         add(pnMatricula);
 
         TELA_ANTERIOR = this;
