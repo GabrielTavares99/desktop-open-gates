@@ -1,5 +1,6 @@
 package SistemaDesktop.util;
 
+import SistemaDesktop.model.Pessoa;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.view.telas.TelaDashboard;
 

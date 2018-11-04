@@ -15,18 +15,18 @@ public class SistemaDesktop {
 //        new TelaRedefinicaoSenha(TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA);
 //        new TelaFuncaoMatricula();
 
-        AlunoDao alunoDao = new AlunoDao();
-        Aluno aluno = new Aluno();
-        DisciplinaDao disciplinaDao = new DisciplinaDao();
-        Disciplina disciplina = new Disciplina();
-        disciplina.setSigla("ADS");
-        disciplinaDao.cadastrar(disciplina);
-        aluno.setRa(123);
-        alunoDao.cadastrar(aluno);
-        ProfessorDao professorDao = new ProfessorDao();
-        Professor professor = new Professor();
-        professor.setNumMatricula(String.valueOf(100));
-        professorDao.cadastrar(professor);
+//        AlunoDao alunoDao = new AlunoDao();
+//        Aluno aluno = new Aluno();
+//        DisciplinaDao disciplinaDao = new DisciplinaDao();
+//        Disciplina disciplina = new Disciplina();
+//        disciplina.setSigla("ADS");
+//        disciplinaDao.cadastrar(disciplina);
+//        aluno.setRa(123);
+//        alunoDao.cadastrar(aluno);
+//        ProfessorDao professorDao = new ProfessorDao();
+//        Professor professor = new Professor();
+//        professor.setNumMatricula(String.valueOf(100));
+//        professorDao.cadastrar(professor);
         new TelaFuncaoMatricula();
     }
 }

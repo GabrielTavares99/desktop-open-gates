@@ -1,5 +1,10 @@
 package SistemaDesktop.view.labels;
 
+import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.model.Usuario;
+import SistemaDesktop.model.dao.AlunoDao;
+import SistemaDesktop.model.dao.ProfessorDao;
+import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.TelasUtil;
 
 import java.util.Date;
@@ -19,8 +24,17 @@ public class LabelSaudacao extends LabelCustom {
             saudacao = "Boa Tarde, %s";
         else
             saudacao = "Boa Noite, %s";
-        saudacao = String.format(saudacao, TelasUtil.USUARIO_LOGADO.getNome());
+        Usuario usuario = TelasUtil.USUARIO_LOGADO;
+        Pessoa pessoa = null;
+        if (TipoUsuario.FUNCIONARIO.equals(usuario)) {
+            ProfessorDao professorDao = new ProfessorDao();
+            pessoa = professorDao.findByEmail(usuario.getEmail());
+        } else if (TipoUsuario.ALUNO.equals(usuario.getTipoUsuario())) {
+            AlunoDao alunoDao = new AlunoDao();
+            pessoa = alunoDao.getByEmail(usuario.getEmail());
+        }
+        saudacao = String.format(saudacao, pessoa.getNome());
         setText(String.format(saudacao, nome));
-        setBounds(TELA_DEFAULT_WIDTH-200,0,200,30);
+        setBounds(TELA_DEFAULT_WIDTH - 200, 0, 200, 30);
     }
 }

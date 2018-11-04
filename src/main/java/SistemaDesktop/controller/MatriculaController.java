@@ -6,6 +6,7 @@ import SistemaDesktop.model.dao.DisciplinaDao;
 import SistemaDesktop.model.dao.ProfessorDao;
 import SistemaDesktop.model.dao.UsuarioDao;
 import SistemaDesktop.model.enums.Periodo;
+import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.CsvUtil;
 
 import java.util.ArrayList;
@@ -42,6 +43,14 @@ public class MatriculaController {
 
             String ra_aluno = line.get("ra_aluno");
             Aluno aluno = alunoDao.getByRa(Integer.parseInt(ra_aluno));
+            if (aluno == null){
+                Aluno aluno1 = new Aluno();
+                aluno1.setRa(Integer.parseInt(ra_aluno));
+                aluno1.getUsuario().setEmail(line.get("e-mail"));
+                aluno1.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
+                aluno1.setNome(line.get("nome_aluno"));
+                alunoDao.cadastrar(aluno1);
+            }
             matricula.setAluno(aluno);
 
             String matricula_professor = line.get("matricula_professor");

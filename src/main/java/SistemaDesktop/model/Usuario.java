@@ -1,15 +1,13 @@
 package SistemaDesktop.model;
 
+import SistemaDesktop.model.enums.TipoUsuario;
+
 public class Usuario {
-    private int id;
+
     private String email;
     private String senha;
-    private String nome;
-    private String cpf;
-
-    public int getId() {
-        return id;
-    }
+    private boolean acessaSistema;
+    private TipoUsuario tipoUsuario;
 
     public String getEmail() {
         return email;
@@ -27,19 +25,19 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getNome() {
-        return nome;
+    public boolean isAcessaSistema() {
+        return acessaSistema;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setAcessaSistema(boolean acessaSistema) {
+        this.acessaSistema = acessaSistema;
     }
 
-    public String getCpf() {
-        return cpf;
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 }

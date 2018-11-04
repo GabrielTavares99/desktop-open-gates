@@ -5,18 +5,19 @@ import SistemaDesktop.model.dao.UsuarioDao;
 
 public class UsuarioController {
     private UsuarioDao usuarioDao;
-    public UsuarioController(){
+
+    public UsuarioController() {
         usuarioDao = new UsuarioDao();
     }
 
-    public boolean podeLogar(String email, String senha){
-        Usuario byEmail = usuarioDao.getByEmail(email);
-        if (byEmail == null || !senha.equals(byEmail.getSenha()))
+    public boolean podeLogar(String email, String senha) {
+        Usuario usuario = usuarioDao.getByEmail(email);
+        if (usuario == null || !senha.equals(usuario.getSenha()))
             return false;
         return true;
     }
 
-    public Usuario findByEmail(String email){
+    public Usuario findByEmail(String email) {
         return usuarioDao.getByEmail(email);
     }
 

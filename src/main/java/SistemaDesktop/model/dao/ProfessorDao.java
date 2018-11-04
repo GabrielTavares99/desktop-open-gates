@@ -8,6 +8,8 @@ import java.util.List;
 public class ProfessorDao implements IDao {
     private static List<Professor> professores = new ArrayList<>();
 
+    UsuarioDao usuarioDao = new UsuarioDao();
+
     @Override
     public void cadastrar(Object o) {
         professores.add((Professor) o);
@@ -25,7 +27,15 @@ public class ProfessorDao implements IDao {
             }
         }
         return null;
+    }
 
+    public Professor findByEmail(String email) {
+        for (Professor professor : professores) {
+            if (professor.getUsuario().getEmail().equalsIgnoreCase(email)) {
+                return professor;
+            }
+        }
+        return null;
     }
 
 }

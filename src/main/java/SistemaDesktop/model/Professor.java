@@ -2,10 +2,12 @@ package SistemaDesktop.model;
 
 import java.util.List;
 
-public class Professor extends Usuario {
+public class Professor extends Pessoa {
 
     private List<Disciplina> disciplinas;
     private String numMatricula;
+
+
 
     public List<Disciplina> getDisciplinas() {
         return disciplinas;

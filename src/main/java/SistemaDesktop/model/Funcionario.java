@@ -1,8 +1,6 @@
 package SistemaDesktop.model;
 
-import java.util.List;
-
-public class Funcionario extends Usuario {
+public class Funcionario extends Pessoa {
 
     private Cargo cargo;
 

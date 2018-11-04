@@ -7,18 +7,16 @@ import java.util.List;
 
 public class UsuarioDao implements IDao {
 
-    List<Usuario> usuarios = new ArrayList<>();
-
-    public UsuarioDao() {
-        Usuario usuario = new Usuario();
-        usuario.setEmail("dev@");
-        usuario.setSenha("123");
-        usuario.setNome("Gabriel");
-        usuarios.add(usuario);
-    }
+    private static List<Usuario> usuarios = new ArrayList<>();
 
     @Override
     public void cadastrar(Object usuario) {
+        // TODO: 04/11/18 REMOVER ISSO
+        Usuario usuario2 = (Usuario) usuario;
+        usuario2.setSenha(String.valueOf(123));
+//        ----------------------------------
+
+        usuarios.add((Usuario) usuario2);
     }
 
     @Override

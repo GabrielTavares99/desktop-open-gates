@@ -1,6 +1,10 @@
 package SistemaDesktop.model;
 
-public class Aluno extends Usuario {
+public class Aluno extends Pessoa {
+
+    public Aluno(){
+        setUsuario(new Usuario());
+    }
 
     private int ra;
 
