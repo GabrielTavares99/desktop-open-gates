@@ -20,7 +20,6 @@ public class FazerLoginListener implements ActionListener, MouseListener {
 
     public FazerLoginListener(JFrame telaLogin) {
         this.telaLogin = telaLogin;
-        this.pnLogin = pnLogin;
     }
 
     @Override
