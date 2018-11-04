@@ -7,6 +7,7 @@ import java.util.Date;
 public class Matricula {
 
     private Aluno aluno;
+    private Professor professor;
     private Disciplina disciplina;
     private Date dataRealizacao;
     private int semestre;
@@ -61,4 +62,11 @@ public class Matricula {
         this.periodo = periodo;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
 }

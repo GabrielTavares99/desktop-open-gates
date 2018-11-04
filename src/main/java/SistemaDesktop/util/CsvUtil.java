@@ -36,8 +36,6 @@ public class CsvUtil {
                 }
                 lines.add(value);
             }
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
         }

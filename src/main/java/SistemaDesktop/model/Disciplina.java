@@ -4,6 +4,7 @@ public class Disciplina {
 
     private int id;
     private String descricao;
+    private String sigla;
 
     public int getId() {
         return id;
@@ -19,5 +20,13 @@ public class Disciplina {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }
