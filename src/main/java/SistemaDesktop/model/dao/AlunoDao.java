@@ -6,15 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlunoDao implements IDao {
-    List<Aluno> alunos = new ArrayList<>();
+    private static List<Aluno> alunos = new ArrayList<>();
 
     @Override
     public void cadastrar(Object o) {
-
+        alunos.add((Aluno) o);
     }
 
     @Override
-    public void listarTudo(Object o) {
+    public void pegarTodas(Object o) {
 
     }
 

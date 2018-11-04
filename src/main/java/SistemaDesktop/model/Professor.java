@@ -5,7 +5,7 @@ import java.util.List;
 public class Professor extends Usuario {
 
     private List<Disciplina> disciplinas;
-    private String ra;
+    private String numMatricula;
 
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
@@ -15,11 +15,11 @@ public class Professor extends Usuario {
         this.disciplinas = disciplinas;
     }
 
-    public String getRa() {
-        return ra;
+    public String getNumMatricula() {
+        return numMatricula;
     }
 
-    public void setRa(String ra) {
-        this.ra = ra;
+    public void setNumMatricula(String numMatricula) {
+        this.numMatricula = numMatricula;
     }
 }

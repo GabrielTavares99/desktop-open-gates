@@ -7,20 +7,20 @@ import java.util.List;
 
 public class DisciplinaDao implements IDao {
 
-    List<Disciplina> disciplinas = new ArrayList<>();
+    private static List<Disciplina> disciplinas = new ArrayList<>();
 
     @Override
     public void cadastrar(Object o) {
-
+        disciplinas.add((Disciplina) o);
     }
 
     @Override
-    public void listarTudo(Object o) {
+    public void pegarTodas(Object o) {
 
     }
 
-    public Disciplina findBySigla(String sigla){
-        for (Disciplina disciplina: disciplinas) {
+    public Disciplina findBySigla(String sigla) {
+        for (Disciplina disciplina : disciplinas) {
             if (disciplina.getSigla().equalsIgnoreCase(sigla))
                 return disciplina;
         }

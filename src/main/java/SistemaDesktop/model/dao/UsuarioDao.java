@@ -22,7 +22,7 @@ public class UsuarioDao implements IDao {
     }
 
     @Override
-    public void listarTudo(Object o) {
+    public void pegarTodas(Object o) {
 
     }
 

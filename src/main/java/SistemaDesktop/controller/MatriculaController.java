@@ -1,9 +1,6 @@
 package SistemaDesktop.controller;
 
-import SistemaDesktop.model.Aluno;
-import SistemaDesktop.model.Disciplina;
-import SistemaDesktop.model.Matricula;
-import SistemaDesktop.model.Professor;
+import SistemaDesktop.model.*;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.dao.DisciplinaDao;
 import SistemaDesktop.model.dao.ProfessorDao;
@@ -12,6 +9,7 @@ import SistemaDesktop.model.enums.Periodo;
 import SistemaDesktop.util.CsvUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,12 +19,14 @@ public class MatriculaController {
     UsuarioDao usuarioDao;
     AlunoDao alunoDao;
     ProfessorDao professorDao;
+    MatriculaDao matriculaDao;
 
     public MatriculaController() {
         disciplinaDao = new DisciplinaDao();
         usuarioDao = new UsuarioDao();
         alunoDao = new AlunoDao();
         professorDao = new ProfessorDao();
+        matriculaDao = new MatriculaDao();
     }
 
     public void fazerMatricula(String csvPath) {
@@ -54,9 +54,12 @@ public class MatriculaController {
 
             matricula.setPeriodo(Periodo.valueOf(line.get("periodo")));
 
+            matricula.setDataRealizacao(new Date());
+
+            matriculaDao.cadastrar(matricula);
         }
 
-    }
 
+    }
 
 }
