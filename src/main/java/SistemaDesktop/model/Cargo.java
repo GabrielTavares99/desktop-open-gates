@@ -8,7 +8,7 @@ public class Cargo {
     public Cargo() {
     }
 
-    public Cargo(int id, String descricao){
+    public Cargo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
