@@ -1,29 +1,28 @@
-package SistemaDesktop.model;
+package SistemaDesktop.view.modelosTabela;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class ModeloTabela extends AbstractTableModel {
-
+public class ModeloTabelaMatricula extends AbstractTableModel {
 
     //	Variaveis da classe
     private String colunas[];
     private List<Object> listaMoradores;
 
     //	Método contrutor
-    public ModeloTabela(String[] cabecalho, List<Object> listaMoradores) {
+    public ModeloTabelaMatricula(String[] cabecalho, List<Object> listaMoradores) {
         this.listaMoradores = listaMoradores;
         this.colunas = cabecalho;
     }
 
-    public ModeloTabela(List<Object> listaMoradores) {
+    public ModeloTabelaMatricula(List<Object> listaMoradores) {
         this.listaMoradores = listaMoradores;
     }
 
     //	Método para atualzar a tabela
     public static void atualizar(AbstractTableModel modelo, JTable tabela, List<Object> lista, String[] cabecalhos) {
-        modelo = new ModeloTabela(cabecalhos, lista);
+        modelo = new ModeloTabelaMatricula(cabecalhos, lista);
         tabela.setModel(modelo);
     }
 

@@ -1,7 +1,7 @@
 package SistemaDesktop.view.telas;
 
 import SistemaDesktop.util.TelasUtil;
-import SistemaDesktop.view.MenuBar;
+import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
@@ -43,7 +43,7 @@ public class TelaDashboard extends TelaCustom {
         pnFuncoesDashboard.setLayout(new GridLayout(1, NUMERO_FUNCOES));
         TelasUtil.addItensToTela(pnFuncoesDashboard, listaMenuFeature);
 
-        setJMenuBar(new MenuBar(tela));
+        setJMenuBar(new MenuSuperior(tela));
         pnGeral.add(pnFuncoesDashboard);
         setContentPane(pnGeral);
         setVisible(true);

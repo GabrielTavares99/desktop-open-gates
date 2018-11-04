@@ -1,8 +1,8 @@
 package SistemaDesktop.view.telas;
 
 
-import SistemaDesktop.model.ModeloTabela;
-import SistemaDesktop.view.MenuBar;
+import SistemaDesktop.view.modelosTabela.ModeloTabelaMatricula;
+import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.paineis.PainelMatricula;
 
@@ -17,7 +17,7 @@ public class TelaFuncaoMatricula extends TelaCustom {
     JLabel lblTitulo = new LabelTitulo(TITULO_TELA_MATRICULA);
     JTable tabela = new JTable();
     String[] colunasNomes;
-    ModeloTabela modeloTabela;
+    ModeloTabelaMatricula modeloTabela;
     JPanel pnMatricula;
 
     public TelaFuncaoMatricula() {
@@ -26,7 +26,7 @@ public class TelaFuncaoMatricula extends TelaCustom {
 
         colunasNomes = new String[]{"Arquivo", "Data e Hora", "Nº Matriculados", "ERROS"};
         List<Object> objects = new ArrayList<>();
-        modeloTabela = new ModeloTabela(colunasNomes, objects);
+        modeloTabela = new ModeloTabelaMatricula(colunasNomes, objects);
         tabela.setModel(modeloTabela);
         JScrollPane scroolPane = new JScrollPane(tabela);
         scroolPane.setBounds(50, 100, 700, 200);
@@ -36,7 +36,7 @@ public class TelaFuncaoMatricula extends TelaCustom {
         add(pnMatricula);
 
         TELA_ANTERIOR = this;
-        setJMenuBar(new MenuBar(tela));
+        setJMenuBar(new MenuSuperior(tela));
 
         setVisible(true);
     }
