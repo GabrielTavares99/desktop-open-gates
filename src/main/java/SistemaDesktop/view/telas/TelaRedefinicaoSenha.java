@@ -21,14 +21,11 @@ public class TelaRedefinicaoSenha extends TelaCustom {
 
         JMenu menuSair = new JMenu("VOLTAR");
         menuSuperior.add(menuSair);
-//        JMenuItem sair = new JMenuItem("SAIR");
-//        menuSair.add(sair);
+        JMenuItem sair = new JMenuItem("SAIR");
+        menuSair.add(sair);
+        sair.addActionListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha));
         setJMenuBar(menuSuperior);
-//        menuSuperior.add(menuSair);
 
-        menuSair.addMouseListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha));
-
-        add(menuSuperior);
 
         setVisible(true);
     }

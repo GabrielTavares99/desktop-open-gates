@@ -82,7 +82,6 @@ public class TelaCadastroFuncionario extends TelaCustom {
         e3.setBounds(450,10,200,60);
         components.add(e3);
 
-
         checkbox.setLabel("ATIVO");
         GroupForm e5 = new GroupForm(lblAtivo, checkbox);
         e5.setBounds(450,80,200,60);
