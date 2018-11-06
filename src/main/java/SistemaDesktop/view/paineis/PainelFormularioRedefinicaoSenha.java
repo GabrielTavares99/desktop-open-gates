@@ -1,11 +1,13 @@
 package SistemaDesktop.view.paineis;
 
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.botoes.BotaoRedefinicaoSenha;
 import SistemaDesktop.view.camposTexto.CampoSenhaFormulario;
 import SistemaDesktop.view.camposTexto.CampoTextoFormulario;
 import SistemaDesktop.view.labels.LabelFormulario;
+import SistemaDesktop.view.listeners.AlterarSenhaListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +18,11 @@ import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
 
 public class PainelFormularioRedefinicaoSenha extends PainelCustom {
 
-    CampoSenhaFormulario txtSenhaAtual = new CampoSenhaFormulario();
-    CampoSenhaFormulario txtSenhaNova = new CampoSenhaFormulario();
-    CampoSenhaFormulario txtConfirmacaoSenhaNova = new CampoSenhaFormulario();
-    JTextField txtCodigoEmail = new CampoTextoFormulario();
+    public static CampoSenhaFormulario txtSenhaAtual = new CampoSenhaFormulario();
+    public static CampoSenhaFormulario txtSenhaNova = new CampoSenhaFormulario();
+    public static CampoSenhaFormulario txtConfirmacaoSenhaNova = new CampoSenhaFormulario();
+    public static JTextField txtCodigoEmail = new CampoTextoFormulario();
+
     LabelFormulario lblSenhaAtual = new LabelFormulario("SENHA ATUAL");
     LabelFormulario lblCodigoEmail = new LabelFormulario("CODIGO EMAIL");
     LabelFormulario lblSenhaNova = new LabelFormulario("NOVA SENHA");
@@ -27,16 +30,16 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
     BotaoRedefinicaoSenha btnRedefinicaoSenha = new BotaoRedefinicaoSenha();
     List<JComponent> itens = new ArrayList<>();
 
-    public PainelFormularioRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha) {
+    public PainelFormularioRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha, Usuario usuario) {
         int width = 400;
         setOpaque(true);
         setBackground(new Color(20, 100, 68, 100));
         setBounds(MEIO_TELA_X - (width / 2), 200, width, 300);
 
-        if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)){
+        if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
             itens.add(lblCodigoEmail);
             itens.add(txtCodigoEmail);
-        }else {
+        } else {
             itens.add(lblSenhaAtual);
             itens.add(txtSenhaAtual);
         }
@@ -46,6 +49,8 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
         itens.add(lblConfirmacaoSenhaNova);
         itens.add(txtConfirmacaoSenhaNova);
         itens.add(btnRedefinicaoSenha);
+
+        btnRedefinicaoSenha.addActionListener(new AlterarSenhaListener(usuario));
 
         setLayout(new GridLayout(itens.size(), 1));
         TelasUtil.addItensToTela(this, itens);

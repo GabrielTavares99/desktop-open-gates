@@ -12,6 +12,7 @@ public class TelasUtil {
 
     public static TelaDashboard TELA_DASHBOARD;
     public static Usuario USUARIO_LOGADO;
+    public static String EMAIL_RECUPERACAO;
 
     public static void addItensToTela(JComponent jPanel, List<JComponent> list){
         for (JComponent component: list){

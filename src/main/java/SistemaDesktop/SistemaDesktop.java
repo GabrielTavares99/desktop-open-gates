@@ -1,12 +1,10 @@
 package SistemaDesktop;
 
-import SistemaDesktop.model.Aluno;
-import SistemaDesktop.model.Disciplina;
-import SistemaDesktop.model.Professor;
-import SistemaDesktop.model.dao.AlunoDao;
-import SistemaDesktop.model.dao.DisciplinaDao;
-import SistemaDesktop.model.dao.ProfessorDao;
+import SistemaDesktop.controller.EmailController;
 import SistemaDesktop.view.telas.TelaFuncaoMatricula;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -27,6 +25,11 @@ public class SistemaDesktop {
 //        Professor professor = new Professor();
 //        professor.setNumMatricula(String.valueOf(100));
 //        professorDao.cadastrar(professor);
+        List<String> objects = new ArrayList<>();
+        objects.add("weverson.t@gmail.com");
+//        objects.add("gabriel.tavares.silva99@gmail.com");
+
+//        new EmailController().enviarEmail(objects);
         new TelaFuncaoMatricula();
     }
 }

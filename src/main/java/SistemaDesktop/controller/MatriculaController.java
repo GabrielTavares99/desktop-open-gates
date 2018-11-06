@@ -30,6 +30,8 @@ public class MatriculaController {
         matriculaDao = new MatriculaDao();
     }
 
+
+
     public void fazerMatricula(String csvPath) {
         List<Matricula> matriculas = new ArrayList<>();
         List<Map<String, String>> lines = CsvUtil.lerCSV(csvPath);
@@ -67,7 +69,11 @@ public class MatriculaController {
 
             matriculaDao.cadastrar(matricula);
         }
+    }
 
+    public void enviaEmailsMatricula(List<String> emails){
+
+        EmailController emailController = new EmailController();
 
     }
 

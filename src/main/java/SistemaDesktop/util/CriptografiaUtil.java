@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class CriptografiaUtil {
 
     public static String gerarMD5(String texto)   {
-        MessageDigest m = null;
+        MessageDigest m;
         try {
             m = MessageDigest.getInstance("MD5");
             m.update(texto.getBytes(), 0, texto.length());

@@ -5,6 +5,7 @@ import SistemaDesktop.util.CriptografiaUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class UsuarioDao implements IDao {
 
@@ -17,6 +18,10 @@ public class UsuarioDao implements IDao {
             usuario.setSenha(String.valueOf(System.currentTimeMillis()));
         String s = CriptografiaUtil.gerarMD5(usuario.getSenha());
         usuario.setSenha(s);
+        Random random = new Random();
+        String codigo = String.valueOf(random.nextInt()).substring(0,5);
+        usuario.setCodigoEmail(codigo);
+        System.out.println("CODIGO EMAIL "+usuario.getCodigoEmail());
         usuarios.add(usuario);
     }
 

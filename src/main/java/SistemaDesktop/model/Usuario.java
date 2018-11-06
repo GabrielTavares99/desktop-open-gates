@@ -10,6 +10,16 @@ public class Usuario {
     private boolean acessaSistema;
     private TipoUsuario tipoUsuario;
 
+    public String getCodigoEmail() {
+        return codigoEmail;
+    }
+
+    public void setCodigoEmail(String codigoEmail) {
+        this.codigoEmail = codigoEmail;
+    }
+
+    private String codigoEmail;
+
     public String getEmail() {
         return email;
     }
