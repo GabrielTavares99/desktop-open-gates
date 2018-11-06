@@ -1,6 +1,7 @@
 package SistemaDesktop.model.dao;
 
 import SistemaDesktop.model.Usuario;
+import SistemaDesktop.util.CriptografiaUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +11,13 @@ public class UsuarioDao implements IDao {
     private static List<Usuario> usuarios = new ArrayList<>();
 
     @Override
-    public void cadastrar(Object usuario) {
-        // TODO: 04/11/18 REMOVER ISSO
-        Usuario usuario2 = (Usuario) usuario;
-        usuario2.setSenha(String.valueOf(123));
-//        ----------------------------------
-
-        usuarios.add((Usuario) usuario2);
+    public void cadastrar(Object o) {
+        Usuario usuario = (Usuario) o;
+        if (usuario.getSenha() == null)
+            usuario.setSenha(String.valueOf(System.currentTimeMillis()));
+        String s = CriptografiaUtil.gerarMD5(usuario.getSenha());
+        usuario.setSenha(s);
+        usuarios.add(usuario);
     }
 
     @Override

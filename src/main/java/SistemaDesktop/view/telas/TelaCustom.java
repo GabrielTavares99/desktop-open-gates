@@ -13,12 +13,12 @@ public abstract class TelaCustom extends JFrame {
         fundo.add(new JLabel(new ImageIcon(getClass().getResource("../").getPath() + "images/fundo-natureza.jpeg")));
         setTitle(OPEN_GATES);
         fundo.setOpaque(true);
-        setLocationRelativeTo(null);
         pack();
         setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
         setLayout(null);
         tela = this;
         setResizable(false);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 

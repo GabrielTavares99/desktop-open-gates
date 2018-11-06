@@ -1,5 +1,6 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.listeners.VoltarRedefinicaoSenhaListener;
@@ -13,7 +14,9 @@ public class TelaRedefinicaoSenha extends TelaCustom {
     public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha) {
         super();
         if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
-            String emailRecuperacao = JOptionPane.showInputDialog(null, "Preencha com seu email para receber seu código de segurança", "Recuperar Senha", JOptionPane.QUESTION_MESSAGE);
+            String emailRecuperacao = JOptionPane.showInputDialog(null, "Para recuperar sua senha, informe seu endereço de e-mail cadastrado no sistema.", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE);
+
+            // TODO: 05/11/18 ENVIAR EMAIL
         }
         JLabel lblTitulo = new LabelTitulo("TELA REDEFINIÇÃO SENHA");
         add(lblTitulo);

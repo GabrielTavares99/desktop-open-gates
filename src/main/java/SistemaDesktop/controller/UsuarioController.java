@@ -12,7 +12,7 @@ public class UsuarioController {
 
     public boolean podeLogar(String email, String senha) {
         Usuario usuario = usuarioDao.getByEmail(email);
-        if (usuario == null || !senha.equals(usuario.getSenha()))
+        if (usuario == null || !usuario.isSenhasIguais(senha))
             return false;
         return true;
     }

@@ -1,6 +1,7 @@
 package SistemaDesktop.model;
 
 import SistemaDesktop.model.enums.TipoUsuario;
+import SistemaDesktop.util.CriptografiaUtil;
 
 public class Usuario {
 
@@ -39,5 +40,10 @@ public class Usuario {
 
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public boolean isSenhasIguais(String senhaPura) {
+        String senhaMd5 = CriptografiaUtil.gerarMD5(senhaPura);
+        return senhaMd5.equals(this.getSenha());
     }
 }
