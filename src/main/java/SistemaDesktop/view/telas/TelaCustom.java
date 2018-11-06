@@ -9,14 +9,12 @@ import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
 public abstract class TelaCustom extends JFrame {
     JFrame tela;
     public TelaCustom() {
-        JPanel fundo = new JPanel();
-        fundo.add(new JLabel(new ImageIcon(getClass().getResource("../").getPath() + "images/fundo-natureza.jpeg")));
-        setTitle(OPEN_GATES);
-        fundo.setOpaque(true);
-        pack();
-        setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
-        setLayout(null);
         tela = this;
+        JPanel fundo = new JPanel();
+        setTitle(OPEN_GATES);
+        setSize(TELA_DEFAULT_WIDTH, TELA_DEFAULT_HEIGHT);
+        fundo.setOpaque(true);
+        setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

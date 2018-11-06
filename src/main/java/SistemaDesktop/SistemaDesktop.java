@@ -1,16 +1,10 @@
 package SistemaDesktop;
 
-import SistemaDesktop.controller.EmailController;
 import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.util.CriptografiaUtil;
-import SistemaDesktop.view.telas.TelaFuncaoMatricula;
 import SistemaDesktop.view.telas.TelaLogin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -37,6 +31,8 @@ public class SistemaDesktop {
 
 //        new EmailController().enviarEmail(objects);
 //        new TelaFuncaoMatricula();
+
+        // TODO: 06/11/18 TEMPORÁRIO
         Aluno aluno = new Aluno();
         aluno.setUsuario(new Usuario());
         aluno.getUsuario().setSenha(("123"));

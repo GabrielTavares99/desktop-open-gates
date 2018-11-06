@@ -4,6 +4,7 @@ public class Pessoa {
 
     private String nome;
     private String cpf;
+    private String nomeFoto;
 
     public Usuario getUsuario() {
         return usuario;
@@ -29,5 +30,13 @@ public class Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getNomeFoto() {
+        return nomeFoto;
+    }
+
+    public void setNomeFoto(String nomeFoto) {
+        this.nomeFoto = nomeFoto;
     }
 }

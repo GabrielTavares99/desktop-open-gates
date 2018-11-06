@@ -33,7 +33,7 @@ public class LabelSaudacao extends LabelCustom {
             AlunoDao alunoDao = new AlunoDao();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
         }
-        saudacao = String.format(saudacao, pessoa.getNome());
+        saudacao = String.format(saudacao, pessoa.getNome().split(" ")[0]);
         setText(String.format(saudacao, nome));
         setBounds(TELA_DEFAULT_WIDTH - 200, 0, 200, 30);
     }

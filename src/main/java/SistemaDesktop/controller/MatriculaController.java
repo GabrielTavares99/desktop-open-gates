@@ -32,10 +32,10 @@ public class MatriculaController {
 
 
 
-    public void fazerMatricula(String csvPath) {
+    public void fazerMatricula(String csvPath, String fotosPath) {
         List<Matricula> matriculas = new ArrayList<>();
-        List<Map<String, String>> lines = CsvUtil.lerCSV(csvPath);
-        for (Map<String, String> line : lines) {
+        List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(csvPath);
+        for (Map<String, String> line : linhasCSV) {
             System.out.println(line);
             Matricula matricula = new Matricula();
 
@@ -60,13 +60,9 @@ public class MatriculaController {
             matricula.setProfessor(professor);
 
             matricula.setSemestre(Integer.parseInt(line.get("semestre")));
-
             matricula.setAno(Integer.parseInt(line.get("ano")));
-
             matricula.setPeriodo(Periodo.valueOf(line.get("periodo")));
-
             matricula.setDataRealizacao(new Date());
-
             matriculaDao.cadastrar(matricula);
         }
     }
