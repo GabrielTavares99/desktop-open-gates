@@ -1,7 +1,13 @@
 package SistemaDesktop;
 
 import SistemaDesktop.controller.EmailController;
+import SistemaDesktop.model.Aluno;
+import SistemaDesktop.model.Usuario;
+import SistemaDesktop.model.dao.AlunoDao;
+import SistemaDesktop.model.enums.TipoUsuario;
+import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.view.telas.TelaFuncaoMatricula;
+import SistemaDesktop.view.telas.TelaLogin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +31,19 @@ public class SistemaDesktop {
 //        Professor professor = new Professor();
 //        professor.setNumMatricula(String.valueOf(100));
 //        professorDao.cadastrar(professor);
-        List<String> objects = new ArrayList<>();
-        objects.add("weverson.t@gmail.com");
+//        List<String> objects = new ArrayList<>();
+//        objects.add("weverson.t@gmail.com");
 //        objects.add("gabriel.tavares.silva99@gmail.com");
 
 //        new EmailController().enviarEmail(objects);
-        new TelaFuncaoMatricula();
+//        new TelaFuncaoMatricula();
+        Aluno aluno = new Aluno();
+        aluno.setUsuario(new Usuario());
+        aluno.getUsuario().setSenha(("123"));
+        aluno.setNome("SUPER ADM");
+        aluno.getUsuario().setEmail("adm");
+        aluno.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
+        new AlunoDao().cadastrar(aluno);
+        new TelaLogin();
     }
 }
