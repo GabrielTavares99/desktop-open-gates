@@ -5,7 +5,7 @@ import SistemaTerminal.model.Validacao;
 
 public class TelaStatusValidacao extends TelaCustom {
 
-    public TelaStatusValidacao(Validacao validacao){
+    public TelaStatusValidacao(Validacao validacao) {
         setLayout(null);
 
         PainelValidacao painelValidacao = new PainelValidacao(this, validacao);

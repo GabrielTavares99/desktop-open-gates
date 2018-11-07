@@ -23,12 +23,19 @@ public class PainelValidacao extends PainelCustom {
         setBounds(0, 0, tela.getWidth(), tela.getHeight());
         setLayout(null);
 
-        ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
-        lblFoto = new JLabel(new ImageIcon("/tmp/abaa.jpg"));
+        if (validacao.getImagemBase64() != null) {
+            ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
+            lblFoto = new JLabel(new ImageIcon("/tmp/abaa.jpg"));
+        }else {
+            lblFoto = new JLabel("X");
+            lblFoto.setBackground(Color.WHITE);
+        }
 
         lblMensagem = new JLabel(validacao.getMensagem());
-        lblNome = new JLabel(validacao.getPessoa().getNome());
-
+        if (validacao.getPessoa() != null)
+            lblNome = new JLabel(validacao.getPessoa().getNome());
+        else
+            lblNome = new JLabel("");
         lblFoto.setBounds(MEIO_TELA_X - 150, 50, 300, 400);
         lblFoto.setOpaque(true);
         lblFoto.setBackground(Color.WHITE);

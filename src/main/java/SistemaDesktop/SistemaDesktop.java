@@ -5,7 +5,7 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.view.telas.TelaFuncaoMatricula;
-import SistemaTerminal.view.telas.TelaValidacao;
+import SistemaTerminal.view.telas.TelaLeituraCarteirinha;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class SistemaDesktop {
 
 //        new EmailController().enviarEmail(objects);
 
-        new Thread(() -> new TelaValidacao()).start();
+        new Thread(() -> new TelaLeituraCarteirinha()).start();
         new Thread(() -> new TelaFuncaoMatricula()).start();
 
 

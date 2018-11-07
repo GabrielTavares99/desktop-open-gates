@@ -17,7 +17,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
-public class TelaValidacao extends TelaCustom implements Runnable, ThreadFactory {
+public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, ThreadFactory {
 
     private static final long serialVersionUID = 6441489157408381878L;
 
@@ -27,14 +27,12 @@ public class TelaValidacao extends TelaCustom implements Runnable, ThreadFactory
     private WebcamPanel panel = null;
     private JTextArea textarea = null;
 
-    public TelaValidacao() {
+    public TelaLeituraCarteirinha() {
         super();
 
         setLayout(new FlowLayout());
-        setTitle("Read QR / Bar Code With Webcam");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Dimension size = WebcamResolution.QVGA.getSize();
+        Dimension size = WebcamResolution.VGA.getSize();
 
         webcam = Webcam.getWebcams().get(1);
         webcam.setViewSize(size);
@@ -43,12 +41,7 @@ public class TelaValidacao extends TelaCustom implements Runnable, ThreadFactory
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
 
-        textarea = new JTextArea();
-        textarea.setEditable(false);
-        textarea.setPreferredSize(size);
-
         add(panel);
-        add(textarea);
 
         pack();
         setVisible(true);
@@ -71,9 +64,8 @@ public class TelaValidacao extends TelaCustom implements Runnable, ThreadFactory
 
             if (webcam.isOpen()) {
 
-                if ((image = webcam.getImage()) == null) {
+                if ((image = webcam.getImage()) == null)
                     continue;
-                }
 
                 LuminanceSource source = new BufferedImageLuminanceSource(image);
                 BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
@@ -82,12 +74,13 @@ public class TelaValidacao extends TelaCustom implements Runnable, ThreadFactory
                     result = new MultiFormatReader().decode(bitmap);
                 } catch (NotFoundException e) {
                     // fall thru, it means there is no QR code in image
+                    System.out.println("sei lá");
                 }
             }
 
             if (result != null) {
-                textarea.setText(result.getText());
-                new DeteccaoWebCam().consulta(result.getText());
+                Result finalResult = result;
+                new Thread(() -> DeteccaoWebCam.consulta(finalResult.getText())).start();
             }
 
         } while (true);
