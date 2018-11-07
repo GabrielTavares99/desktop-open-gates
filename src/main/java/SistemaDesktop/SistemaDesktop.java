@@ -4,6 +4,7 @@ import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
+import SistemaDesktop.view.telas.TelaFuncaoMatricula;
 import SistemaDesktop.view.telas.TelaLogin;
 
 public class SistemaDesktop {
@@ -30,7 +31,7 @@ public class SistemaDesktop {
 //        objects.add("gabriel.tavares.silva99@gmail.com");
 
 //        new EmailController().enviarEmail(objects);
-//        new TelaFuncaoMatricula();
+        new TelaFuncaoMatricula();
 
         // TODO: 06/11/18 TEMPORÁRIO
         Aluno aluno = new Aluno();
@@ -40,6 +41,6 @@ public class SistemaDesktop {
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
         new AlunoDao().cadastrar(aluno);
-        new TelaLogin();
+//        new TelaLogin();
     }
 }

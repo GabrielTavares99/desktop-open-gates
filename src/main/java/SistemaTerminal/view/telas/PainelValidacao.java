@@ -23,7 +23,7 @@ public class PainelValidacao extends PainelCustom {
         setBounds(0, 0, tela.getWidth(), tela.getHeight());
         setLayout(null);
 
-        new ImageUtil().fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
+        ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
         lblFoto = new JLabel(new ImageIcon("/tmp/abaa.jpg"));
 
         lblMensagem = new JLabel(validacao.getMensagem());

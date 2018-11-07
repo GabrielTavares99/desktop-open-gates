@@ -8,7 +8,11 @@ import SistemaDesktop.model.dao.UsuarioDao;
 import SistemaDesktop.model.enums.Periodo;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.CsvUtil;
+import SistemaDesktop.util.ImageUtil;
+import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.util.ZipUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,10 +35,12 @@ public class MatriculaController {
     }
 
 
-
     public void fazerMatricula(String csvPath, String fotosPath) {
         List<Matricula> matriculas = new ArrayList<>();
         List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(csvPath);
+
+        ZipUtil.unzip(TelasUtil.URL_ARQUIVO_FOTOS, "/tmp");
+
         for (Map<String, String> line : linhasCSV) {
             System.out.println(line);
             Matricula matricula = new Matricula();
@@ -45,12 +51,15 @@ public class MatriculaController {
 
             String ra_aluno = line.get("ra_aluno");
             Aluno aluno = alunoDao.getByRa(Integer.parseInt(ra_aluno));
-            if (aluno == null){
+            if (aluno == null) {
                 Aluno aluno1 = new Aluno();
                 aluno1.setRa(Integer.parseInt(ra_aluno));
                 aluno1.getUsuario().setEmail(line.get("e-mail"));
                 aluno1.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
                 aluno1.setNome(line.get("nome_aluno"));
+                String a = TelasUtil.URL_ARQUIVO_FOTOS.replace(".zip","");
+                File foto = new File("/tmp/" + new File(a).getName() + "/" + aluno1.getRa() + ".jpg");
+                aluno1.setFotoBase64(ImageUtil.fromImageToBase64(foto.getAbsolutePath()));
                 alunoDao.cadastrar(aluno1);
             }
             matricula.setAluno(aluno);
@@ -67,7 +76,7 @@ public class MatriculaController {
         }
     }
 
-    public void enviaEmailsMatricula(List<String> emails){
+    public void enviaEmailsMatricula(List<String> emails) {
 
         EmailController emailController = new EmailController();
 

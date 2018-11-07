@@ -4,7 +4,7 @@ public class Pessoa {
 
     private String nome;
     private String cpf;
-    private String nomeFoto;
+    private String fotoBase64;
 
     public Usuario getUsuario() {
         return usuario;
@@ -32,11 +32,11 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getNomeFoto() {
-        return nomeFoto;
+    public String getFotoBase64() {
+        return fotoBase64;
     }
 
-    public void setNomeFoto(String nomeFoto) {
-        this.nomeFoto = nomeFoto;
+    public void setFotoBase64(String fotoBase64) {
+        this.fotoBase64 = fotoBase64;
     }
 }
