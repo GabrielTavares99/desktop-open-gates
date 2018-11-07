@@ -5,7 +5,7 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.view.telas.TelaFuncaoMatricula;
-import SistemaDesktop.view.telas.TelaLogin;
+import SistemaTerminal.view.telas.TelaValidacao;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -31,7 +31,10 @@ public class SistemaDesktop {
 //        objects.add("gabriel.tavares.silva99@gmail.com");
 
 //        new EmailController().enviarEmail(objects);
-        new TelaFuncaoMatricula();
+
+        new Thread(() -> new TelaValidacao()).start();
+        new Thread(() -> new TelaFuncaoMatricula()).start();
+
 
         // TODO: 06/11/18 TEMPORÁRIO
         Aluno aluno = new Aluno();
