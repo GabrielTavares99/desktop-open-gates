@@ -70,7 +70,7 @@ public class MatriculaController {
                 ArrayList<String> objects = new ArrayList<>();
                 objects.add(aluno1.getUsuario().getEmail());
                 email.setDestinatarios(objects);
-                File file = new File(MatriculaController.class.getClassLoader().getResource("oi.html").getPath());
+                File file = new File(MatriculaController.class.getClassLoader().getResource("novo-login.html").getPath());
                 byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
                 String b = new String(encoded, "utf8");
                 b = String.format(b, aluno1.getNome(), aluno1.getUsuario().getCodigoEmail());
