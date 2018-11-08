@@ -12,7 +12,7 @@ public class BotaoSubmissao extends BotaoCustom {
         addMouseListener(fazerLoginListener);
         addActionListener(fazerLoginListener);
         setForeground(Color.WHITE);
-        setBorder(BorderFactory.createLineBorder(new Color(0,0,0,200), 1, true));
+        setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 200), 1, true));
         setFont(new Font("Sarif", Font.BOLD, 15));
     }
 }

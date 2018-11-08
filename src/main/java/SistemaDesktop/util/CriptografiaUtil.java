@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class CriptografiaUtil {
 
-    public static String gerarMD5(String texto)   {
+    public static String gerarMD5(String texto) {
         MessageDigest m;
         try {
             m = MessageDigest.getInstance("MD5");

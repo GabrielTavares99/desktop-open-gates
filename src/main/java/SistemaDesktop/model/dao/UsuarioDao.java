@@ -19,9 +19,9 @@ public class UsuarioDao implements IDao {
         String s = CriptografiaUtil.gerarMD5(usuario.getSenha());
         usuario.setSenha(s);
         Random random = new Random();
-        String codigo = String.valueOf(random.nextInt()).substring(0,5);
+        String codigo = String.valueOf(random.nextInt()).substring(0, 5);
         usuario.setCodigoEmail(codigo);
-        System.out.println("CODIGO EMAIL "+usuario.getCodigoEmail());
+        System.out.println("CODIGO EMAIL " + usuario.getCodigoEmail());
         usuarios.add(usuario);
     }
 

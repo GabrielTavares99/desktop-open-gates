@@ -7,6 +7,5 @@ public class ThreadConsulta extends Thread {
     public void run() {
 
 
-
     }
 }

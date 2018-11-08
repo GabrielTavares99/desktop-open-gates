@@ -5,7 +5,6 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.view.telas.TelaFuncaoMatricula;
-import SistemaTerminal.view.telas.TelaLeituraCarteirinha;
 
 public class SistemaDesktop {
     public static void main(String[] args) {

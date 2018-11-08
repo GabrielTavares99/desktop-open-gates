@@ -1,7 +1,7 @@
 package SistemaDesktop.view.telas;
 
-import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.labels.LabelTitulo;
+import SistemaDesktop.view.menu.MenuSuperior;
 
 import javax.swing.*;
 

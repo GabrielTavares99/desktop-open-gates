@@ -27,7 +27,7 @@ public class UsuarioController {
         String novaSenhaCriptografada = CriptografiaUtil.gerarMD5(novaSenha);
         usuario.setSenha(novaSenhaCriptografada);
         usuario.setCodigoEmail(null);
-        
+
 
     }
 }

@@ -5,10 +5,6 @@ import SistemaDesktop.view.labels.LabelIconeFuncaoDashboard;
 import SistemaDesktop.view.listeners.PainelFeatureListener;
 import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
-import javax.swing.*;
-
-import static SistemaDesktop.config.Constantes.VER_RELATORIO;
-
 public class PainelRelatorio extends PainelFuncaoDashboard {
 
     public PainelRelatorio() {

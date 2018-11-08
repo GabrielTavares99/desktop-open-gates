@@ -12,9 +12,10 @@ import java.awt.event.ActionListener;
 public class SelecionarArquivoFotos implements ActionListener {
     private JFrame tela;
 
-    public SelecionarArquivoFotos(JFrame tela){
+    public SelecionarArquivoFotos(JFrame tela) {
         this.tela = tela;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JFileChooser jFileChooser = new JFileChooser();

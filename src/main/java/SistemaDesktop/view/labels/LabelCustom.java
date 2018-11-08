@@ -10,6 +10,7 @@ public class LabelCustom extends JLabel {
         setText(descricao);
         setSize(LABEL_DEFAULT_WIDTH, LABEL_DEFAULT_HEIGHT);
     }
+
     public LabelCustom() {
         setSize(LABEL_DEFAULT_WIDTH, LABEL_DEFAULT_HEIGHT);
     }

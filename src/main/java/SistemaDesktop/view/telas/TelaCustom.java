@@ -8,6 +8,7 @@ import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
 
 public abstract class TelaCustom extends JFrame {
     JFrame tela;
+
     public TelaCustom() {
         tela = this;
         JPanel fundo = new JPanel();

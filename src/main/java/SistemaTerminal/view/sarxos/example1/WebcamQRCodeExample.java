@@ -17,87 +17,87 @@ import java.util.concurrent.ThreadFactory;
 
 public class WebcamQRCodeExample extends JFrame implements Runnable, ThreadFactory {
 
-	private static final long serialVersionUID = 6441489157408381878L;
+    private static final long serialVersionUID = 6441489157408381878L;
 
-	private Executor executor = Executors.newSingleThreadExecutor(this);
+    private Executor executor = Executors.newSingleThreadExecutor(this);
 
-	private Webcam webcam = null;
-	private WebcamPanel panel = null;
-	private JTextArea textarea = null;
+    private Webcam webcam = null;
+    private WebcamPanel panel = null;
+    private JTextArea textarea = null;
 
-	public WebcamQRCodeExample() {
-		super();
+    public WebcamQRCodeExample() {
+        super();
 
-		setLayout(new FlowLayout());
-		setTitle("Read QR / Bar Code With Webcam");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+        setTitle("Read QR / Bar Code With Webcam");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Dimension size = WebcamResolution.QVGA.getSize();
+        Dimension size = WebcamResolution.QVGA.getSize();
 
-		webcam = Webcam.getWebcams().get(1);
-		webcam.setViewSize(size);
+        webcam = Webcam.getWebcams().get(1);
+        webcam.setViewSize(size);
 
-		panel = new WebcamPanel(webcam);
-		panel.setPreferredSize(size);
-		panel.setFPSDisplayed(true);
+        panel = new WebcamPanel(webcam);
+        panel.setPreferredSize(size);
+        panel.setFPSDisplayed(true);
 
-		textarea = new JTextArea();
-		textarea.setEditable(false);
-		textarea.setPreferredSize(size);
+        textarea = new JTextArea();
+        textarea.setEditable(false);
+        textarea.setPreferredSize(size);
 
-		add(panel);
-		add(textarea);
+        add(panel);
+        add(textarea);
 
-		pack();
-		setVisible(true);
+        pack();
+        setVisible(true);
 
-		executor.execute(this);
-	}
+        executor.execute(this);
+    }
 
-	@Override
-	public void run() {
+    public static void main(String[] args) {
+        new WebcamQRCodeExample();
+    }
 
-		do {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+    @Override
+    public void run() {
 
-			Result result = null;
-			BufferedImage image = null;
+        do {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-			if (webcam.isOpen()) {
+            Result result = null;
+            BufferedImage image = null;
 
-				if ((image = webcam.getImage()) == null) {
-					continue;
-				}
+            if (webcam.isOpen()) {
 
-				LuminanceSource source = new BufferedImageLuminanceSource(image);
-				BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+                if ((image = webcam.getImage()) == null) {
+                    continue;
+                }
 
-				try {
-					result = new MultiFormatReader().decode(bitmap);
-				} catch (NotFoundException e) {
-					// fall thru, it means there is no QR code in image
-				}
-			}
+                LuminanceSource source = new BufferedImageLuminanceSource(image);
+                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
-			if (result != null) {
-				textarea.setText(result.getText());
-			}
+                try {
+                    result = new MultiFormatReader().decode(bitmap);
+                } catch (NotFoundException e) {
+                    // fall thru, it means there is no QR code in image
+                }
+            }
 
-		} while (true);
-	}
+            if (result != null) {
+                textarea.setText(result.getText());
+            }
 
-	@Override
-	public Thread newThread(Runnable r) {
-		Thread t = new Thread(r, "example-runner");
-		t.setDaemon(true);
-		return t;
-	}
+        } while (true);
+    }
 
-	public static void main(String[] args) {
-		new WebcamQRCodeExample();
-	}
+    @Override
+    public Thread newThread(Runnable r) {
+        Thread t = new Thread(r, "example-runner");
+        t.setDaemon(true);
+        return t;
+    }
 }

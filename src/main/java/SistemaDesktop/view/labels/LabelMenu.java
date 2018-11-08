@@ -1,7 +1,5 @@
 package SistemaDesktop.view.labels;
 
-import SistemaDesktop.view.listeners.LogoutListener;
-
 import javax.swing.*;
 
 public class LabelMenu extends LabelCustom {

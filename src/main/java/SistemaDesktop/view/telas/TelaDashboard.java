@@ -1,9 +1,9 @@
 package SistemaDesktop.view.telas;
 
 import SistemaDesktop.util.TelasUtil;
-import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
+import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
 import SistemaDesktop.view.paineis.PainelFuncaoMatricula;
 import SistemaDesktop.view.paineis.PainelFuncoesDashboard;

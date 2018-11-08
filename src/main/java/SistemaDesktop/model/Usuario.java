@@ -9,6 +9,7 @@ public class Usuario {
     private String senha;
     private boolean acessaSistema;
     private TipoUsuario tipoUsuario;
+    private String codigoEmail;
 
     public String getCodigoEmail() {
         return codigoEmail;
@@ -17,8 +18,6 @@ public class Usuario {
     public void setCodigoEmail(String codigoEmail) {
         this.codigoEmail = codigoEmail;
     }
-
-    private String codigoEmail;
 
     public String getEmail() {
         return email;

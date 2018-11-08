@@ -2,11 +2,11 @@ package SistemaDesktop.model;
 
 public class Aluno extends Pessoa {
 
-    public Aluno(){
+    private int ra;
+
+    public Aluno() {
         setUsuario(new Usuario());
     }
-
-    private int ra;
 
     public int getRa() {
         return ra;

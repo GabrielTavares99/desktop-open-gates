@@ -1,8 +1,5 @@
 package SistemaServidor;
 
-import SistemaDesktop.util.ImageUtil;
-import SistemaDesktop.util.ZipUtil;
-
 public class SistemaServidor {
     public static void main(String[] args) {
 

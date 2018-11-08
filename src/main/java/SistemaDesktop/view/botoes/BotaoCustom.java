@@ -1,7 +1,6 @@
 package SistemaDesktop.view.botoes;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 import static SistemaDesktop.config.ViewSettings.*;

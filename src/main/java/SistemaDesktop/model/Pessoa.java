@@ -5,6 +5,7 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String fotoBase64;
+    private Usuario usuario;
 
     public Usuario getUsuario() {
         return usuario;
@@ -13,8 +14,6 @@ public class Pessoa {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
-    private Usuario usuario;
 
     public String getNome() {
         return nome;

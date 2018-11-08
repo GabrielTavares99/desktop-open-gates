@@ -1,8 +1,7 @@
 package SistemaDesktop.view.camposTexto;
 
 
-import javax.swing.*;
-import java.awt.Font;
+import java.awt.*;
 
 
 public class CampoTextoFormulario extends CampoTextoCustom {

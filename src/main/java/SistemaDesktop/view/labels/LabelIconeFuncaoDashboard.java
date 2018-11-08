@@ -11,7 +11,7 @@ public class LabelIconeFuncaoDashboard extends JLabel {
         setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 200), 1, true));
         setIcon(new ImageIcon(path));
         int width = 120;
-        setBounds((PAINEL_FUNCAO_WIDTH / 2) - width/2, 15, width, 80);
+        setBounds((PAINEL_FUNCAO_WIDTH / 2) - width / 2, 15, width, 80);
     }
 
 }

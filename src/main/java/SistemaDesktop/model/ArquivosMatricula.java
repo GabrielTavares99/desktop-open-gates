@@ -1,7 +1,5 @@
 package SistemaDesktop.model;
 
-import SistemaDesktop.SistemaDesktop;
-
 public class ArquivosMatricula {
 
     private String arquivoFotos;

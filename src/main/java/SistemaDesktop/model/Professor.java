@@ -8,7 +8,6 @@ public class Professor extends Pessoa {
     private String numMatricula;
 
 
-
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }

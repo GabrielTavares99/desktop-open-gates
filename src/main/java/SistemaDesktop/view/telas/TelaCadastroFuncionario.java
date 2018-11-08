@@ -63,35 +63,35 @@ public class TelaCadastroFuncionario extends TelaCustom {
         comboBoxCargo = new JComboBox<>(new ComboBoxModel(cargos));
 
         GroupForm e = new GroupForm(lblNome, txtNome);
-        e.setBounds(10,10,200,60);
+        e.setBounds(10, 10, 200, 60);
         components.add(e);
 
         GroupForm e2 = new GroupForm(lblEmail, txtEmail);
-        e2.setBounds(230,10,200,60);
+        e2.setBounds(230, 10, 200, 60);
         components.add(e2);
 
         GroupForm e1 = new GroupForm(lblMatricula, txtMatricula);
-        e1.setBounds(10,80,200,60);
+        e1.setBounds(10, 80, 200, 60);
         components.add(e1);
 
         GroupForm e4 = new GroupForm(lblCPF, txtCPF);
-        e4.setBounds(230,80,200,60);
+        e4.setBounds(230, 80, 200, 60);
         components.add(e4);
 
         GroupForm e3 = new GroupForm(lblCargo, comboBoxCargo);
-        e3.setBounds(450,10,200,60);
+        e3.setBounds(450, 10, 200, 60);
         components.add(e3);
 
         checkbox.setLabel("ATIVO");
         GroupForm e5 = new GroupForm(lblAtivo, checkbox);
-        e5.setBounds(450,80,200,60);
+        e5.setBounds(450, 80, 200, 60);
         components.add(e5);
         TelasUtil.addItensToTela(pnCadastro, components);
 
         JPanel pnBotoes = new JPanel();
         pnBotoes.setBackground(Color.RED);
         pnBotoes.setOpaque(true);
-        pnBotoes.setBounds(370, 450,300,70);
+        pnBotoes.setBounds(370, 450, 300, 70);
 
         JButton btnCancelar = new JButton("Cancelar");
         JButton btnSalvar = new JButton("SALVAR");

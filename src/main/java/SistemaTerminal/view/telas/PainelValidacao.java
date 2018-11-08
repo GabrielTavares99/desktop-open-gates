@@ -26,7 +26,7 @@ public class PainelValidacao extends PainelCustom {
         if (validacao.getImagemBase64() != null) {
             ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
             lblFoto = new JLabel(new ImageIcon("/tmp/abaa.jpg"));
-        }else {
+        } else {
             lblFoto = new JLabel("X");
             lblFoto.setBackground(Color.WHITE);
         }
