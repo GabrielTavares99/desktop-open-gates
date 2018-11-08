@@ -1,15 +1,20 @@
 package SistemaTerminal;
 
 import SistemaDesktop.controller.EmailController;
-import SistemaTerminal.view.telas.TelaLeituraCarteirinha;
+import SistemaDesktop.model.Email;
 import org.apache.commons.mail.EmailException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SistemaTerminal {
     public static void main(String[] args) {
 
 //        new TelaLeituraCarteirinha();
         try {
-            new EmailController().sendEmail();
+            List<String> emails = new ArrayList<>();
+            Email email = new Email();
+            new EmailController().sendEmail(email);
         } catch (EmailException e) {
             e.printStackTrace();
         }
