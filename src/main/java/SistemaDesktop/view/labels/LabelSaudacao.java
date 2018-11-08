@@ -32,6 +32,10 @@ public class LabelSaudacao extends LabelCustom {
         } else if (TipoUsuario.ALUNO.equals(usuario.getTipoUsuario())) {
             AlunoDao alunoDao = new AlunoDao();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
+        }else {
+            // TODO: 08/11/18 ARRUMAR ISSO - BUSCAR PELO PERFIL SECRETARIA - AINDA NÃO TEM NADA
+            AlunoDao alunoDao = new AlunoDao();
+            pessoa = alunoDao.getByEmail(usuario.getEmail());
         }
         saudacao = String.format(saudacao, pessoa.getNome().split(" ")[0]);
         setText(String.format(saudacao, nome));
