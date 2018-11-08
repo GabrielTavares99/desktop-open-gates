@@ -8,5 +8,4 @@ public class PainelFuncoesDashboard extends PainelCustom {
         setBounds(100, 120, 600, 200);
         setBackground(Color.PINK);
     }
-
 }

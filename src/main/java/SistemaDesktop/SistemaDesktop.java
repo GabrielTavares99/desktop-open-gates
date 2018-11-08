@@ -4,7 +4,7 @@ import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.view.telas.TelaFuncaoMatricula;
+import SistemaDesktop.view.telas.TelaLogin;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class SistemaDesktop {
 //        new EmailController().enviarEmail(objects);
 
 //        new Thread(() -> new TelaLeituraCarteirinha()).start();
-        new Thread(() -> new TelaFuncaoMatricula()).start();
+//        new Thread(() -> new TelaFuncaoMatricula()).start();
 
 
         // TODO: 06/11/18 TEMPORÁRIO
@@ -43,6 +43,6 @@ public class SistemaDesktop {
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
         new AlunoDao().cadastrar(aluno);
-//        new TelaLogin();
+        new TelaLogin();
     }
 }

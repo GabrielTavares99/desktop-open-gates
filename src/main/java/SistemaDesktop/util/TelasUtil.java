@@ -6,6 +6,8 @@ import SistemaDesktop.view.telas.TelaDashboard;
 import javax.swing.*;
 import java.util.List;
 
+import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+
 public class TelasUtil {
 
 
@@ -22,5 +24,7 @@ public class TelasUtil {
         }
     }
 
-
+    public static void centralizar(JComponent component) {
+        component.setLocation(MEIO_TELA_X - (component.getWidth() / 2), component.getY());
+    }
 }

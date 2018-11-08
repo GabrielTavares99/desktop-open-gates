@@ -1,5 +1,6 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
@@ -36,9 +37,14 @@ public class TelaDashboard extends TelaCustom {
 
         NUMERO_FUNCOES = 3;
         PAINEL_FUNCAO_WIDTH = (600 / NUMERO_FUNCOES);
-        listaMenuFeature.add(new PainelFuncaoMatricula());
-        listaMenuFeature.add(new PainelCadastroFuncionario());
+
+        if (TipoUsuario.SECRETARIA.equals(TelasUtil.USUARIO_LOGADO.getTipoUsuario())) {
+            listaMenuFeature.add(new PainelFuncaoMatricula());
+            listaMenuFeature.add(new PainelCadastroFuncionario());
+        }
         listaMenuFeature.add(new PainelRelatorio());
+        pnFuncoesDashboard.setSize(200 * listaMenuFeature.size(), pnFuncoesDashboard.getHeight());
+        TelasUtil.centralizar(pnFuncoesDashboard);
 
         pnFuncoesDashboard.setLayout(new GridLayout(1, NUMERO_FUNCOES));
         TelasUtil.addItensToTela(pnFuncoesDashboard, listaMenuFeature);

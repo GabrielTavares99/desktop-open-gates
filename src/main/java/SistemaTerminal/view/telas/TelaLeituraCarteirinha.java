@@ -34,7 +34,8 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
 
         Dimension size = WebcamResolution.VGA.getSize();
 
-        webcam = Webcam.getWebcams().get(1);
+        // TODO: 08/11/18 FAZER MENUZINHO DE ESCOLHA
+        webcam = Webcam.getWebcams().get(0);
         webcam.setViewSize(size);
 
         panel = new WebcamPanel(webcam);

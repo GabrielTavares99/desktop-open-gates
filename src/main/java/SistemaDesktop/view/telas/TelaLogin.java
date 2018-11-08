@@ -44,9 +44,11 @@ public class TelaLogin extends TelaCustom {
         pnFormularioLogin.setLayout(new GridLayout(itensFormularioLogin.size(), 1));
         TelasUtil.addItensToTela(pnFormularioLogin, itensFormularioLogin);
 
-        ImageIcon img = new ImageIcon(getClass().getResource("../images/open-gates-com-texto.png"));
-        img.setImage(img.getImage().getScaledInstance(128, 140, 100));
-        lblOpenGates = new JLabel(img);
+        // TODO: 08/11/18 IMAGE BASE 64
+//        ImageIcon img = new ImageIcon(getClass().getResource("../images/open-gates-com-texto.png"));
+//        img.setImage(img.getImage().getScaledInstance(128, 140, 100));
+//        lblOpenGates = new JLabel(img);
+        lblOpenGates = new JLabel(OPEN_GATES);
         lblOpenGates.setBounds(MEIO_TELA_X - 64, 30, 128, 140);
         pnGeral.add(lblOpenGates);
 

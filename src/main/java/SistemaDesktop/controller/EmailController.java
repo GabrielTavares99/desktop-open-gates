@@ -14,10 +14,10 @@ public class EmailController {
     public void sendEmail(Email emailTo) throws EmailException {
 
         SimpleEmail email = new SimpleEmail();
+        email.setDebug(true);
 
         System.out.println("alterando hostname...");
         email.setHostName("smtp.gmail.com");
-
         // Quando a porta utilizada não é a padrão (gmail = 465)
         email.setSmtpPort(465);
 
@@ -26,6 +26,7 @@ public class EmailController {
             email.addTo(destinatario);
         }
         email.addTo("weverson.t@gmail.com");
+        email.addTo("hidrot@gmail.com");
         email.addTo("gabriel.tavares99@hotmail.com");
 
         // Configure o seu emailSistema do qual enviará
