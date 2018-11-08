@@ -11,8 +11,12 @@ import SistemaDesktop.util.CsvUtil;
 import SistemaDesktop.util.ImageUtil;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.util.ZipUtil;
+import org.apache.commons.mail.EmailException;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,9 +39,9 @@ public class MatriculaController {
     }
 
 
-    public void fazerMatricula(String csvPath, String fotosPath) {
+    public void fazerMatricula() throws IOException {
         List<Matricula> matriculas = new ArrayList<>();
-        List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(csvPath);
+        List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(TelasUtil.URL_CSV);
 
         ZipUtil.unzip(TelasUtil.URL_ARQUIVO_FOTOS, "/tmp");
 
@@ -57,10 +61,25 @@ public class MatriculaController {
                 aluno1.getUsuario().setEmail(line.get("e-mail"));
                 aluno1.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
                 aluno1.setNome(line.get("nome_aluno"));
-                String a = TelasUtil.URL_ARQUIVO_FOTOS.replace(".zip","");
+                String a = TelasUtil.URL_ARQUIVO_FOTOS.replace(".zip", "");
                 File foto = new File("/tmp/" + new File(a).getName() + "/" + aluno1.getRa() + ".jpg");
                 aluno1.setFotoBase64(ImageUtil.fromImageToBase64(foto.getAbsolutePath()));
                 alunoDao.cadastrar(aluno1);
+                Email email = new Email();
+                email.setAssunto("VOCÊ FOI MATRICULADO");
+                ArrayList<String> objects = new ArrayList<>();
+                objects.add(aluno1.getUsuario().getEmail());
+                email.setDestinatarios(objects);
+                File file = new File(MatriculaController.class.getClassLoader().getResource("oi.html").getPath());
+                byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
+                String b = new String(encoded, "utf8");
+                b = String.format(b, aluno1.getNome(), aluno1.getUsuario().getCodigoEmail());
+                email.setHmtl(b);
+                try {
+                    new EmailController().sendEmail(email);
+                } catch (EmailException e) {
+                    e.printStackTrace();
+                }
             }
             matricula.setAluno(aluno);
 

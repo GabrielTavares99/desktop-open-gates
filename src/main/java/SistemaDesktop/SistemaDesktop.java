@@ -32,7 +32,7 @@ public class SistemaDesktop {
 
 //        new EmailController().enviarEmail(objects);
 
-        new Thread(() -> new TelaLeituraCarteirinha()).start();
+//        new Thread(() -> new TelaLeituraCarteirinha()).start();
         new Thread(() -> new TelaFuncaoMatricula()).start();
 
 

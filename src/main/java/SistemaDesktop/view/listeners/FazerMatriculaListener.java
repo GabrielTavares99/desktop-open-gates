@@ -6,6 +6,7 @@ import SistemaDesktop.util.TelasUtil;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class FazerMatriculaListener implements ActionListener {
 
@@ -19,8 +20,12 @@ public class FazerMatriculaListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         MatriculaController matriculaController = new MatriculaController();
-
-        matriculaController.fazerMatricula(TelasUtil.URL_CSV, TelasUtil.URL_ARQUIVO_FOTOS);
+        try {
+            matriculaController.fazerMatricula();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+//        matriculaController.fazerMatricula(TelasUtil.URL_CSV, TelasUtil.URL_ARQUIVO_FOTOS);
 
 
     }
