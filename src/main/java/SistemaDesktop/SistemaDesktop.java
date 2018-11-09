@@ -11,7 +11,7 @@ public class SistemaDesktop {
 //        new TelaLogin();
 //        new TelaDashboard();
 //        new TelaRedefinicaoSenha(TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA);
-//        new TelaFuncaoMatricula();
+//        new TelaMatricula();
 
 //        AlunoDao alunoDao = new AlunoDao();
 //        Aluno aluno = new Aluno();
@@ -32,7 +32,7 @@ public class SistemaDesktop {
 //        new EmailController().enviarEmail(objects);
 
 //        new Thread(() -> new TelaLeituraCarteirinha()).start();
-//        new Thread(() -> new TelaFuncaoMatricula()).start();
+//        new Thread(() -> new TelaMatricula()).start();
 
 
         // TODO: 06/11/18 TEMPORÁRIO
@@ -41,7 +41,7 @@ public class SistemaDesktop {
         aluno.getUsuario().setSenha(("123"));
         aluno.setNome("SUPER ADM");
         aluno.getUsuario().setEmail("adm");
-        aluno.getUsuario().setTipoUsuario(TipoUsuario.ALUNO);
+        aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
         new AlunoDao().cadastrar(aluno);
         new TelaLogin();
     }

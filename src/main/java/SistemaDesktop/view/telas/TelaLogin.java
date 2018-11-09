@@ -15,6 +15,7 @@ import java.util.List;
 
 import static SistemaDesktop.config.Constantes.*;
 import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static org.bridj.Platform.getClassLoader;
 
 public class TelaLogin extends TelaCustom {
 
@@ -32,7 +33,7 @@ public class TelaLogin extends TelaCustom {
     public TelaLogin() {
         super();
         pnGeral.setLayout(null);
-        pnGeral.setBackground(new Color(233, 238, 238));
+        pnGeral.setOpaque(false);
 
         itensFormularioLogin.add(lblUsername);
         itensFormularioLogin.add(txtUsername);
@@ -44,11 +45,9 @@ public class TelaLogin extends TelaCustom {
         pnFormularioLogin.setLayout(new GridLayout(itensFormularioLogin.size(), 1));
         TelasUtil.addItensToTela(pnFormularioLogin, itensFormularioLogin);
 
-        // TODO: 08/11/18 IMAGE BASE 64
-//        ImageIcon img = new ImageIcon(getClass().getResource("../images/open-gates-com-texto.png"));
-//        img.setImage(img.getImage().getScaledInstance(128, 140, 100));
-//        lblOpenGates = new JLabel(img);
-        lblOpenGates = new JLabel(OPEN_GATES);
+        ImageIcon img = new ImageIcon(tela.getClass().getClassLoader().getResource("image/open-gate-com-texto.png").getPath());
+        img.setImage(img.getImage().getScaledInstance(128, 140, 100));
+        lblOpenGates = new JLabel(img);
         lblOpenGates.setBounds(MEIO_TELA_X - 64, 30, 128, 140);
         pnGeral.add(lblOpenGates);
 

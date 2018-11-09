@@ -10,14 +10,16 @@ import javax.swing.*;
 public class MenuSuperior extends JMenuBar {
 
     public MenuSuperior(JFrame tela) {
+        JMenu navegacao = new JMenu("Navegação");
         JMenu conta = new JMenu("Minha Conta");
+        add(navegacao);
         add(conta);
         JMenuItem itemMenuVoltarDashboard = new JMenuItem("Voltar");
         JMenuItem itemMenuTrocarSenha = new JMenuItem("Trocar Senha");
         JMenuItem itemMenuSair = new JMenuItem("SAIR");
         conta.add(itemMenuTrocarSenha);
-        conta.add(itemMenuSair);
-        conta.add(itemMenuVoltarDashboard);
+        navegacao.add(itemMenuVoltarDashboard);
+        navegacao.add(itemMenuSair);
         itemMenuVoltarDashboard.addActionListener(e -> {
             new TelaDashboard().show();
             tela.dispose();

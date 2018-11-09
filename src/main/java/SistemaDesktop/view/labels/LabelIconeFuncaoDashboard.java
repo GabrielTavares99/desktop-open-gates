@@ -7,11 +7,11 @@ import static SistemaDesktop.view.telas.TelaDashboard.PAINEL_FUNCAO_WIDTH;
 
 public class LabelIconeFuncaoDashboard extends JLabel {
 
-    public LabelIconeFuncaoDashboard(String path) {
+    public LabelIconeFuncaoDashboard() {
         setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 200), 1, true));
-        setIcon(new ImageIcon(path));
-        int width = 120;
-        setBounds((PAINEL_FUNCAO_WIDTH / 2) - width / 2, 15, width, 80);
+        int width = 64;
+        int heigth = 64;
+        setBounds((PAINEL_FUNCAO_WIDTH / 2) - (width/2), 15, width, heigth);
     }
 
 }
