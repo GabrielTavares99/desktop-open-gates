@@ -33,7 +33,7 @@ public class MatriculaController {
     public MatriculaController() {
         disciplinaDao = new DisciplinaDao();
         usuarioDao = new UsuarioDao();
-        alunoDao = new AlunoDao();
+        alunoDao = AlunoDao.getInstance();
         professorDao = new ProfessorDao();
         matriculaDao = new MatriculaDao();
     }

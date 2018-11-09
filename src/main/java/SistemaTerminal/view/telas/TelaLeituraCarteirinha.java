@@ -9,7 +9,6 @@ import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
-import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -23,9 +22,8 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
 
     private Executor executor = Executors.newSingleThreadExecutor(this);
 
-    private Webcam webcam = null;
-    private WebcamPanel panel = null;
-    private JTextArea textarea = null;
+    private Webcam webcam;
+    private WebcamPanel panel;
 
     public TelaLeituraCarteirinha() {
         super();
@@ -61,7 +59,7 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
             }
 
             Result result = null;
-            BufferedImage image = null;
+            BufferedImage image;
 
             if (webcam.isOpen()) {
 
@@ -75,7 +73,6 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
                     result = new MultiFormatReader().decode(bitmap);
                 } catch (NotFoundException e) {
                     // fall thru, it means there is no QR code in image
-                    System.out.println("sei lá");
                 }
             }
 

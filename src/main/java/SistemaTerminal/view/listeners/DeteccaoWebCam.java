@@ -4,6 +4,10 @@ import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaTerminal.model.Validacao;
 import SistemaTerminal.view.telas.TelaStatusValidacao;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.util.Random;
 
 public class DeteccaoWebCam extends Thread {
 
@@ -15,24 +19,27 @@ public class DeteccaoWebCam extends Thread {
 
     @Override
     public void run() {
-        AlunoDao alunoDao = new AlunoDao();
+        AlunoDao alunoDao = AlunoDao.getInstance();
         Aluno byEmail = alunoDao.getByEmail(codigoLido);
+        System.out.println(codigoLido);
         Validacao validacao = new Validacao();
         if (byEmail != null) {
             validacao.setImagemBase64(byEmail.getFotoBase64());
             validacao.setPessoa(byEmail);
             validacao.setEntradaPermitida(true);
             validacao.setMensagem("ENTRADA PERMITIDA");
-        } else {
-            System.out.println("NEGADA");
+        } else
             validacao.setMensagem("ENTRADA NEGADA");
-        }
-        TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao);
+
+        Random random = new Random();
+        String uuid = String.valueOf(random.nextInt() + System.currentTimeMillis());
+        TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao, uuid);
         try {
-            Thread.sleep(6000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
+            FileUtils.deleteQuietly(new File("/tmp/"+uuid+".jpg"));
             telaStatusValidacao.dispose();
         }
     }

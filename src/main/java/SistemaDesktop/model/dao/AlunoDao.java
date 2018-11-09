@@ -6,7 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AlunoDao implements IDao {
-    private static List<Aluno> alunos = new ArrayList<>();
+    private List<Aluno> alunos = new ArrayList<>();
+    private static AlunoDao alunoDao;
+
+    private AlunoDao() {
+
+    }
+
+    public static synchronized AlunoDao getInstance() {
+        if (alunoDao == null)
+            alunoDao = new AlunoDao();
+
+        return alunoDao;
+    }
 
     @Override
     public void cadastrar(Object o) {

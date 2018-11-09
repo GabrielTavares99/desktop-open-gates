@@ -42,7 +42,7 @@ public class SistemaDesktop {
         aluno.setNome("SUPER ADM");
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
-        new AlunoDao().cadastrar(aluno);
+        AlunoDao.getInstance().cadastrar(aluno);
         new TelaLogin();
     }
 }

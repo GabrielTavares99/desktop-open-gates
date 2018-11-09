@@ -19,7 +19,7 @@ public class PainelValidacao extends PainelCustom {
     JLabel lblMensagem;
     List<JComponent> components = new ArrayList<>();
 
-    public PainelValidacao(JFrame tela, Validacao validacao) {
+    public PainelValidacao(JFrame tela, Validacao validacao, String uuid) {
         setBounds(0, 0, tela.getWidth(), tela.getHeight());
         setLayout(null);
 
@@ -29,8 +29,9 @@ public class PainelValidacao extends PainelCustom {
         lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
 
         if (validacao.getImagemBase64() != null) {
-            ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
-            lblFoto.setIcon(new ImageIcon("/tmp/abaa.jpg"));
+            ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/opengates/" + uuid + ".jpg");
+            lblFoto.setIcon(new ImageIcon("/tmp/opengates/" + uuid + ".jpg"));
+            tela.setTitle(validacao.getPessoa().getNome());
         } else {
             ImageIcon imageIcon = new ImageIcon(PainelValidacao.class.getClassLoader().getResource("image/logo-x.png").getPath());
             lblFoto.setIcon(imageIcon);

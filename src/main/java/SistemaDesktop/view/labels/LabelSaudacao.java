@@ -30,11 +30,11 @@ public class LabelSaudacao extends LabelCustom {
             ProfessorDao professorDao = new ProfessorDao();
             pessoa = professorDao.findByEmail(usuario.getEmail());
         } else if (TipoUsuario.ALUNO.equals(usuario.getTipoUsuario())) {
-            AlunoDao alunoDao = new AlunoDao();
+            AlunoDao alunoDao = AlunoDao.getInstance();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
         } else {
             // TODO: 08/11/18 ARRUMAR ISSO - BUSCAR PELO PERFIL SECRETARIA - AINDA NÃO TEM NADA
-            AlunoDao alunoDao = new AlunoDao();
+            AlunoDao alunoDao = AlunoDao.getInstance();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
         }
         saudacao = String.format(saudacao, pessoa.getNome().split(" ")[0]);
