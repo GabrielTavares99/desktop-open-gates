@@ -1,6 +1,9 @@
 package SistemaDesktop.view.listeners;
 
+import SistemaDesktop.controller.UsuarioController;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
+import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.telas.TelaRedefinicaoSenha;
 
 import javax.swing.*;
@@ -24,8 +27,7 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
-        frame.dispose();
+        func();
     }
 
     @Override
@@ -51,7 +53,24 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
-        frame.dispose();
+        func();
+    }
+
+
+    private void func() {
+        Usuario byEmail;
+        if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
+            String emailRecuperacao = JOptionPane.showInputDialog(null, "Para recuperar sua senha, informe seu endereço de e-mail cadastrado no sistema.", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE);
+            TelasUtil.EMAIL_RECUPERACAO = emailRecuperacao;
+            UsuarioController usuarioController = new UsuarioController();
+            byEmail = usuarioController.findByEmail(emailRecuperacao);
+            if (byEmail == null) {
+                JOptionPane.showConfirmDialog(frame, "Email não encontrado!");
+            } else {
+                new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
+                frame.dispose();
+            }
+        }
+
     }
 }

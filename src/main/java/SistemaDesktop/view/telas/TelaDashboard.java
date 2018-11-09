@@ -5,10 +5,10 @@ import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelSaudacao;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
-import SistemaDesktop.view.paineis.PainelCadastroFuncionario;
-import SistemaDesktop.view.paineis.PainelFuncaoMatricula;
+import SistemaDesktop.view.paineis.PainelCadastroFuncionarioDashboard;
+import SistemaDesktop.view.paineis.PainelMatriculaDashboard;
 import SistemaDesktop.view.paineis.PainelFuncoesDashboard;
-import SistemaDesktop.view.paineis.PainelRelatorio;
+import SistemaDesktop.view.paineis.PainelRelatorioDashboard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,15 +34,16 @@ public class TelaDashboard extends TelaCustom {
         pnGeral.setLayout(null);
         pnGeral.add(lblSaudacao);
         pnGeral.add(lblTitulo);
+        pnGeral.setOpaque(false);
 
         NUMERO_FUNCOES = 3;
         PAINEL_FUNCAO_WIDTH = (600 / NUMERO_FUNCOES);
 
         if (TipoUsuario.SECRETARIA.equals(TelasUtil.USUARIO_LOGADO.getTipoUsuario())) {
-            listaMenuFeature.add(new PainelFuncaoMatricula());
-            listaMenuFeature.add(new PainelCadastroFuncionario());
+            listaMenuFeature.add(new PainelMatriculaDashboard());
+            listaMenuFeature.add(new PainelCadastroFuncionarioDashboard());
         }
-        listaMenuFeature.add(new PainelRelatorio());
+        listaMenuFeature.add(new PainelRelatorioDashboard());
         pnFuncoesDashboard.setSize(200 * listaMenuFeature.size(), pnFuncoesDashboard.getHeight());
         TelasUtil.centralizar(pnFuncoesDashboard);
 

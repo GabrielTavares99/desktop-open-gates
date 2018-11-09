@@ -1,11 +1,11 @@
 package SistemaDesktop.view.paineis;
 
-import java.awt.*;
+import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static SistemaDesktop.config.ViewSettings.MEIO_TELA_Y;
 
 public class PainelFuncoesDashboard extends PainelCustom {
 
     public PainelFuncoesDashboard() {
-        setBounds(100, 120, 600, 200);
-        setBackground(Color.PINK);
+        setBounds(MEIO_TELA_X - 100, MEIO_TELA_Y - 125, 600, 250);
     }
 }
