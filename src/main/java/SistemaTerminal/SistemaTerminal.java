@@ -14,8 +14,8 @@ public class SistemaTerminal {
         try {
             List<String> emails = new ArrayList<>();
             Email email = new Email();
-            email.setAssunto("BOA TARDE - OPEN GATES & VC");
-            email.setHmtl("<h1>TENHA UM ÓTIMO ALMOCO DE PORTÕES ABERTOS</h1>");
+            email.setAssunto("Ummm é tardinha - OPEN GATES & VC");
+            email.setHmtl("<h1>PORTOES ABERTOS PARA VOCÊ TOMAR AQUELE LANCHINHO DA TARDE...</h1>");
             email.setDestinatarios(emails);
             new EmailController().sendEmail(email);
         } catch (EmailException e) {
