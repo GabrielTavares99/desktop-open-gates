@@ -10,11 +10,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static SistemaDesktop.config.ViewSettings.*;
 
 public class PainelValidacao extends PainelCustom {
 
-    JLabel lblFoto;
+    JLabel lblFoto = new JLabel();
     JLabel lblNome;
     JLabel lblMensagem;
     List<JComponent> components = new ArrayList<>();
@@ -22,7 +22,7 @@ public class PainelValidacao extends PainelCustom {
     public PainelValidacao(JFrame tela, Validacao validacao) {
         setBounds(0, 0, tela.getWidth(), tela.getHeight());
         setLayout(null);
-        lblFoto = new JLabel();
+
         lblFoto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
         lblFoto.setBackground(Color.WHITE);
         lblFoto.setOpaque(true);
@@ -51,9 +51,9 @@ public class PainelValidacao extends PainelCustom {
         lblNome.setBounds(50, 530, 400, 30);
 
         if (validacao.isEntradaPermitida())
-            setBackground(Color.green);
+            setBackground(COR_VERDE_SUCESSO);
         else
-            setBackground(Color.RED);
+            setBackground(COR_VERMELHA_ATENCAO);
 
         components.add(lblNome);
         components.add(lblFoto);

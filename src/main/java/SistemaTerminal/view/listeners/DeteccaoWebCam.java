@@ -5,12 +5,18 @@ import SistemaDesktop.model.dao.AlunoDao;
 import SistemaTerminal.model.Validacao;
 import SistemaTerminal.view.telas.TelaStatusValidacao;
 
-public class DeteccaoWebCam {
+public class DeteccaoWebCam extends Thread {
 
+    private String codigoLido;
 
-    public static void consulta(String codigo) {
+    public DeteccaoWebCam(String codigoLido) {
+        this.codigoLido = codigoLido;
+    }
+
+    @Override
+    public void run() {
         AlunoDao alunoDao = new AlunoDao();
-        Aluno byEmail = alunoDao.getByEmail(codigo);
+        Aluno byEmail = alunoDao.getByEmail(codigoLido);
         Validacao validacao = new Validacao();
         if (byEmail != null) {
             validacao.setImagemBase64(byEmail.getFotoBase64());
@@ -21,7 +27,15 @@ public class DeteccaoWebCam {
             System.out.println("NEGADA");
             validacao.setMensagem("ENTRADA NEGADA");
         }
-        new TelaStatusValidacao(validacao);
+        TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao);
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            telaStatusValidacao.dispose();
+        }
     }
+
 
 }
