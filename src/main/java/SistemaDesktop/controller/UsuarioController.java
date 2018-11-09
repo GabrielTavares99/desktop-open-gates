@@ -1,14 +1,14 @@
 package SistemaDesktop.controller;
 
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.dao.UsuarioDao;
+import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.util.CriptografiaUtil;
 
 public class UsuarioController {
-    private UsuarioDao usuarioDao;
+    private UsuarioDAO usuarioDao;
 
     public UsuarioController() {
-        usuarioDao = new UsuarioDao();
+        usuarioDao = new UsuarioDAO();
     }
 
     public boolean podeLogar(String email, String senha) {

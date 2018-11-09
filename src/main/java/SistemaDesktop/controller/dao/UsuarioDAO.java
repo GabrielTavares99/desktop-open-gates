@@ -1,4 +1,4 @@
-package SistemaDesktop.model.dao;
+package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class UsuarioDao implements IDao {
+public class UsuarioDAO implements IDao {
 
     private static List<Usuario> usuarios = new ArrayList<>();
 
     @Override
-    public void cadastrar(Object o) {
+    public void salvar(Object o) {
         Usuario usuario = (Usuario) o;
         if (usuario.getSenha() == null)
             usuario.setSenha(String.valueOf(System.currentTimeMillis()));
@@ -27,8 +27,8 @@ public class UsuarioDao implements IDao {
     }
 
     @Override
-    public void pegarTodas(Object o) {
-
+    public List<Object> pegarTodos() {
+        return null;
     }
 
     public Usuario getByEmail(String email) {

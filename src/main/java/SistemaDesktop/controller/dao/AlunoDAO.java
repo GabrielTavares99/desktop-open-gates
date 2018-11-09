@@ -1,35 +1,35 @@
-package SistemaDesktop.model.dao;
+package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Aluno;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlunoDao implements IDao {
+public class AlunoDAO implements IDao {
+    private static AlunoDAO alunoDao;
     private List<Aluno> alunos = new ArrayList<>();
-    private static AlunoDao alunoDao;
 
-    private AlunoDao() {
+    private AlunoDAO() {
 
     }
 
-    public static synchronized AlunoDao getInstance() {
+    public static synchronized AlunoDAO getInstance() {
         if (alunoDao == null)
-            alunoDao = new AlunoDao();
+            alunoDao = new AlunoDAO();
 
         return alunoDao;
     }
 
     @Override
-    public void cadastrar(Object o) {
+    public void salvar(Object o) {
         alunos.add((Aluno) o);
-        UsuarioDao usuarioDao = new UsuarioDao();
-        usuarioDao.cadastrar(((Aluno) o).getUsuario());
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        usuarioDao.salvar(((Aluno) o).getUsuario());
     }
 
     @Override
-    public void pegarTodas(Object o) {
-
+    public List<Object> pegarTodos() {
+        return null;
     }
 
     public Aluno getByRa(int ra) {

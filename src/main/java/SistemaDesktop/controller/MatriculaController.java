@@ -1,10 +1,7 @@
 package SistemaDesktop.controller;
 
+import SistemaDesktop.controller.dao.*;
 import SistemaDesktop.model.*;
-import SistemaDesktop.model.dao.AlunoDao;
-import SistemaDesktop.model.dao.DisciplinaDao;
-import SistemaDesktop.model.dao.ProfessorDao;
-import SistemaDesktop.model.dao.UsuarioDao;
 import SistemaDesktop.model.enums.Periodo;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.CsvUtil;
@@ -13,7 +10,6 @@ import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.util.ZipUtil;
 import org.apache.commons.mail.EmailException;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,17 +21,17 @@ import java.util.Map;
 
 public class MatriculaController {
 
-    DisciplinaDao disciplinaDao;
-    UsuarioDao usuarioDao;
-    AlunoDao alunoDao;
-    ProfessorDao professorDao;
+    DisciplinaDAO disciplinaDao;
+    UsuarioDAO usuarioDao;
+    AlunoDAO alunoDao;
+    ProfessorDAO professorDao;
     MatriculaDao matriculaDao;
 
     public MatriculaController() {
-        disciplinaDao = new DisciplinaDao();
-        usuarioDao = new UsuarioDao();
-        alunoDao = AlunoDao.getInstance();
-        professorDao = new ProfessorDao();
+        disciplinaDao = new DisciplinaDAO();
+        usuarioDao = new UsuarioDAO();
+        alunoDao = AlunoDAO.getInstance();
+        professorDao = new ProfessorDAO();
         matriculaDao = new MatriculaDao();
     }
 
@@ -65,7 +61,7 @@ public class MatriculaController {
                 String a = TelasUtil.URL_ARQUIVO_FOTOS.replace(".zip", "");
                 File foto = new File("/tmp/" + new File(a).getName() + "/" + aluno1.getRa() + ".jpg");
                 aluno1.setFotoBase64(ImageUtil.fromImageToBase64(foto.getAbsolutePath()));
-                alunoDao.cadastrar(aluno1);
+                alunoDao.salvar(aluno1);
                 Email email = new Email();
                 email.setAssunto("VOCÊ FOI MATRICULADO");
                 ArrayList<String> objects = new ArrayList<>();

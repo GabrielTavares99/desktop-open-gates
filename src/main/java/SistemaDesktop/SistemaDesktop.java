@@ -2,9 +2,8 @@ package SistemaDesktop;
 
 import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.dao.AlunoDao;
+import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.view.telas.TelaLogin;
 import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
 public class SistemaDesktop {
@@ -14,18 +13,18 @@ public class SistemaDesktop {
 //        new TelaRedefinicaoSenha(TipoRedefinicaoSenha.REDEFINICAO_COM_SENHA);
 //        new TelaMatricula();
 
-//        AlunoDao alunoDao = new AlunoDao();
+//        AlunoDAO alunoDao = new AlunoDAO();
 //        Aluno aluno = new Aluno();
-//        DisciplinaDao disciplinaDao = new DisciplinaDao();
+//        DisciplinaDAO disciplinaDao = new DisciplinaDAO();
 //        Disciplina disciplina = new Disciplina();
 //        disciplina.setSigla("ADS");
-//        disciplinaDao.cadastrar(disciplina);
+//        disciplinaDao.salvar(disciplina);
 //        aluno.setRa(123);
-//        alunoDao.cadastrar(aluno);
-//        ProfessorDao professorDao = new ProfessorDao();
+//        alunoDao.salvar(aluno);
+//        ProfessorDAO professorDao = new ProfessorDAO();
 //        Professor professor = new Professor();
 //        professor.setNumMatricula(String.valueOf(100));
-//        professorDao.cadastrar(professor);
+//        professorDao.salvar(professor);
 //        List<String> objects = new ArrayList<>();
 //        objects.add("weverson.t@gmail.com");
 //        objects.add("gabriel.tavares.silva99@gmail.com");
@@ -43,7 +42,7 @@ public class SistemaDesktop {
         aluno.setNome("SUPER ADM");
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
-        AlunoDao.getInstance().cadastrar(aluno);
+        AlunoDAO.getInstance().salvar(aluno);
 //        new TelaLogin();
         new TelaRelatorioEntradaSaida();
     }

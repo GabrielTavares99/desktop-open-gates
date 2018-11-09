@@ -1,23 +1,23 @@
-package SistemaDesktop.model.dao;
+package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Professor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfessorDao implements IDao {
+public class ProfessorDAO implements IDao {
     private static List<Professor> professores = new ArrayList<>();
 
-    UsuarioDao usuarioDao = new UsuarioDao();
+    UsuarioDAO usuarioDao = new UsuarioDAO();
 
     @Override
-    public void cadastrar(Object o) {
+    public void salvar(Object o) {
         professores.add((Professor) o);
     }
 
     @Override
-    public void pegarTodas(Object o) {
-
+    public List<Object> pegarTodos() {
+        return null;
     }
 
     public Professor findByMatricula(String matricula) {

@@ -1,14 +1,14 @@
 package SistemaDesktop.controller;
 
+import SistemaDesktop.controller.dao.DisciplinaDAO;
 import SistemaDesktop.model.Disciplina;
-import SistemaDesktop.model.dao.DisciplinaDao;
 
 public class DisciplinaController {
 
-    DisciplinaDao disciplinaDao;
+    DisciplinaDAO disciplinaDao;
 
     public DisciplinaController() {
-        disciplinaDao = new DisciplinaDao();
+        disciplinaDao = new DisciplinaDAO();
     }
 
     public Disciplina getBySigla(String sigla) {

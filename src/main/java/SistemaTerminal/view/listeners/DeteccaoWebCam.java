@@ -1,7 +1,7 @@
 package SistemaTerminal.view.listeners;
 
+import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Aluno;
-import SistemaDesktop.model.dao.AlunoDao;
 import SistemaTerminal.model.Validacao;
 import SistemaTerminal.view.telas.TelaStatusValidacao;
 import org.apache.commons.io.FileUtils;
@@ -19,7 +19,7 @@ public class DeteccaoWebCam extends Thread {
 
     @Override
     public void run() {
-        AlunoDao alunoDao = AlunoDao.getInstance();
+        AlunoDAO alunoDao = AlunoDAO.getInstance();
         Aluno byEmail = alunoDao.getByEmail(codigoLido);
         System.out.println(codigoLido);
         Validacao validacao = new Validacao();

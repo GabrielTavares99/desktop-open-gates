@@ -1,9 +1,9 @@
 package SistemaDesktop.view.labels;
 
+import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Pessoa;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.dao.AlunoDao;
-import SistemaDesktop.model.dao.ProfessorDao;
+import SistemaDesktop.controller.dao.ProfessorDAO;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.TelasUtil;
 
@@ -27,14 +27,14 @@ public class LabelSaudacao extends LabelCustom {
         Usuario usuario = TelasUtil.USUARIO_LOGADO;
         Pessoa pessoa = null;
         if (TipoUsuario.FUNCIONARIO.equals(usuario)) {
-            ProfessorDao professorDao = new ProfessorDao();
+            ProfessorDAO professorDao = new ProfessorDAO();
             pessoa = professorDao.findByEmail(usuario.getEmail());
         } else if (TipoUsuario.ALUNO.equals(usuario.getTipoUsuario())) {
-            AlunoDao alunoDao = AlunoDao.getInstance();
+            AlunoDAO alunoDao = AlunoDAO.getInstance();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
         } else {
             // TODO: 08/11/18 ARRUMAR ISSO - BUSCAR PELO PERFIL SECRETARIA - AINDA NÃO TEM NADA
-            AlunoDao alunoDao = AlunoDao.getInstance();
+            AlunoDAO alunoDao = AlunoDAO.getInstance();
             pessoa = alunoDao.getByEmail(usuario.getEmail());
         }
         saudacao = String.format(saudacao, pessoa.getNome().split(" ")[0]);

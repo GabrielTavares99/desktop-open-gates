@@ -1,6 +1,7 @@
-package SistemaDesktop.model;
+package SistemaDesktop.controller.dao;
 
-import SistemaDesktop.model.dao.IDao;
+import SistemaDesktop.controller.dao.IDao;
+import SistemaDesktop.model.Matricula;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +11,13 @@ public class MatriculaDao implements IDao {
     private List<Matricula> matriculas = new ArrayList<>();
 
     @Override
-    public void cadastrar(Object o) {
+    public void salvar(Object o) {
 
     }
 
     @Override
-    public void pegarTodas(Object o) {
-
+    public List<Object> pegarTodos() {
+        return null;
     }
 
 
