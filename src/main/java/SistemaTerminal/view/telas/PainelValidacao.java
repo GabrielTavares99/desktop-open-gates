@@ -22,16 +22,22 @@ public class PainelValidacao extends PainelCustom {
     public PainelValidacao(JFrame tela, Validacao validacao) {
         setBounds(0, 0, tela.getWidth(), tela.getHeight());
         setLayout(null);
+        lblFoto = new JLabel();
+        lblFoto.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+        lblFoto.setBackground(Color.WHITE);
+        lblFoto.setOpaque(true);
+        lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
 
         if (validacao.getImagemBase64() != null) {
             ImageUtil.fromBaseToImage(validacao.getImagemBase64(), "/tmp/abaa.jpg");
-            lblFoto = new JLabel(new ImageIcon("/tmp/abaa.jpg"));
+            lblFoto.setIcon(new ImageIcon("/tmp/abaa.jpg"));
         } else {
-            lblFoto = new JLabel("X");
-            lblFoto.setBackground(Color.WHITE);
+            ImageIcon imageIcon = new ImageIcon(PainelValidacao.class.getClassLoader().getResource("image/logo-x.png").getPath());
+            lblFoto.setIcon(imageIcon);
         }
 
         lblMensagem = new JLabel(validacao.getMensagem());
+
         if (validacao.getPessoa() != null)
             lblNome = new JLabel(validacao.getPessoa().getNome());
         else
@@ -39,7 +45,9 @@ public class PainelValidacao extends PainelCustom {
         lblFoto.setBounds(MEIO_TELA_X - 150, 50, 300, 400);
         lblFoto.setOpaque(true);
         lblFoto.setBackground(Color.WHITE);
-        lblMensagem.setBounds(MEIO_TELA_X - 150, 460, 400, 60);
+        lblMensagem.setBounds(0, 460, tela.getWidth(), 60);
+        lblMensagem.setFont(new Font("Sarif", Font.BOLD, 30));
+        lblMensagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblNome.setBounds(50, 530, 400, 30);
 
         if (validacao.isEntradaPermitida())
