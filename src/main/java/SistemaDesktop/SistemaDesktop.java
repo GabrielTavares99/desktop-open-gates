@@ -5,6 +5,7 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.dao.AlunoDao;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.view.telas.TelaLogin;
+import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -43,6 +44,7 @@ public class SistemaDesktop {
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
         AlunoDao.getInstance().cadastrar(aluno);
-        new TelaLogin();
+//        new TelaLogin();
+        new TelaRelatorioEntradaSaida();
     }
 }

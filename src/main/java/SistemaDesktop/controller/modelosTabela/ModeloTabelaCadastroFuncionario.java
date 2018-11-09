@@ -1,4 +1,4 @@
-package SistemaDesktop.view.modelosTabela;
+package SistemaDesktop.controller.modelosTabela;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;

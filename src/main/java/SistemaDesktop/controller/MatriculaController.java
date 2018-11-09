@@ -13,6 +13,7 @@ import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.util.ZipUtil;
 import org.apache.commons.mail.EmailException;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -93,6 +94,7 @@ public class MatriculaController {
             matricula.setDataRealizacao(new Date());
             matriculaDao.cadastrar(matricula);
         }
+
     }
 
     public void enviaEmailsMatricula(List<String> emails) {

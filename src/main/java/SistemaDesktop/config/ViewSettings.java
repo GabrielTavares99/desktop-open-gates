@@ -11,7 +11,6 @@ public class ViewSettings {
 
     public static int BOTAO_DEFAULT_HEIGHT = 40;
     public static int BOTAO_DEFAULT_WIDTH = 200;
-    public static Color BOTAO_DEFAULT_COLOR = new Color(66, 139, 202);
 
     public static int CAMPO_TEXTO_DEFAULT_HEIGHT = 40;
     public static int CAMPO_TEXTO_DEFAULT_WIDTH = 200;
@@ -21,8 +20,6 @@ public class ViewSettings {
 
     public static Color PAINEL_DEFAULT_COLOR = new Color(116, 193, 188, 10);
 
-    public static Color PAINEL_DEFAULT_COLOR2 = new Color(244, 55, 72);
-    public static Color PAINEL_DEFAULT_COLOR3 = new Color(242, 94, 121);
     public static Color DEFAULT_COLOR_BOTAO = new Color(38, 60, 119);
     public static Color DEFAULT_COLOR_PAINEL = new Color(25, 136, 255);
     public static Color DEFAULT_COLOR_TELA = new Color(215, 228, 242);

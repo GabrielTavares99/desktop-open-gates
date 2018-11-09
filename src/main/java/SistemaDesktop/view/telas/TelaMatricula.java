@@ -3,7 +3,7 @@ package SistemaDesktop.view.telas;
 
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
-import SistemaDesktop.view.modelosTabela.ModeloTabelaMatricula;
+import SistemaDesktop.controller.modelosTabela.ModeloTabelaMatricula;
 import SistemaDesktop.view.paineis.PainelMatricula;
 
 import javax.swing.*;

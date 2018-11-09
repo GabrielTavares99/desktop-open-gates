@@ -6,7 +6,7 @@ import SistemaDesktop.view.ComboBoxModel;
 import SistemaDesktop.view.camposTexto.CampoTextoCadastro;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
-import SistemaDesktop.view.modelosTabela.ModeloTabelaCadastroFuncionario;
+import SistemaDesktop.controller.modelosTabela.ModeloTabelaCadastroFuncionario;
 import SistemaDesktop.view.paineis.GroupForm;
 
 import javax.swing.*;

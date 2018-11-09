@@ -8,8 +8,8 @@ import static SistemaDesktop.config.Constantes.OPEN_GATES;
 
 public class EmailController {
 
-    private String emailSistema = "sistema.open.gates@gmail.com";
-    private String senhaSistema = "opengates2018";
+    private final String emailSistema = "sistema.open.gates@gmail.com";
+    private final String senhaSistema = "opengates2018";
 
     public void sendEmail(Email emailTo) throws EmailException {
 
