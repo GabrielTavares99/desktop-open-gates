@@ -1,6 +1,7 @@
 package SistemaDesktop.view.telas;
 
 import SistemaDesktop.controller.UsuarioController;
+import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.TelasUtil;
@@ -13,9 +14,9 @@ import javax.swing.*;
 public class TelaRedefinicaoSenha extends TelaCustom {
     JMenuBar menuSuperior = new JMenuBar();
 
-    public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha) {
+    public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha, Usuario usuario) {
         super();
-        Usuario byEmail = TelasUtil.USUARIO_LOGADO;
+        Usuario byEmail = usuario;
 
         JLabel lblTitulo = new LabelTitulo("TELA REDEFINIÇÃO SENHA");
         add(lblTitulo);

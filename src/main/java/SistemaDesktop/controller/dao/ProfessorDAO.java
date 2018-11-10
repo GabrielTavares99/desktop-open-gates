@@ -8,7 +8,7 @@ import java.util.List;
 public class ProfessorDAO implements IDao {
     private static List<Professor> professores = new ArrayList<>();
 
-    UsuarioDAO usuarioDao = new UsuarioDAO();
+    private UsuarioDAO usuarioDao = new UsuarioDAO();
 
     @Override
     public void salvar(Object o) {

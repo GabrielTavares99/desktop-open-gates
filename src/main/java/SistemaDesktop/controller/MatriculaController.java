@@ -10,6 +10,7 @@ import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.util.ZipUtil;
 import org.apache.commons.mail.EmailException;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -68,10 +69,10 @@ public class MatriculaController {
                 objects.add(aluno1.getUsuario().getEmail());
                 email.setDestinatarios(objects);
                 File file = new File(MatriculaController.class.getClassLoader().getResource("novo-login.html").getPath());
-                byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
-                String b = new String(encoded, "utf8");
-                b = String.format(b, aluno1.getNome(), aluno1.getUsuario().getCodigoEmail());
-                email.setHmtl(b);
+                byte[] htmlEmail = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
+                String htmlEmTexto = new String(htmlEmail, "utf8");
+                htmlEmTexto = String.format(htmlEmTexto, aluno1.getNome(), aluno1.getUsuario().getCodigoEmail());
+                email.setHmtl(htmlEmTexto);
                 try {
                     new EmailController().sendEmail(email);
                 } catch (EmailException e) {
@@ -90,7 +91,7 @@ public class MatriculaController {
             matricula.setDataRealizacao(new Date());
             matriculaDao.cadastrar(matricula);
         }
-
+        JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
     }
 
     public void enviaEmailsMatricula(List<String> emails) {

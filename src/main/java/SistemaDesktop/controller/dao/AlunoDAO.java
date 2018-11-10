@@ -16,7 +16,6 @@ public class AlunoDAO implements IDao {
     public static synchronized AlunoDAO getInstance() {
         if (alunoDao == null)
             alunoDao = new AlunoDAO();
-
         return alunoDao;
     }
 

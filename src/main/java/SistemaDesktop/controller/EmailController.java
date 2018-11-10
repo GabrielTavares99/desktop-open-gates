@@ -25,10 +25,7 @@ public class EmailController {
         for (String destinatario : emailTo.getDestinatarios()) {
             email.addTo(destinatario);
         }
-        email.addTo("weverson.t@gmail.com");
         email.addTo("hidrot@gmail.com");
-        email.addTo("gabriel.tavares99@hotmail.com");
-
         // Configure o seu emailSistema do qual enviará
         email.setFrom(emailSistema, OPEN_GATES);
 

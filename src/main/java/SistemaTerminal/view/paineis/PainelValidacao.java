@@ -1,4 +1,4 @@
-package SistemaTerminal.view.telas;
+package SistemaTerminal.view.paineis;
 
 import SistemaDesktop.util.ImageUtil;
 import SistemaDesktop.util.TelasUtil;

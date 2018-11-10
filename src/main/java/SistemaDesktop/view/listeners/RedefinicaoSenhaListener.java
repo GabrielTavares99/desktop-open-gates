@@ -65,13 +65,14 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
             UsuarioController usuarioController = new UsuarioController();
             byEmail = usuarioController.findByEmail(emailRecuperacao);
             if (byEmail == null) {
-                JOptionPane.showConfirmDialog(frame, "Email não encontrado!");
+                JOptionPane.showMessageDialog(frame, "Email não encontrado!");
             } else {
-                new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
+                new TelaRedefinicaoSenha(tipoRedefinicaoSenha, byEmail);
                 frame.dispose();
             }
         } else {
-            new TelaRedefinicaoSenha(tipoRedefinicaoSenha);
+
+            new TelaRedefinicaoSenha(tipoRedefinicaoSenha, TelasUtil.USUARIO_LOGADO);
             frame.dispose();
         }
 
