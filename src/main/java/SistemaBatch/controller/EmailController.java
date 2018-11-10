@@ -1,5 +1,6 @@
-package SistemaDesktop.controller;
+package SistemaBatch.controller;
 
+import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
@@ -10,6 +11,7 @@ public class EmailController {
 
     private final String emailSistema = "sistema.open.gates@gmail.com";
     private final String senhaSistema = "opengates2018";
+
 
     public void sendEmail(Email emailTo) throws EmailException {
 
@@ -22,9 +24,8 @@ public class EmailController {
         email.setSmtpPort(465);
 
         // Adicione os destinatários
-        for (String destinatario : emailTo.getDestinatarios()) {
-            email.addTo(destinatario);
-        }
+        email.addTo(emailTo.getDestinatario());
+
         email.addTo("hidrot@gmail.com");
         // Configure o seu emailSistema do qual enviará
         email.setFrom(emailSistema, OPEN_GATES);
@@ -42,5 +43,12 @@ public class EmailController {
         email.send();
         System.out.println("Email enviado!");
     }
-
+    public Email getEmailNaoEnviado() {
+        EmailDAO emailDAO = new EmailDAO();
+        return emailDAO.getEmailNaoEnviado();
+    }
+    public void update(Email email){
+        EmailDAO emailDAO = new EmailDAO();
+        emailDAO.atualizar(email);
+    }
 }

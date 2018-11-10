@@ -1,12 +1,11 @@
 package SistemaDesktop.model;
 
-import java.util.List;
-
 public class Email {
 
     private String hmtl;
-    private List<String> destinatarios;
+    private String destinatario;
     private String assunto;
+    private boolean enviado = false;
 
     public String getAssunto() {
         return assunto;
@@ -16,19 +15,27 @@ public class Email {
         this.assunto = assunto;
     }
 
-    public List<String> getDestinatarios() {
-        return destinatarios;
-    }
-
-    public void setDestinatarios(List<String> destinatarios) {
-        this.destinatarios = destinatarios;
-    }
-
     public String getHmtl() {
         return hmtl;
     }
 
     public void setHmtl(String hmtl) {
         this.hmtl = hmtl;
+    }
+
+    public boolean isEnviado() {
+        return enviado;
+    }
+
+    public void setEnviado(boolean enviado) {
+        this.enviado = enviado;
+    }
+
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
     }
 }
