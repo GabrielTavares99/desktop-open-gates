@@ -1,7 +1,6 @@
 package SistemaBatch.controller.jobs;
 
 import SistemaBatch.controller.EmailController;
-import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import org.apache.commons.mail.EmailException;
 
@@ -21,12 +20,13 @@ public class JobEnviarEmail extends Thread {
             try {
                 emailController.sendEmail(emailNaoEnviado);
                 emailNaoEnviado.setEnviado(true);
+                emailNaoEnviado.setDataEnvio(new Date());
                 emailController.update(emailNaoEnviado);
             } catch (EmailException e) {
                 e.printStackTrace();
             }
             try {
-                Thread.sleep(MINUTO);
+                Thread.sleep(MINUTO/2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

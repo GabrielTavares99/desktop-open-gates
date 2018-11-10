@@ -1,5 +1,7 @@
 package SistemaDesktop.model;
 
+import java.util.Date;
+
 public class Email {
 
     private int id;
@@ -7,6 +9,7 @@ public class Email {
     private String destinatario;
     private String assunto;
     private boolean enviado = false;
+    private Date dataEnvio;
 
     public String getAssunto() {
         return assunto;
@@ -46,5 +49,13 @@ public class Email {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Date getDataEnvio() {
+        return dataEnvio;
+    }
+
+    public void setDataEnvio(Date dataEnvio) {
+        this.dataEnvio = dataEnvio;
     }
 }

@@ -16,7 +16,7 @@ public class EmailController {
     public void sendEmail(Email emailTo) throws EmailException {
 
         SimpleEmail email = new SimpleEmail();
-        email.setDebug(true);
+        email.setDebug(false);
 
         System.out.println("alterando hostname...");
         email.setHostName("smtp.gmail.com");
@@ -26,7 +26,9 @@ public class EmailController {
         // Adicione os destinatários
         email.addTo(emailTo.getDestinatario());
 
-        email.addTo("hidrot@gmail.com");
+//        DEBUG
+        email.addTo(emailSistema);
+
         // Configure o seu emailSistema do qual enviará
         email.setFrom(emailSistema, OPEN_GATES);
 

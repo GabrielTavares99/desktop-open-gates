@@ -30,7 +30,28 @@ public class EmailDAO implements IDao {
 
     @Override
     public void atualizar(Object o) {
-        // TODO: 10/11/18 UPDATE COM O BANCO DE DADOS
+        Email email = (Email) o;
+        String query = "UPDATE EnvioEmail\n" +
+                "SET\n" +
+                "  html = ?,\n" +
+                "  destinatario = ?,\n" +
+                "  assunto = ?,\n" +
+                "  enviado = ?,\n" +
+                "  dataEnvio = ?\n" +
+                "WHERE id = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email.getHmtl());
+            preparedStatement.setString(2, email.getDestinatario());
+            preparedStatement.setString(3, email.getAssunto());
+            preparedStatement.setBoolean(4, email.isEnviado());
+            Object dataEmTimestamp = new java.sql.Timestamp(email.getDataEnvio().getTime());
+            preparedStatement.setObject(5, dataEmTimestamp);
+            preparedStatement.setInt(6, email.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public Email getEmailNaoEnviado() {
