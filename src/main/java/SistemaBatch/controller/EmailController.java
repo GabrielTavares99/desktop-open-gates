@@ -11,7 +11,7 @@ public class EmailController {
 
     private final String emailSistema = "sistema.open.gates@gmail.com";
     private final String senhaSistema = "opengates2018";
-
+    private EmailDAO emailDAO = new EmailDAO();
 
     public void sendEmail(Email emailTo) throws EmailException {
 
@@ -43,12 +43,12 @@ public class EmailController {
         email.send();
         System.out.println("Email enviado!");
     }
+
     public Email getEmailNaoEnviado() {
-        EmailDAO emailDAO = new EmailDAO();
         return emailDAO.getEmailNaoEnviado();
     }
-    public void update(Email email){
-        EmailDAO emailDAO = new EmailDAO();
+
+    public void update(Email email) {
         emailDAO.atualizar(email);
     }
 }

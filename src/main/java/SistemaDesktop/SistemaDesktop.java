@@ -1,10 +1,10 @@
 package SistemaDesktop;
 
+import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
+import SistemaDesktop.view.telas.TelaMatricula;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -44,6 +44,7 @@ public class SistemaDesktop {
         aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
         AlunoDAO.getInstance().salvar(aluno);
 //        new TelaLogin();
-        new TelaRelatorioEntradaSaida();
+        new TelaMatricula();
+//        new TelaRelatorioEntradaSaida();
     }
 }

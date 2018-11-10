@@ -1,6 +1,5 @@
 package SistemaDesktop.controller.dao;
 
-import SistemaDesktop.controller.dao.IDao;
 import SistemaDesktop.model.Matricula;
 
 import java.util.ArrayList;
@@ -12,6 +11,11 @@ public class MatriculaDao implements IDao {
 
     @Override
     public void salvar(Object o) {
+
+    }
+
+    @Override
+    public void atualizar(Object o) {
 
     }
 

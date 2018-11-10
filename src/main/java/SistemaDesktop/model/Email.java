@@ -2,6 +2,7 @@ package SistemaDesktop.model;
 
 public class Email {
 
+    private int id;
     private String hmtl;
     private String destinatario;
     private String assunto;
@@ -37,5 +38,13 @@ public class Email {
 
     public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

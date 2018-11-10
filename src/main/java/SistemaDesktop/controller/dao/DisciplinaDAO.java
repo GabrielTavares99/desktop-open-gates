@@ -15,6 +15,11 @@ public class DisciplinaDAO implements IDao {
     }
 
     @Override
+    public void atualizar(Object o) {
+
+    }
+
+    @Override
     public List<Object> pegarTodos() {
         return null;
     }
