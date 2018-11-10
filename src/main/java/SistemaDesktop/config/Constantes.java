@@ -7,7 +7,7 @@ public class Constantes {
     public static String TITULO_TELA_RELATORIO_ENTRADA_SAIDA = "TITULO_TELA_RELATORIO_ENTRADA_SAIDA";
     public static String TITULO_TELA_MATRICULA = "MATRICULA";
     public static String USERNAME = "Username";
-    public static String MATRICULA = "Matricula";
+    public static String MATRICULA = "CredenciamentoAluno";
     public static String DASHBOARD = "Dashboard";
     public static String PASSWORD = "Password";
     public static String ESQUECI_SENHA = "Esqueci minha senha";

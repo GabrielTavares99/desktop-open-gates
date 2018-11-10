@@ -5,14 +5,10 @@ public class Cargo {
     private int id;
     private String descricao;
 
-    public Cargo() {
-    }
-
     public Cargo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
-
 
     public int getId() {
         return id;

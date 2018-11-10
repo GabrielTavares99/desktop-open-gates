@@ -51,7 +51,7 @@ public class PainelValidacao extends PainelCustom {
         lblMensagem.setHorizontalAlignment(SwingConstants.CENTER);
         lblNome.setBounds(50, 530, 400, 30);
 
-        if (validacao.isEntradaPermitida())
+        if (validacao.isPermitida())
             setBackground(COR_VERDE_SUCESSO);
         else
             setBackground(COR_VERMELHA_ATENCAO);

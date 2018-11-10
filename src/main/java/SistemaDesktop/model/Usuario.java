@@ -10,6 +10,7 @@ public class Usuario {
     private boolean acessaSistema;
     private TipoUsuario tipoUsuario;
     private String codigoEmail;
+    private String cpf;
 
     public String getCodigoEmail() {
         return codigoEmail;
@@ -54,5 +55,13 @@ public class Usuario {
     public boolean isSenhasIguais(String senhaPura) {
         String senhaMd5 = CriptografiaUtil.gerarMD5(senhaPura);
         return senhaMd5.equals(this.getSenha());
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

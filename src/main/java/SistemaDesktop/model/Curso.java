@@ -1,6 +1,6 @@
 package SistemaDesktop.model;
 
-public class Disciplina {
+public class Curso {
 
     private int id;
     private String descricao;

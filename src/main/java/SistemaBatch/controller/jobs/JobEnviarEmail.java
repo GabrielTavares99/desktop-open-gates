@@ -17,21 +17,23 @@ public class JobEnviarEmail extends Thread {
             System.out.println("INICIANDO JOB DE ENVIO DE EMAIL " + new Date().getHours() + ":" + new Date().getMinutes());
             Email emailNaoEnviado = emailController.getEmailNaoEnviado();
 
-            try {
-                emailController.sendEmail(emailNaoEnviado);
-                emailNaoEnviado.setEnviado(true);
-                emailNaoEnviado.setDataEnvio(new Date());
-                emailController.update(emailNaoEnviado);
-            } catch (EmailException e) {
-                e.printStackTrace();
+            if (emailNaoEnviado != null) {
+                try {
+                    emailController.sendEmail(emailNaoEnviado);
+                    emailNaoEnviado.setEnviado(true);
+                    emailNaoEnviado.setDataEnvio(new Date());
+                    emailController.update(emailNaoEnviado);
+                } catch (EmailException e) {
+                    e.printStackTrace();
+                }
             }
+            System.out.println("FINALIZANDO JOB DE ENVIO DE EMAIL");
             try {
-                Thread.sleep(MINUTO/2);
+                Thread.sleep(MINUTO / 2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            System.out.println("FINALIZANDO JOB DE ENVIO DE EMAIL");
         }
     }
 }

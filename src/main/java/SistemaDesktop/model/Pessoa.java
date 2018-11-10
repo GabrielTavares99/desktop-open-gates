@@ -2,8 +2,8 @@ package SistemaDesktop.model;
 
 public class Pessoa {
 
+    private int id;
     private String nome;
-    private String cpf;
     private String fotoBase64;
     private Usuario usuario;
 
@@ -23,13 +23,6 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
 
     public String getFotoBase64() {
         return fotoBase64;
@@ -37,5 +30,13 @@ public class Pessoa {
 
     public void setFotoBase64(String fotoBase64) {
         this.fotoBase64 = fotoBase64;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

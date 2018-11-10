@@ -16,7 +16,7 @@ public class SistemaDesktop {
 //        AlunoDAO alunoDao = new AlunoDAO();
 //        Aluno aluno = new Aluno();
 //        DisciplinaDAO disciplinaDao = new DisciplinaDAO();
-//        Disciplina disciplina = new Disciplina();
+//        Curso disciplina = new Curso();
 //        disciplina.setSigla("ADS");
 //        disciplinaDao.salvar(disciplina);
 //        aluno.setRa(123);

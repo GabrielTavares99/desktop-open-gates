@@ -1,13 +1,13 @@
 package SistemaDesktop.controller.dao;
 
-import SistemaDesktop.model.Matricula;
+import SistemaDesktop.model.CredenciamentoAluno;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MatriculaDao implements IDao {
 
-    private List<Matricula> matriculas = new ArrayList<>();
+    private List<CredenciamentoAluno> credenciamentoAlunos = new ArrayList<>();
 
     @Override
     public void salvar(Object o) {
@@ -25,12 +25,12 @@ public class MatriculaDao implements IDao {
     }
 
 
-    public boolean cadastrar(Matricula matricula) {
-        matriculas.add(matricula);
+    public boolean cadastrar(CredenciamentoAluno credenciamentoAluno) {
+        credenciamentoAlunos.add(credenciamentoAluno);
         return true;
     }
 
-    public List<Matricula> getAll() {
-        return matriculas;
+    public List<CredenciamentoAluno> getAll() {
+        return credenciamentoAlunos;
     }
 }

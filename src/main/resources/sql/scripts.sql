@@ -26,3 +26,5 @@ DROP TABLE EnvioEmail;
 SELECT destinatario, assunto FROM EnvioEmail where enviado = true;
 ALTER TABLE EnvioEmail
 ADD dataEnvio DATETIME;
+
+ALTER TABLE EnvioEmail RENAME TO Email;

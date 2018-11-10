@@ -1,17 +1,17 @@
 package SistemaDesktop.controller.dao;
 
-import SistemaDesktop.model.Disciplina;
+import SistemaDesktop.model.Curso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinaDAO implements IDao {
 
-    private static List<Disciplina> disciplinas = new ArrayList<>();
+    private static List<Curso> cursos = new ArrayList<>();
 
     @Override
     public void salvar(Object o) {
-        disciplinas.add((Disciplina) o);
+        cursos.add((Curso) o);
     }
 
     @Override
@@ -24,10 +24,10 @@ public class DisciplinaDAO implements IDao {
         return null;
     }
 
-    public Disciplina findBySigla(String sigla) {
-        for (Disciplina disciplina : disciplinas) {
-            if (disciplina.getSigla().equalsIgnoreCase(sigla))
-                return disciplina;
+    public Curso findBySigla(String sigla) {
+        for (Curso curso : cursos) {
+            if (curso.getSigla().equalsIgnoreCase(sigla))
+                return curso;
         }
         return null;
     }

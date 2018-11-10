@@ -26,7 +26,7 @@ public class DeteccaoWebCam extends Thread {
         if (byEmail != null) {
             validacao.setImagemBase64(byEmail.getFotoBase64());
             validacao.setPessoa(byEmail);
-            validacao.setEntradaPermitida(true);
+            validacao.setPermitida(true);
             validacao.setMensagem("ENTRADA PERMITIDA");
         } else
             validacao.setMensagem("ENTRADA NEGADA");

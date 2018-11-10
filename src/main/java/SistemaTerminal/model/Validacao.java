@@ -4,7 +4,7 @@ import SistemaDesktop.model.Pessoa;
 
 public class Validacao {
 
-    private boolean isEntradaPermitida;
+    private boolean permitida;
     private Pessoa pessoa;
     private String mensagem;
     private String imagemBase64;
@@ -17,12 +17,12 @@ public class Validacao {
         this.imagemBase64 = imagemBase64;
     }
 
-    public boolean isEntradaPermitida() {
-        return isEntradaPermitida;
+    public boolean isPermitida() {
+        return permitida;
     }
 
-    public void setEntradaPermitida(boolean entradaPermitida) {
-        isEntradaPermitida = entradaPermitida;
+    public void setPermitida(boolean permitida) {
+        this.permitida = permitida;
     }
 
     public Pessoa getPessoa() {

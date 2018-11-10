@@ -1,9 +1,9 @@
 package SistemaDesktop.view.labels;
 
 import SistemaDesktop.controller.dao.AlunoDAO;
+import SistemaDesktop.controller.dao.FuncionarioDAO;
 import SistemaDesktop.model.Pessoa;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.controller.dao.ProfessorDAO;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.TelasUtil;
 
@@ -27,8 +27,8 @@ public class LabelSaudacao extends LabelCustom {
         Usuario usuario = TelasUtil.USUARIO_LOGADO;
         Pessoa pessoa = null;
         if (TipoUsuario.FUNCIONARIO.equals(usuario)) {
-            ProfessorDAO professorDao = new ProfessorDAO();
-            pessoa = professorDao.findByEmail(usuario.getEmail());
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            pessoa = funcionarioDAO.findByEmail(usuario.getEmail());
         } else if (TipoUsuario.ALUNO.equals(usuario.getTipoUsuario())) {
             AlunoDAO alunoDao = AlunoDAO.getInstance();
             pessoa = alunoDao.getByEmail(usuario.getEmail());

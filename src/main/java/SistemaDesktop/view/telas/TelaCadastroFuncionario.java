@@ -45,7 +45,7 @@ public class TelaCadastroFuncionario extends TelaCustom {
         JTextField txtPesquisa = new JTextField();
         txtPesquisa.setBounds(50, 100, 700, 30);
 
-        nomeColunas = new String[]{"Matricula", "Nome", "CPF", "Email", "Cargo", "Ativo"};
+        nomeColunas = new String[]{"CredenciamentoAluno", "Nome", "CPF", "Email", "Cargo", "Ativo"};
         List<Object> objects = new ArrayList<>();
         modeloTabelaCadastroFuncionario = new ModeloTabelaCadastroFuncionario(nomeColunas, objects);
         tabela.setModel(modeloTabelaCadastroFuncionario);

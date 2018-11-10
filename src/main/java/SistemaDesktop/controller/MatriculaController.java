@@ -2,7 +2,10 @@ package SistemaDesktop.controller;
 
 import SistemaBatch.controller.EmailController;
 import SistemaDesktop.controller.dao.*;
-import SistemaDesktop.model.*;
+import SistemaDesktop.model.Aluno;
+import SistemaDesktop.model.CredenciamentoAluno;
+import SistemaDesktop.model.Curso;
+import SistemaDesktop.model.Email;
 import SistemaDesktop.model.enums.Periodo;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.CsvUtil;
@@ -25,20 +28,18 @@ public class MatriculaController {
     DisciplinaDAO disciplinaDao;
     UsuarioDAO usuarioDao;
     AlunoDAO alunoDao;
-    ProfessorDAO professorDao;
     MatriculaDao matriculaDao;
 
     public MatriculaController() {
         disciplinaDao = new DisciplinaDAO();
         usuarioDao = new UsuarioDAO();
         alunoDao = AlunoDAO.getInstance();
-        professorDao = new ProfessorDAO();
         matriculaDao = new MatriculaDao();
     }
 
 
     public void fazerMatricula() throws IOException {
-        List<Matricula> matriculas = new ArrayList<>();
+        List<CredenciamentoAluno> credenciamentoAlunos = new ArrayList<>();
         List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(TelasUtil.URL_CSV);
         EmailDAO emailDAO = new EmailDAO();
 
@@ -46,11 +47,11 @@ public class MatriculaController {
 
         for (Map<String, String> line : linhasCSV) {
             System.out.println(line);
-            Matricula matricula = new Matricula();
+            CredenciamentoAluno credenciamentoAluno = new CredenciamentoAluno();
 
             String sigla = line.get("sigla_disciplina");
-            Disciplina disciplina = disciplinaDao.findBySigla(sigla);
-            matricula.setDisciplina(disciplina);
+            Curso curso = disciplinaDao.findBySigla(sigla);
+            credenciamentoAluno.setCurso(curso);
 
             String ra_aluno = line.get("ra_aluno");
             Aluno aluno = alunoDao.getByRa(Integer.parseInt(ra_aluno));
@@ -75,17 +76,12 @@ public class MatriculaController {
 
                 emailDAO.salvar(email);
             }
-            matricula.setAluno(aluno);
+            credenciamentoAluno.setAluno(aluno);
 
-            String matricula_professor = line.get("matricula_professor");
-            Professor professor = professorDao.findByMatricula(matricula_professor);
-            matricula.setProfessor(professor);
-
-            matricula.setSemestre(Integer.parseInt(line.get("semestre")));
-            matricula.setAno(Integer.parseInt(line.get("ano")));
-            matricula.setPeriodo(Periodo.valueOf(line.get("periodo")));
-            matricula.setDataRealizacao(new Date());
-            matriculaDao.cadastrar(matricula);
+            credenciamentoAluno.setSemestre(Integer.parseInt(line.get("semestre")));
+            credenciamentoAluno.setPeriodo(Periodo.valueOf(line.get("periodo")));
+            credenciamentoAluno.setDataCredenciamento(new Date());
+            matriculaDao.cadastrar(credenciamentoAluno);
         }
         JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
     }
