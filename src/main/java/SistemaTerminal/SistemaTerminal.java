@@ -26,7 +26,7 @@ public class SistemaTerminal {
 //            email.setAssunto("Ummm é tardinha - OPEN GATES & VC");
 //            email.setHmtl("<h1>PORTOES ABERTOS PARA VOCÊ TOMAR AQUELE LANCHINHO DA TARDE...</h1>");
 //            email.setDestinatarios(emails);
-//            new EmailController().sendEmail(email);
+//            new EmailController().sendEmailComAnexo(email);
 //        } catch (EmailException e) {
 //            e.printStackTrace();
 //        }

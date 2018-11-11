@@ -1,6 +1,8 @@
 package SistemaDesktop.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Email {
 
@@ -9,6 +11,7 @@ public class Email {
     private String destinatario;
     private String assunto;
     private boolean enviado = false;
+    private List<String> anexos = new ArrayList<>();
     private Date dataEnvio;
 
     public String getAssunto() {
@@ -57,5 +60,13 @@ public class Email {
 
     public void setDataEnvio(Date dataEnvio) {
         this.dataEnvio = dataEnvio;
+    }
+
+    public List<String> getAnexos() {
+        return anexos;
+    }
+
+    public void setAnexos(List<String> anexos) {
+        this.anexos = anexos;
     }
 }
