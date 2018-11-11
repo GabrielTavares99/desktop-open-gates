@@ -14,7 +14,7 @@ public class EmailController {
     private final String senhaSistema = "opengates2018";
     private EmailDAO emailDAO = new EmailDAO();
 
-    public void sendEmailComAnexo(Email emailTo) {
+    public void sendEmail(Email emailTo) {
         try {
             MultiPartEmail email = new MultiPartEmail();
             if (emailTo.getAnexos().size() > 0) {
