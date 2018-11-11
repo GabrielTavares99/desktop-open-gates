@@ -2,26 +2,36 @@ package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Email;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class EmailDAO implements IDao {
 
+    private final String NOME_TABLE = "Email";
+    EmailAnexoDAO emailAnexoDAO = new EmailAnexoDAO();
     private Connection connection = Conexao.getInstance().getConnection();
 
     @Override
     public void salvar(Object o) {
         Email email = (Email) o;
-        String query = "INSERT INTO EnvioEmail(html, destinatario, assunto) VALUES(?,?,?)";
+        String query = String.format("INSERT INTO %s(html, destinatario, assunto) VALUES(?,?,?)", NOME_TABLE);
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, email.getHmtl());
             preparedStatement.setString(2, email.getDestinatario());
             preparedStatement.setString(3, email.getAssunto());
-            preparedStatement.execute();
+            int affectedRows = preparedStatement.executeUpdate();
+            long idEmail;
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    idEmail = generatedKeys.getLong(1);
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+            for (String anexo : email.getAnexos()) {
+                emailAnexoDAO.cadastrar(anexo, idEmail);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -31,14 +41,14 @@ public class EmailDAO implements IDao {
     @Override
     public void atualizar(Object o) {
         Email email = (Email) o;
-        String query = "UPDATE EnvioEmail\n" +
+        String query = String.format("UPDATE %s\n" +
                 "SET\n" +
                 "  html = ?,\n" +
                 "  destinatario = ?,\n" +
                 "  assunto = ?,\n" +
                 "  enviado = ?,\n" +
                 "  dataEnvio = ?\n" +
-                "WHERE id = ?;";
+                "WHERE id = ?;", NOME_TABLE);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, email.getHmtl());
@@ -55,7 +65,7 @@ public class EmailDAO implements IDao {
     }
 
     public Email getEmailNaoEnviado() {
-        String query = "SELECT * FROM EnvioEmail WHERE enviado = false";
+        String query = String.format("SELECT e.id,e.html,e.destinatario,e.assunto,e.enviado FROM %s e WHERE enviado = false", NOME_TABLE);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -66,6 +76,9 @@ public class EmailDAO implements IDao {
                 email.setDestinatario(resultSet.getString("destinatario"));
                 email.setAssunto(resultSet.getString("assunto"));
                 email.setEnviado(resultSet.getBoolean("enviado"));
+
+                List<String> anexosByEmailId = emailAnexoDAO.getAnexosByEmailId(email.getId());
+                email.setAnexos(anexosByEmailId);
                 return email;
             }
         } catch (SQLException e) {

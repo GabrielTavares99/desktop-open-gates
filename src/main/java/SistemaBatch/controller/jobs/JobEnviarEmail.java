@@ -2,7 +2,6 @@ package SistemaBatch.controller.jobs;
 
 import SistemaBatch.controller.EmailController;
 import SistemaDesktop.model.Email;
-import org.apache.commons.mail.EmailException;
 
 import java.util.Date;
 
@@ -18,14 +17,10 @@ public class JobEnviarEmail extends Thread {
             Email emailNaoEnviado = emailController.getEmailNaoEnviado();
 
             if (emailNaoEnviado != null) {
-                try {
-                    emailController.sendEmail(emailNaoEnviado);
-                    emailNaoEnviado.setEnviado(true);
-                    emailNaoEnviado.setDataEnvio(new Date());
-                    emailController.update(emailNaoEnviado);
-                } catch (EmailException e) {
-                    e.printStackTrace();
-                }
+                emailController.sendEmail(emailNaoEnviado);
+                emailNaoEnviado.setEnviado(true);
+                emailNaoEnviado.setDataEnvio(new Date());
+                emailController.update(emailNaoEnviado);
             }
             System.out.println("FINALIZANDO JOB DE ENVIO DE EMAIL");
             try {

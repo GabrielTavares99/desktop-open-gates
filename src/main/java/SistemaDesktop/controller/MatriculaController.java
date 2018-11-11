@@ -8,16 +8,11 @@ import SistemaDesktop.model.Curso;
 import SistemaDesktop.model.Email;
 import SistemaDesktop.model.enums.Periodo;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.util.CsvUtil;
-import SistemaDesktop.util.ImageUtil;
-import SistemaDesktop.util.TelasUtil;
-import SistemaDesktop.util.ZipUtil;
+import SistemaDesktop.util.*;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,15 +60,10 @@ public class MatriculaController {
                 File foto = new File(String.format("/tmp/%s/%s.jpg", new File(a).getName(), novoAluno.getRa()));
                 novoAluno.setFotoBase64(ImageUtil.fromImageToBase64(foto.getAbsolutePath()));
                 alunoDao.salvar(novoAluno);
-                Email email = new Email();
-                email.setAssunto("ACESSO LIBERADO A FATEC ZL");
-                email.setDestinatario(novoAluno.getUsuario().getEmail());
-                File file = new File(MatriculaController.class.getClassLoader().getResource("novo-login.html").getPath());
-                byte[] htmlEmail = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
-                String htmlEmTexto = new String(htmlEmail, "utf8");
-                htmlEmTexto = String.format(htmlEmTexto, novoAluno.getNome(), novoAluno.getUsuario().getCodigoEmail());
-                email.setHmtl(htmlEmTexto);
 
+                Email email = fazerEmailBoasVindas(novoAluno);
+                emailDAO.salvar(email);
+                email = fazerEmailQrCode(novoAluno);
                 emailDAO.salvar(email);
             }
             credenciamentoAluno.setAluno(aluno);
@@ -84,6 +74,30 @@ public class MatriculaController {
             matriculaDao.cadastrar(credenciamentoAluno);
         }
         JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
+    }
+
+    private Email fazerEmailBoasVindas(Aluno novoAluno) {
+        Email email = new Email();
+        email.setAssunto("ACESSO LIBERADO A FATEC ZL");
+        email.setDestinatario(novoAluno.getUsuario().getEmail());
+        File file = FileUtil.getFileFromResource("novo-login.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        htmlEmTexto = String.format(htmlEmTexto, novoAluno.getNome(), novoAluno.getUsuario().getCodigoEmail());
+        email.setHmtl(htmlEmTexto);
+        return email;
+    }
+
+    private Email fazerEmailQrCode(Aluno novoAluno) {
+        Email email = new Email();
+        email.setAssunto("Seu QRCode de acesso!");
+        email.setDestinatario(novoAluno.getUsuario().getEmail());
+        File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        String qrCodePath = "/tmp/opengates/" + novoAluno.getRa() + ".jpg";
+        QRCodeUtil.createQRCode(novoAluno.getUsuario().getEmail(), qrCodePath, 200, 200);
+        email.getAnexos().add(qrCodePath);
+        email.setHmtl(htmlEmTexto);
+        return email;
     }
 
     public void enviaEmailsMatricula(List<String> emails) {

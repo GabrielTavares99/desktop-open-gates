@@ -4,8 +4,6 @@ import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Aluno;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
-import SistemaDesktop.view.telas.TelaLogin;
-import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 import SistemaTerminal.view.telas.TelaLeituraCarteirinha;
 
 public class SistemaTerminal {
@@ -18,7 +16,7 @@ public class SistemaTerminal {
         aluno.getUsuario().setEmail("adm");
         aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
         AlunoDAO.getInstance().salvar(aluno);
-        new Thread(() -> new TelaLogin()).start();
+//        new Thread(() -> new TelaLogin()).start();
         new Thread(() -> new TelaLeituraCarteirinha()).start();
 //        try {
 //            List<String> emails = new ArrayList<>();

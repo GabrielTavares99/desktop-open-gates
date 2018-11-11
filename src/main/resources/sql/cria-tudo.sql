@@ -12,6 +12,14 @@ CREATE TABLE Email(
   CONSTRAINT PK_EnvioEmail PRIMARY KEY (id)
 );
 
+CREATE TABLE EmailAnexo(
+  id int NOT NULL AUTO_INCREMENT,
+  caminhoAnexo VARCHAR (50),
+  emailId int,
+  FOREIGN KEY (emailId) REFERENCES Email(id),
+  CONSTRAINT PK_EmailAnexo PRIMARY KEY (id)
+);
+
 CREATE TABLE Cargo(
   id int NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(60),
