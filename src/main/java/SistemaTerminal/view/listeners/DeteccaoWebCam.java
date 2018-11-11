@@ -2,14 +2,14 @@ package SistemaTerminal.view.listeners;
 
 import SistemaDesktop.controller.dao.AlunoDAO;
 import SistemaDesktop.model.Aluno;
+import SistemaDesktop.util.CriptografiaUtil;
 import SistemaTerminal.model.Validacao;
 import SistemaTerminal.view.telas.TelaStatusValidacao;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-import java.util.Random;
 
-public class DeteccaoWebCam extends Thread {
+public class DeteccaoWebCam {
 
     private String codigoLido;
 
@@ -17,8 +17,8 @@ public class DeteccaoWebCam extends Thread {
         this.codigoLido = codigoLido;
     }
 
-    @Override
     public void run() {
+        System.out.println("VALIDACAO VALIDACAO VALIDACAO");
         AlunoDAO alunoDao = AlunoDAO.getInstance();
         Aluno byEmail = alunoDao.getByEmail(codigoLido);
         System.out.println(codigoLido);
@@ -31,15 +31,15 @@ public class DeteccaoWebCam extends Thread {
         } else
             validacao.setMensagem("ENTRADA NEGADA");
 
-        Random random = new Random();
-        String uuid = String.valueOf(random.nextInt() + System.currentTimeMillis());
-        TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao, uuid);
+        String uuid = String.valueOf(CriptografiaUtil.generateUUID());
+        validacao.setUuidImagem(uuid);
+        TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao);
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            FileUtils.deleteQuietly(new File("/tmp/"+uuid+".jpg"));
+            FileUtils.deleteQuietly(new File("/tmp/opengates/" + uuid + ".jpg"));
             telaStatusValidacao.dispose();
         }
     }

@@ -78,7 +78,8 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
 
             if (result != null) {
                 Result finalResult = result;
-                new DeteccaoWebCam(finalResult.getText()).start();
+                new DeteccaoWebCam(finalResult.getText()).run();
+                System.out.println("VALIDANDO");
             }
 
         } while (true);

@@ -12,7 +12,7 @@ public class EmailDAO implements IDao {
     private Connection connection = Conexao.getInstance().getConnection();
 
     @Override
-    public void salvar(Object o) {
+    public Email salvar(Object o) {
         Email email = (Email) o;
         String query = String.format("INSERT INTO %s(html, destinatario, assunto) VALUES(?,?,?)", NOME_TABLE);
         try {
@@ -21,10 +21,10 @@ public class EmailDAO implements IDao {
             preparedStatement.setString(2, email.getDestinatario());
             preparedStatement.setString(3, email.getAssunto());
             int affectedRows = preparedStatement.executeUpdate();
-            long idEmail;
+            int idEmail;
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    idEmail = generatedKeys.getLong(1);
+                    idEmail = generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("Creating user failed, no ID obtained.");
                 }
@@ -32,10 +32,12 @@ public class EmailDAO implements IDao {
             for (String anexo : email.getAnexos()) {
                 emailAnexoDAO.cadastrar(anexo, idEmail);
             }
+            email.setId(idEmail);
+            return email;
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
         }
+        return null;
     }
 
     @Override
@@ -64,6 +66,11 @@ public class EmailDAO implements IDao {
         }
     }
 
+    @Override
+    public Object getById(int id) {
+        return null;
+    }
+
     public Email getEmailNaoEnviado() {
         String query = String.format("SELECT e.id,e.html,e.destinatario,e.assunto,e.enviado FROM %s e WHERE enviado = false", NOME_TABLE);
         try {
@@ -89,6 +96,11 @@ public class EmailDAO implements IDao {
 
     @Override
     public List<Object> pegarTodos() {
+        return null;
+    }
+
+    @Override
+    public Email monstarObjetoFromResultSet(ResultSet resultSet) {
         return null;
     }
 }

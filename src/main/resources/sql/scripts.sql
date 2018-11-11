@@ -30,10 +30,35 @@ WHERE id = ?;
 DROP TABLE EnvioEmail;
 
 SELECT destinatario, assunto FROM EnvioEmail where enviado = true;
-ALTER TABLE EnvioEmail
-ADD dataEnvio DATETIME;
+ALTER TABLE Usuario
+ALTER COLUMN cpf VARCHAR(11);
+
 
 ALTER TABLE EnvioEmail RENAME TO Email;
 
 INSERT INTO EmailAnexo
 value (caminhoAnexo, emailId) VALUES (?,?);
+
+SELECT a.id,a.nome,a.fotoBase64,a.ra, FROM Aluno a  INNER JOIN on Usuario u a.usuarioId  = u.id WHERE u.email = ?;
+
+SELECT * FROM Usuario;
+describe Usuario;
+TRUNCATE Usuario;
+
+ALTER TABLE Aluno
+drop column fotoBase64;
+
+ALTER TABLE Usuario
+add fotoBase64 LONGTEXT;
+
+drop table Aluno;
+
+SELECT a.id,a.nome,a.fotoBase64,a.ra, a.usuarioId FROM Aluno a INNER JOIN Usuario u on a.usuarioId  = u.id WHERE u.email = 'adm';
+SELECT a.id,a.nome,a.fotoBase64,a.ra, a.usuarioId FROM Aluno a INNER JOIN Usuario u on a.usuarioId  = u.id WHERE u.email = 'adm';
+DESCRIBE Aluno;
+
+SELECT a.id,a.nome,a.fotoBase64,a.ra, a.usuarioId FROM Aluno a INNER JOIN Usuario u on a.usuarioId  = u.id WHERE u.email = 'weverson.t@gmail.com';
+
+SELECT * FROM Usuario;
+SELECT * from Aluno;
+delete from Usuario where email = 'weverson.t@gmail.com';

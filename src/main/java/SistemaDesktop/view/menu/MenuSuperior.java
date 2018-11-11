@@ -21,7 +21,7 @@ public class MenuSuperior extends JMenuBar {
         navegacao.add(itemMenuVoltarDashboard);
         navegacao.add(itemMenuSair);
         itemMenuVoltarDashboard.addActionListener(e -> {
-            new TelaDashboard().show();
+            new TelaDashboard();
             tela.dispose();
         });
         itemMenuSair.addActionListener(new LogoutListener(tela));

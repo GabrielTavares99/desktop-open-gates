@@ -25,7 +25,7 @@ public class LabelSaudacao extends LabelCustom {
         else
             saudacao = "Boa Noite, %s";
         Usuario usuario = TelasUtil.USUARIO_LOGADO;
-        Pessoa pessoa = null;
+        Pessoa pessoa;
         if (TipoUsuario.FUNCIONARIO.equals(usuario)) {
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             pessoa = funcionarioDAO.findByEmail(usuario.getEmail());

@@ -41,9 +41,10 @@ CREATE TABLE Curso(
 CREATE TABLE Aluno(
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(200),
-  fotoBase64 TEXT,
+  fotoBase64 LONGTEXT,
+  ra INT ,
   usuarioId INT,
-  FOREIGN KEY (usuarioId) REFERENCES Usuario(id)
+  FOREIGN KEY (usuarioId) REFERENCES Usuario(id),
   CONSTRAINT PK_Aluno PRIMARY KEY (id)
 );
 
@@ -65,7 +66,7 @@ CREATE TABLE Usuario(
   acessaSistema BOOL DEFAULT false,
   tipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
   codigoEmail varchar (10),
-  cpf INT(11) NOT NULL UNIQUE ,
+  cpf VARCHAR (11) NOT NULL UNIQUE ,
   CONSTRAINT PK_Usuario PRIMARY KEY (id)
 );
 
@@ -91,7 +92,7 @@ CREATE TABLE Validacao(
 );
 
 CREATE TABLE CredenciamentoAluno(
-    id int not null AUTO    _INCREMENT,
+    id int not null AUTO_INCREMENT,
     alunoId INT,
     cursoId INT,
     dataCredenciamento DATETIME,
@@ -102,3 +103,5 @@ CREATE TABLE CredenciamentoAluno(
     FOREIGN KEY (cursoId) REFERENCES Curso(id),
     CONSTRAINT PK_CredenciamentoAluno PRIMARY KEY (id)
 );
+
+INSERT INTO Aluno(nome, )

@@ -1,9 +1,5 @@
 package SistemaDesktop;
 
-import SistemaDesktop.controller.dao.AlunoDAO;
-import SistemaDesktop.model.Aluno;
-import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.view.telas.TelaMatricula;
 
 public class SistemaDesktop {
@@ -34,15 +30,6 @@ public class SistemaDesktop {
 //        new Thread(() -> new TelaLeituraCarteirinha()).start();
 //        new Thread(() -> new TelaMatricula()).start();
 
-
-        // TODO: 06/11/18 TEMPORÁRIO
-        Aluno aluno = new Aluno();
-        aluno.setUsuario(new Usuario());
-        aluno.getUsuario().setSenha(("123"));
-        aluno.setNome("SUPER ADM");
-        aluno.getUsuario().setEmail("adm");
-        aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
-        AlunoDAO.getInstance().salvar(aluno);
 //        new TelaLogin();
         new TelaMatricula();
 //        new TelaRelatorioEntradaSaida();

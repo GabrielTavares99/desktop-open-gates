@@ -4,7 +4,6 @@ import SistemaDesktop.controller.UsuarioController;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.view.paineis.PainelFormularioRedefinicaoSenha;
-import SistemaDesktop.view.telas.TelaLogin;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,10 +21,10 @@ public class AlterarSenhaListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String confirmacaoSenha = PainelFormularioRedefinicaoSenha.txtConfirmacaoSenhaNova.getText();
-        String novaSenha = PainelFormularioRedefinicaoSenha.txtSenhaNova.getText();
+        String confirmacaoSenha = String.valueOf(PainelFormularioRedefinicaoSenha.txtConfirmacaoSenhaNova.getPassword());
+        String novaSenha = String.valueOf(PainelFormularioRedefinicaoSenha.txtSenhaNova.getPassword());
         String codigoEmail = PainelFormularioRedefinicaoSenha.txtCodigoEmail.getText();
-        String senhaAtualText = PainelFormularioRedefinicaoSenha.txtSenhaAtual.getText();
+        String senhaAtualText = String.valueOf(PainelFormularioRedefinicaoSenha.txtSenhaAtual.getPassword());
 
         if ((novaSenha.equals(confirmacaoSenha) && codigoEmail.equals(usuario.getCodigoEmail())) ||
                 (novaSenha.equals(confirmacaoSenha) && CriptografiaUtil.gerarMD5(senhaAtualText).equals(usuario.getSenha()))) {

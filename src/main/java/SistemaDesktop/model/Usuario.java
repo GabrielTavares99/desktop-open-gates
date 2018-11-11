@@ -5,12 +5,14 @@ import SistemaDesktop.util.CriptografiaUtil;
 
 public class Usuario {
 
+    private int id;
     private String email;
     private String senha;
-    private boolean acessaSistema;
+    private boolean acessaSistema = true;
     private TipoUsuario tipoUsuario;
     private String codigoEmail;
     private String cpf;
+    private Pessoa pessoa;
 
     public String getCodigoEmail() {
         return codigoEmail;
@@ -57,11 +59,28 @@ public class Usuario {
         return senhaMd5.equals(this.getSenha());
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

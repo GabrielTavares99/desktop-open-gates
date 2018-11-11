@@ -3,6 +3,7 @@ package SistemaDesktop.util;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 public class CriptografiaUtil {
 
@@ -16,6 +17,17 @@ public class CriptografiaUtil {
             e.printStackTrace();
         }
         return texto;
+    }
+
+    public static String generateUUID() {
+        // Creating a random UUID (Universally unique identifier).
+        UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
+
+//        System.out.println("Random UUID String = " + randomUUIDString);
+//        System.out.println("UUID version       = " + uuid.version());
+//        System.out.println("UUID variant       = " + uuid.variant());
+        return randomUUIDString;
     }
 
 }

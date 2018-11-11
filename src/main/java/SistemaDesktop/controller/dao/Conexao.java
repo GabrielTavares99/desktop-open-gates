@@ -24,9 +24,7 @@ public class Conexao {
     public Connection getConnection() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            System.out.println("Classes MariaDB UP");
             connection = DriverManager.getConnection(URL_BD, USER_BD, SENHA_BD);
-            System.out.println("Banco de Dados UP");
             return connection;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

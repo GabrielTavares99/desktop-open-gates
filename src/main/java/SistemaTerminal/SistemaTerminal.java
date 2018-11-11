@@ -1,21 +1,17 @@
 package SistemaTerminal;
 
-import SistemaDesktop.controller.dao.AlunoDAO;
-import SistemaDesktop.model.Aluno;
-import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaTerminal.view.telas.TelaLeituraCarteirinha;
 
 public class SistemaTerminal {
     public static void main(String[] args) {
 
-        Aluno aluno = new Aluno();
-        aluno.setUsuario(new Usuario());
-        aluno.getUsuario().setSenha(("123"));
-        aluno.setNome("SUPER ADM");
-        aluno.getUsuario().setEmail("adm");
-        aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
-        AlunoDAO.getInstance().salvar(aluno);
+//        Aluno aluno = new Aluno();
+//        aluno.setUsuario(new Usuario());
+//        aluno.getUsuario().setSenha(("123"));
+//        aluno.setNome("SUPER ADM");
+//        aluno.getUsuario().setEmail("adm");
+//        aluno.getUsuario().setTipoUsuario(TipoUsuario.SECRETARIA);
+//        AlunoDAO.getInstance().salvar(aluno);
 //        new Thread(() -> new TelaLogin()).start();
         new Thread(() -> new TelaLeituraCarteirinha()).start();
 //        try {

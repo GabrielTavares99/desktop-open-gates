@@ -7,6 +7,7 @@ public class Validacao {
     private boolean permitida;
     private Pessoa pessoa;
     private String mensagem;
+    private String uuidImagem;
     private String imagemBase64;
 
     public String getImagemBase64() {
@@ -42,4 +43,11 @@ public class Validacao {
     }
 
 
+    public String getUuidImagem() {
+        return uuidImagem;
+    }
+
+    public void setUuidImagem(String uuidImagem) {
+        this.uuidImagem = uuidImagem;
+    }
 }
