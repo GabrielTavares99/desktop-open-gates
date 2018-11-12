@@ -81,7 +81,7 @@ public class UsuarioDAO implements IDao {
     }
 
     public Usuario getByEmail(String email) {
-        String query = "SELECT a.id,a.nome,a.fotoBase64,a.ra, u.acessaSistema,u.tipoUsuario,u.email, u.codigoEmail,u.senha, u.cpf  FROM Aluno a INNER JOIN Usuario u on a.usuarioId  = u.id WHERE u.email = ?";
+        String query = "SELECT * FROM Usuario WHERE email = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = getPreparedStatement(query);

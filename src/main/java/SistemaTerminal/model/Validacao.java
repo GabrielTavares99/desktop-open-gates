@@ -1,6 +1,11 @@
 package SistemaTerminal.model;
 
 import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.model.Usuario;
+import SistemaDesktop.model.enums.AcaoPortaria;
+import SistemaDesktop.util.CriptografiaUtil;
+
+import java.util.Date;
 
 public class Validacao {
 
@@ -9,6 +14,15 @@ public class Validacao {
     private String mensagem;
     private String uuidImagem;
     private String imagemBase64;
+    private AcaoPortaria acaoPortaria;
+    private Date data;
+
+    public Validacao() {
+        uuidImagem = String.valueOf(CriptografiaUtil.generateUUID());
+        pessoa = new Pessoa();
+        Usuario usuario = new Usuario();
+        pessoa.setUsuario(usuario);
+    }
 
     public String getImagemBase64() {
         return imagemBase64;
@@ -49,5 +63,21 @@ public class Validacao {
 
     public void setUuidImagem(String uuidImagem) {
         this.uuidImagem = uuidImagem;
+    }
+
+    public AcaoPortaria getAcaoPortaria() {
+        return acaoPortaria;
+    }
+
+    public void setAcaoPortaria(AcaoPortaria acaoPortaria) {
+        this.acaoPortaria = acaoPortaria;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 }

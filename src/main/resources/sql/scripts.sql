@@ -62,3 +62,8 @@ SELECT a.id,a.nome,a.fotoBase64,a.ra, a.usuarioId FROM Aluno a INNER JOIN Usuari
 SELECT * FROM Usuario;
 SELECT * from Aluno;
 delete from Usuario where email = 'weverson.t@gmail.com';
+
+INSERT INTO Validacao(usuarioId, acao, mensagem, permitida)
+VALUES ();
+
+SELECT acao from Validacao where usuarioId = ?;

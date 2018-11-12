@@ -2,7 +2,7 @@ package SistemaDesktop.model;
 
 public class Pessoa {
 
-    private int id;
+    private Integer id;
     private String nome;
     private String fotoBase64;
     private Usuario usuario;
@@ -32,11 +32,12 @@ public class Pessoa {
         this.fotoBase64 = fotoBase64;
     }
 
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

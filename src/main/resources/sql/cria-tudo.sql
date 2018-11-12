@@ -83,10 +83,11 @@ CREATE TABLE ArquivosMatricula(
 
 CREATE TABLE Validacao(
   id int not null AUTO_INCREMENT,
-  usuarioId INT,
+  usuarioId INT NULL,
   permitida BOOL default 0,
-  acao ENUM('ENTRADA', 'SAIDA'),
+  acao ENUM('ENTRADA', 'SAIDA','DESCONHECIDO'),
   mensagem VARCHAR (150),
+  data DATETIME,
   FOREIGN KEY (usuarioId) REFERENCES Usuario(id),
   CONSTRAINT PK_Validacao PRIMARY KEY (id)
 );

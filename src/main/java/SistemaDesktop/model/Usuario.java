@@ -5,7 +5,7 @@ import SistemaDesktop.util.CriptografiaUtil;
 
 public class Usuario {
 
-    private int id;
+    private Integer id;
     private String email;
     private String senha;
     private boolean acessaSistema = true;
@@ -59,15 +59,6 @@ public class Usuario {
         return senhaMd5.equals(this.getSenha());
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -82,5 +73,13 @@ public class Usuario {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
