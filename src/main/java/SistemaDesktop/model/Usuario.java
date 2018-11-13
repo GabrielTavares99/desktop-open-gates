@@ -9,6 +9,7 @@ public class Usuario {
     private String email;
     private String senha;
     private boolean acessaSistema = true;
+    private boolean ativo;
     private TipoUsuario tipoUsuario;
     private String codigoEmail;
     private String cpf;
@@ -81,5 +82,13 @@ public class Usuario {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

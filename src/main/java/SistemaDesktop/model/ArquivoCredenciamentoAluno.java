@@ -1,6 +1,6 @@
 package SistemaDesktop.model;
 
-public class ArquivosMatricula {
+public class ArquivoCredenciamentoAluno {
 
     private String nomeArquivoFotos;
     private String nomeArquivoCsv;

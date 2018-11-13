@@ -59,6 +59,7 @@ CREATE TABLE Funcionario(
   CONSTRAINT PK_Funcionario PRIMARY KEY (id)
 );
 
+
 CREATE TABLE Usuario(
   id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR (200),
@@ -67,19 +68,19 @@ CREATE TABLE Usuario(
   tipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
   codigoEmail varchar (10),
   cpf VARCHAR (11) NOT NULL UNIQUE ,
+  ativo BOOL default true,
   CONSTRAINT PK_Usuario PRIMARY KEY (id)
 );
 
-CREATE TABLE ArquivosMatricula(
+CREATE TABLE ArquivoCredenciamentoAluno(
   id INT NOT NULL AUTO_INCREMENT,
   nomeArquivoFotos VARCHAR(100) ,
   nomeArquivoCsv VARCHAR(100),
-  urlArquivoFotos VARCHAR(100),
-  urlCsv VARCHAR(100),
   numeroMatriculas int(4),
   quantidadeErros int (4),
   CONSTRAINT PK_ArquivosMatricula PRIMARY KEY (id)
 );
+
 
 CREATE TABLE Validacao(
   id int not null AUTO_INCREMENT,
@@ -91,7 +92,6 @@ CREATE TABLE Validacao(
   FOREIGN KEY (usuarioId) REFERENCES Usuario(id),
   CONSTRAINT PK_Validacao PRIMARY KEY (id)
 );
-
 CREATE TABLE CredenciamentoAluno(
     id int not null AUTO_INCREMENT,
     alunoId INT,

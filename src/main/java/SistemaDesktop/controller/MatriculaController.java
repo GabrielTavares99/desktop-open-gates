@@ -2,7 +2,7 @@ package SistemaDesktop.controller;
 
 import SistemaBatch.controller.EmailController;
 import SistemaDesktop.controller.dao.AlunoDAO;
-import SistemaDesktop.controller.dao.CredenciamentoAlunoDAO;
+import SistemaDesktop.controller.dao.ArquivoCredenciamentoAlunoDAO;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.model.Aluno;
@@ -24,12 +24,12 @@ public class MatriculaController {
 
     UsuarioDAO usuarioDao;
     AlunoDAO alunoDao;
-    CredenciamentoAlunoDAO credenciamentoAlunoDAO;
+    ArquivoCredenciamentoAlunoDAO arquivoCredenciamentoAlunoDAO;
 
     public MatriculaController() {
         usuarioDao = new UsuarioDAO();
         alunoDao = AlunoDAO.getInstance();
-        credenciamentoAlunoDAO = new CredenciamentoAlunoDAO();
+        arquivoCredenciamentoAlunoDAO = new ArquivoCredenciamentoAlunoDAO();
     }
 
 
@@ -68,7 +68,7 @@ public class MatriculaController {
             credenciamentoAluno.setSemestre(Integer.parseInt(linhaCsv.get("semestre")));
             credenciamentoAluno.setPeriodo(Periodo.valueOf(linhaCsv.get("periodo")));
             credenciamentoAluno.setDataCredenciamento(new Date());
-            credenciamentoAlunoDAO.cadastrar(credenciamentoAluno);
+            arquivoCredenciamentoAlunoDAO.cadastrar(credenciamentoAluno);
         }
         JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
     }
