@@ -45,12 +45,12 @@ public class ValidacaoDAO implements IDao {
     }
 
     public List<Validacao> getValidacoesByTipoUsuario(TipoUsuario tipoUsuario, Date dtInicial, Date dtFinal) {
-        //-- BUSCA POR TIPO USUÁRIO - DATA INICIAL/FINAL - LIMIT 20
+        //-- BUSCA POR TIPO USUÁRIO - DATA INICIAL/FINAL - LIMIT 50
         List<Validacao> validacaos = new ArrayList<>();
         String query = "SELECT v.acao, v.data, v.permitida, u.tipoUsuario, u.cpf, u.email FROM Validacao v " +
                 "inner join Usuario u on v.usuarioId = u.id  " +
                 "WHERE u.tipoUsuario = ? AND data between ? and ? " +
-                "ORDER BY id desc LIMIT 20";
+                "ORDER BY v.id desc LIMIT 50";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setString(1, String.valueOf(tipoUsuario));
@@ -72,7 +72,7 @@ public class ValidacaoDAO implements IDao {
         String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario FROM Validacao v " +
                 "inner join Usuario u on v.usuarioId = u.id  " +
                 "WHERE data between date(?) and date(?) " +
-                "ORDER BY v.id desc LIMIT 20";
+                "ORDER BY v.id desc LIMIT 50";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setDate(1, DataUtil.dataUtilToSqlDate(dtInicial));
