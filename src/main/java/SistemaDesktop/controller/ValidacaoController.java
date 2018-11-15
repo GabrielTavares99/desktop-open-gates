@@ -1,6 +1,9 @@
 package SistemaDesktop.controller;
 
+import SistemaDesktop.controller.dao.FuncionarioDAO;
+import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.controller.dao.ValidacaoDAO;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaTerminal.model.Validacao;
 
@@ -12,11 +15,14 @@ public class ValidacaoController {
     ValidacaoDAO validacaoDAO = new ValidacaoDAO();
 
     public List<Validacao> pegarValidacoes(String termoBusca, TipoUsuario usuario, Date dtInicio, Date dtFinal) {
+        List<Validacao> validacaos;
         if (usuario == null) {
-            return validacaoDAO.getValidacoes(dtInicio, dtFinal);
+            validacaos = validacaoDAO.getValidacoes(dtInicio, dtFinal);
         } else {
-            return validacaoDAO.getValidacoesByTipoUsuario(usuario, dtInicio, dtFinal);
+            validacaos = validacaoDAO.getValidacoesByTipoUsuario(usuario, dtInicio, dtFinal);
         }
+
+        return validacaos;
     }
 
 }

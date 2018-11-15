@@ -14,6 +14,7 @@ public class RelatorioValidacoesColetivaModel implements TableModel {
 
     public RelatorioValidacoesColetivaModel() {
         cabecalho.add("CPF");
+        cabecalho.add("Nome");
         cabecalho.add("Ação");
         cabecalho.add("Data");
         cabecalho.add("Valido");
@@ -32,7 +33,6 @@ public class RelatorioValidacoesColetivaModel implements TableModel {
 
     @Override
     public String getColumnName(int columnIndex) {
-
         return cabecalho.get(columnIndex);
     }
 
@@ -46,14 +46,16 @@ public class RelatorioValidacoesColetivaModel implements TableModel {
         Validacao validacao = validacaos.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return validacao.getPessoa().getUsuario().getCpf();
+                return validacao.getPessoa().getNome();
             case 1:
-                return validacao.getAcaoPortaria().toString();
+                return validacao.getPessoa().getUsuario().getCpf();
             case 2:
-                return validacao.getData().toString();
+                return validacao.getAcaoPortaria().toString();
             case 3:
-                return validacao.isPermitida();
+                return validacao.getData().toString();
             case 4:
+                return validacao.isPermitida();
+            case 5:
                 return validacao.getPessoa().getUsuario().getTipoUsuario().toString();
         }
         return null;
@@ -61,7 +63,7 @@ public class RelatorioValidacoesColetivaModel implements TableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        switch (columnIndex){
+        switch (columnIndex) {
             case 0:
                 return String.class;
             case 1:
@@ -69,8 +71,10 @@ public class RelatorioValidacoesColetivaModel implements TableModel {
             case 2:
                 return String.class;
             case 3:
-                return Boolean.class;
+                return String.class;
             case 4:
+                return Boolean.class;
+            case 5:
                 return String.class;
         }
         return null;

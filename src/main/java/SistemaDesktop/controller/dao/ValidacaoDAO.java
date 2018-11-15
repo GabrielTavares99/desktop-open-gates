@@ -47,10 +47,12 @@ public class ValidacaoDAO implements IDao {
     public List<Validacao> getValidacoesByTipoUsuario(TipoUsuario tipoUsuario, Date dtInicial, Date dtFinal) {
         //-- BUSCA POR TIPO USUÁRIO - DATA INICIAL/FINAL - LIMIT 50
         List<Validacao> validacaos = new ArrayList<>();
-        String query = "SELECT v.acao, v.data, v.permitida, u.tipoUsuario, u.cpf, u.email FROM Validacao v " +
-                "inner join Usuario u on v.usuarioId = u.id  " +
-                "WHERE u.tipoUsuario = ? AND data between ? and ? " +
-                "ORDER BY v.id desc LIMIT 50";
+        String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v " +
+                " inner join Usuario u on v.usuarioId = u.id  " +
+                "                left JOIN Funcionario f ON u.id = f.usuarioId" +
+                "                left JOIN Aluno a ON u.id = a.usuarioId" +
+                " WHERE u.tipoUsuario = ? AND data between ? and ? " +
+                " ORDER BY v.id desc LIMIT 50";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setString(1, String.valueOf(tipoUsuario));
@@ -69,10 +71,12 @@ public class ValidacaoDAO implements IDao {
     public List<Validacao> getValidacoes(Date dtInicial, Date dtFinal) {
         //-- BUSCA DATA INICIAL/FINAL - LIMIT 20
         List<Validacao> validacaos = new ArrayList<>();
-        String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario FROM Validacao v " +
+        String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v " +
                 "inner join Usuario u on v.usuarioId = u.id  " +
-                "WHERE data between date(?) and date(?) " +
-                "ORDER BY v.id desc LIMIT 50";
+                "                left JOIN Funcionario f ON u.id = f.usuarioId" +
+                "                left JOIN Aluno a ON u.id = a.usuarioId " +
+                " WHERE data between date(?) and date(?) " +
+                " ORDER BY v.id desc LIMIT 50";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setDate(1, DataUtil.dataUtilToSqlDate(dtInicial));
@@ -147,6 +151,7 @@ public class ValidacaoDAO implements IDao {
         validacao.setAcaoPortaria(AcaoPortaria.valueOf(resultSet.getString("acao")));
         validacao.setData(resultSet.getDate("data"));
         validacao.setPermitida(resultSet.getBoolean("permitida"));
+        validacao.getPessoa().setNome(resultSet.getString("nome"));
         validacao.getPessoa().getUsuario().setTipoUsuario(TipoUsuario.valueOf(resultSet.getString("tipoUsuario")));
         return validacao;
     }
