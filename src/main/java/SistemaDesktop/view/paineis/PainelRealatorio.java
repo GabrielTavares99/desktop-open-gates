@@ -15,14 +15,14 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Vector;
 
-public class PainelRealatorioColetivo extends PainelCustom {
+public class PainelRealatorio extends PainelCustom {
 
     JTextField txtPesquisa = new JTextField();
     JDateChooser dtInicial = new JDateChooser(DataUtil.subtractDays(new Date(), 30), "dd/MM/yyyy"); //Aqui ele seta a data de hoje no formato dd/mm/aaaa
     JDateChooser dtFinal = new JDateChooser(new Date(), "dd/MM/yyyy"); //Aqui ele seta a data de hoje no formato dd/mm/aaaa
     private int margemEsquerda = 20;
 
-    public PainelRealatorioColetivo() {
+    public PainelRealatorio() {
         super();
         setBackground(Color.orange);
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
@@ -48,7 +48,7 @@ public class PainelRealatorioColetivo extends PainelCustom {
         dtFinal.setBounds(480, 30, 100, 35);
         add(dtFinal);
 
-//        ModeloTabelaEntradaSaidaIndividual modeloTabelaEntradaSaidaIndividual = new ModeloTabelaEntradaSaidaIndividual();
+
         Usuario usuarioLogado = TelasUtil.USUARIO_LOGADO;
         ActionListener listener;
         JTable table;

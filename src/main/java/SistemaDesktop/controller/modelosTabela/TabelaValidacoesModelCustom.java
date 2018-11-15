@@ -1,4 +1,4 @@
-package SistemaDesktop.controller;
+package SistemaDesktop.controller.modelosTabela;
 
 import SistemaTerminal.model.Validacao;
 

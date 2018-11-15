@@ -173,7 +173,7 @@ public class ValidacaoDAO implements IDao {
 
     public List<Validacao> getValidacoesIndividuais(Usuario usuario, Date date, Date date1) {
 
-        String query = "SELECT v.acao, v.data, v.permitida FROM Validacao v where id = ?";
+        String query = "SELECT v.acao, v.data, v.permitida FROM Validacao v where usuarioId = ?";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = getPreparedStatement(query);

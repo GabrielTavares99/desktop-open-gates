@@ -1,10 +1,8 @@
 package SistemaDesktop.view.telas;
 
-import SistemaDesktop.model.Usuario;
-import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
-import SistemaDesktop.view.paineis.PainelRealatorioColetivo;
+import SistemaDesktop.view.paineis.PainelRealatorio;
 
 import javax.swing.*;
 
@@ -18,7 +16,7 @@ public class TelaRelatorioEntradaSaida extends TelaCustom {
         super();
         add(lblTitulo);
 
-        add(new PainelRealatorioColetivo());
+        add(new PainelRealatorio());
 
         setJMenuBar(new MenuSuperior(tela));
         setVisible(true);

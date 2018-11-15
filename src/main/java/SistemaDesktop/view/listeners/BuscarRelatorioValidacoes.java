@@ -1,6 +1,6 @@
 package SistemaDesktop.view.listeners;
 
-import SistemaDesktop.controller.TabelaValidacoesModelCustom;
+import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaDesktop.controller.ValidacaoController;
 import SistemaDesktop.model.RelatorioValidacoesColetivaModel;
 import SistemaDesktop.model.RelatorioValidacoesIndividualModel;

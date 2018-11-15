@@ -1,6 +1,6 @@
 package SistemaDesktop.model;
 
-import SistemaDesktop.controller.TabelaValidacoesModelCustom;
+import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaTerminal.model.Validacao;
 
 import javax.swing.event.TableModelListener;
