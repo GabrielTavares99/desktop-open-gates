@@ -65,7 +65,7 @@ CREATE TABLE Usuario(
   email VARCHAR (200),
   senha VARCHAR (200),
   acessaSistema BOOL DEFAULT false,
-  tipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
+  comboTipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
   codigoEmail varchar (10),
   cpf VARCHAR (11) NOT NULL UNIQUE ,
   ativo BOOL default true,

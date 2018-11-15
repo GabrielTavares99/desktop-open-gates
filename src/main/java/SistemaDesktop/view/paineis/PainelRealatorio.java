@@ -43,7 +43,7 @@ public class PainelRealatorio extends PainelCustom {
         JTable table;
         JScrollPane scrollPane = new JScrollPane();
 
-        if (TipoUsuario.SECRETARIA.equals(usuarioLogado.getTipoUsuario())) {
+        if (TipoUsuario.SECRETARIA.equals(usuarioLogado.getTipoUsuario()) || TipoUsuario.ADMINISTRADOR.equals(usuarioLogado.getTipoUsuario())) {
 
             Vector<String> tiposUsuario = new Vector<>();
             tiposUsuario.add("TODOS");

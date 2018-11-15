@@ -72,18 +72,18 @@ select * from Validacao where data = date(11-11-2018);
 select * from Validacao where date('2018-11-11');
 
 
-SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario FROM Validacao v
+SELECT u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario FROM Validacao v
 inner join Usuario u on v.usuarioId = u.id
 WHERE data between date('2017-01-01') and date('2019-01-01')
 ORDER BY v.id desc LIMIT 20;
 
-SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v
+SELECT u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v
                 inner join Usuario u on v.usuarioId = u.id
                 left JOIN Funcionario f ON u.id = f.usuarioId
                 left JOIN Aluno a ON u.id = a.usuarioId
                 WHERE v.data between date('2017-01-01') and date('2019-01-01')
                 ORDER BY v.id desc LIMIT 50;
-u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v inner join Usuario u on v.usuarioId = u.id                  left JOIN Funcionario f ON u.id = f.usuarioId                left JOIN Aluno a ON u.id = a.usuarioIdWHERE data between date(?) and date(?) ORDER BY v.id desc LIMIT 50
+u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v inner join Usuario u on v.usuarioId = u.id                  left JOIN Funcionario f ON u.id = f.usuarioId                left JOIN Aluno a ON u.id = a.usuarioIdWHERE data between date(?) and date(?) ORDER BY v.id desc LIMIT 50
 
 
 select concat('a', COALESCE(null ,'') ,'sd');

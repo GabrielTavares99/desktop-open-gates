@@ -45,7 +45,7 @@ public class ValidacaoDAO implements IDao {
         return null;
     }
 
-    public List<Validacao> getValidacoesByTipoUsuario(TipoUsuario tipoUsuario, Date dtInicial, Date dtFinal) {
+    public List<Validacao> getValidacoesByTipoUsuario(String tipoUsuario, Date dtInicial, Date dtFinal) {
         //-- BUSCA POR TIPO USUÁRIO - DATA INICIAL/FINAL - LIMIT 50
         List<Validacao> validacaos = new ArrayList<>();
         String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v " +

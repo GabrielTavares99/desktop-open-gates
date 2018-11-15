@@ -4,6 +4,7 @@ import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaTerminal.model.Validacao;
 
 import javax.swing.event.TableModelListener;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,8 @@ public class RelatorioValidacoesColetivaModel extends TabelaValidacoesModelCusto
     List<String> cabecalho = new ArrayList<>();
 
     public RelatorioValidacoesColetivaModel() {
-        cabecalho.add("CPF");
         cabecalho.add("Nome");
+        cabecalho.add("CPF");
         cabecalho.add("Ação");
         cabecalho.add("Data");
         cabecalho.add("Valido");
@@ -70,7 +71,7 @@ public class RelatorioValidacoesColetivaModel extends TabelaValidacoesModelCusto
             case 2:
                 return String.class;
             case 3:
-                return String.class;
+                return Data.class;
             case 4:
                 return Boolean.class;
             case 5:

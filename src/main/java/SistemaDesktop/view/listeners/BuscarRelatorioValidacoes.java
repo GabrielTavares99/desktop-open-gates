@@ -1,11 +1,10 @@
 package SistemaDesktop.view.listeners;
 
-import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaDesktop.controller.ValidacaoController;
+import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaDesktop.model.RelatorioValidacoesColetivaModel;
 import SistemaDesktop.model.RelatorioValidacoesIndividualModel;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.TelasUtil;
 import SistemaTerminal.model.Validacao;
 import com.toedter.calendar.JDateChooser;
@@ -24,15 +23,15 @@ public class BuscarRelatorioValidacoes implements ActionListener {
     private JDateChooser dtFinal;
     private TabelaValidacoesModelCustom tableModel;
     private JTable table;
-    private JComboBox tipoUsuario;
+    private JComboBox comboTipoUsuario;
 
-    public BuscarRelatorioValidacoes(JTable table, RelatorioValidacoesColetivaModel tableModel, JTextField txtPesquisa, JDateChooser dtInicial, JDateChooser dtFinal, JComboBox tipoUsuario) {
+    public BuscarRelatorioValidacoes(JTable table, RelatorioValidacoesColetivaModel tableModel, JTextField txtPesquisa, JDateChooser dtInicial, JDateChooser dtFinal, JComboBox comboTipoUsuario) {
         this.table = table;
         this.tableModel = tableModel;
         this.txtPesquisa = txtPesquisa;
         this.dtInicial = dtInicial;
         this.dtFinal = dtFinal;
-        this.tipoUsuario = tipoUsuario;
+        this.comboTipoUsuario = comboTipoUsuario;
         List<Validacao> validacaos = validacaoController.pegarValidacoes("", null, dtInicial.getDate(), dtFinal.getDate());
         atualizarTabela(validacaos);
     }
@@ -54,12 +53,16 @@ public class BuscarRelatorioValidacoes implements ActionListener {
         Date dataInicial = dtInicial.getDate();
         Date dataFinal = dtFinal.getDate();
 
-        if (tipoUsuario == null) {
+        if (comboTipoUsuario == null) {
             Usuario usuarioLogado = TelasUtil.USUARIO_LOGADO;
             validacaos = validacaoController.pegarValidacoesIndividuais(usuarioLogado, dataInicial, dataFinal);
-        } else if (!tipoUsuario.getSelectedItem().toString().equals("TODOS")) {
-            TipoUsuario tipo;
-            tipo = TipoUsuario.valueOf(this.tipoUsuario.getSelectedItem().toString());
+        } else {
+            String tipo;
+            if (comboTipoUsuario.getSelectedItem().toString().equalsIgnoreCase("TODOS"))
+                tipo = null;
+            else
+                tipo = comboTipoUsuario.getSelectedItem().toString();
+
             validacaos = validacaoController.pegarValidacoes(termo, tipo, dataInicial, dataFinal);
         }
         System.out.println(validacaos.size());

@@ -2,7 +2,6 @@ package SistemaDesktop.controller;
 
 import SistemaDesktop.controller.dao.ValidacaoDAO;
 import SistemaDesktop.model.Usuario;
-import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaTerminal.model.Validacao;
 
 import java.util.Date;
@@ -12,7 +11,7 @@ public class ValidacaoController {
 
     ValidacaoDAO validacaoDAO = new ValidacaoDAO();
 
-    public List<Validacao> pegarValidacoes(String termoBusca, TipoUsuario usuario, Date dtInicio, Date dtFinal) {
+    public List<Validacao> pegarValidacoes(String termoBusca, String usuario, Date dtInicio, Date dtFinal) {
         List<Validacao> validacaos;
         if (usuario == null) {
             validacaos = validacaoDAO.getValidacoes(dtInicio, dtFinal);
