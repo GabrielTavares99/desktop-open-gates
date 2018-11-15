@@ -24,7 +24,7 @@ public class Conexao {
     public Connection getConnection() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            connection = DriverManager.getConnection(URL_BD, USER_BD, SENHA_BD);
+            connection = DriverManager.getConnection(STRING_CONEXAO, USER_BD, SENHA_BD);
             return connection;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

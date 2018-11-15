@@ -1,9 +1,11 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.controller.dao.CargoDAO;
 import SistemaDesktop.controller.modelosTabela.ModeloTabelaCadastroFuncionario;
 import SistemaDesktop.model.Cargo;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.camposTexto.CampoTextoCadastro;
+import SistemaDesktop.view.combobox.ComboBoxCargoModel;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.GroupForm;
@@ -58,12 +60,12 @@ public class TelaCadastroFuncionario extends TelaCustom {
         pnCadastro.setLayout(null);
         pnCadastro.setBounds(50, 260, 700, 150);
 
-//        Object[] cargos = new Object[];
-//        for (Cargo cargo: new CargoDAO().pegarTodos()) {
-//            cargo
-//        }
-//        Cargo[] cargos = new Cargo[]{(Cargo)};
-//        comboBoxCargo = new JComboBox<>(new ComboBoxModel(cargos));
+        List<Object> cargos = new CargoDAO().pegarTodos();
+        Cargo[] c = new Cargo[1];
+        for (int i = 0; i < cargos.size(); i++) {
+            c[i] = (Cargo) cargos.get(i);
+        }
+        comboBoxCargo = new JComboBox<>(new ComboBoxCargoModel(c));
 
         GroupForm e = new GroupForm(lblNome, txtNome);
         e.setBounds(10, 10, 200, 60);

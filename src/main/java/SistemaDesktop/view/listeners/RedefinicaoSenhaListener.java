@@ -77,7 +77,6 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
                 frame.dispose();
             }
         } else {
-
             new TelaRedefinicaoSenha(tipoRedefinicaoSenha, TelasUtil.USUARIO_LOGADO);
             frame.dispose();
         }

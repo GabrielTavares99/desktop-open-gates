@@ -4,10 +4,10 @@ import SistemaDesktop.model.Cargo;
 
 import javax.swing.*;
 
-public class ComboBoxModel extends DefaultComboBoxModel<Cargo> {
+public class ComboBoxCargoModel extends DefaultComboBoxModel<Cargo> {
 
 
-    public ComboBoxModel(Cargo[] items) {
+    public ComboBoxCargoModel(Cargo[] items) {
         super(items);
     }
 

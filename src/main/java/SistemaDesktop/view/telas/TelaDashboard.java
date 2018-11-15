@@ -39,7 +39,7 @@ public class TelaDashboard extends TelaCustom {
         NUMERO_FUNCOES = 3;
         PAINEL_FUNCAO_WIDTH = (600 / NUMERO_FUNCOES);
 
-        if (TipoUsuario.SECRETARIA.equals(TelasUtil.USUARIO_LOGADO.getTipoUsuario())) {
+        if (TipoUsuario.SECRETARIA.equals(TelasUtil.USUARIO_LOGADO.getTipoUsuario()) || TipoUsuario.ADMINISTRADOR.equals(TelasUtil.USUARIO_LOGADO.getTipoUsuario())) {
             listaMenuFeature.add(new PainelMatriculaDashboard());
             listaMenuFeature.add(new PainelCadastroFuncionarioDashboard());
         }
