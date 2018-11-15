@@ -1,6 +1,7 @@
 package SistemaDesktop.view.listeners;
 
 import SistemaDesktop.controller.UsuarioController;
+import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.view.paineis.PainelFormularioRedefinicaoSenha;
@@ -12,6 +13,7 @@ import java.awt.event.ActionListener;
 public class AlterarSenhaListener implements ActionListener {
 
     private Usuario usuario;
+    private UsuarioController usuarioController = new UsuarioController();
 
     public AlterarSenhaListener(Usuario usuario) {
         this.usuario = usuario;
@@ -28,8 +30,7 @@ public class AlterarSenhaListener implements ActionListener {
 
         if ((novaSenha.equals(confirmacaoSenha) && codigoEmail.equals(usuario.getCodigoEmail())) ||
                 (novaSenha.equals(confirmacaoSenha) && CriptografiaUtil.gerarMD5(senhaAtualText).equals(usuario.getSenha()))) {
-            UsuarioController usuarioController = new UsuarioController();
-            usuarioController.alterarSenha(usuario, novaSenha);
+            usuario = usuarioController.alterarSenha(usuario, novaSenha);
             JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
         }
 

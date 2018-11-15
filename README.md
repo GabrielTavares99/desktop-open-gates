@@ -1,6 +1,6 @@
 # open-gates
 
-new File(SistemaTerminal.class.getClassLoader().getResource("oi.html").getPath()).exists()
+new File(PrincipalTerminal.class.getClassLoader().getResource("oi.html").getPath()).exists()
 
 
 Date(util) --> Date(SqlDate)

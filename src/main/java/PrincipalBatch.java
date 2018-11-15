@@ -1,8 +1,6 @@
-package SistemaBatch;
-
 import SistemaBatch.controller.jobs.JobEnviarEmail;
 
-public class SistemaBatch {
+public class PrincipalBatch {
     public static void main(String[] args) {
         new JobEnviarEmail().start();
 //        Email email = new Email();

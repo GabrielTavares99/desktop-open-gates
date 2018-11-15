@@ -1,11 +1,9 @@
-package SistemaDesktop;
-
 import SistemaDesktop.view.telas.TelaCadastroFuncionario;
 import SistemaDesktop.view.telas.TelaLogin;
 import SistemaDesktop.view.telas.TelaMatricula;
 import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
-public class SistemaDesktop {
+public class PrincipalDesktop {
     public static void main(String[] args) {
 //        new TelaLogin();
 //        new TelaDashboard();

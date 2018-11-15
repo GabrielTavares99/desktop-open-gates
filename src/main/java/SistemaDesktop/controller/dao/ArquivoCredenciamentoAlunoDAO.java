@@ -32,6 +32,11 @@ public class ArquivoCredenciamentoAlunoDAO implements IDao {
     }
 
     @Override
+    public Object update(Object o) {
+        return null;
+    }
+
+    @Override
     public void atualizar(Object o) {
 
     }

@@ -55,6 +55,35 @@ public class UsuarioDAO implements IDao {
     }
 
     @Override
+    public Object update(Object o) {
+        Usuario usuario = (Usuario) o;
+        String query = "UPDATE Usuario" +
+                " SET email = ?," +
+                " senha = ?," +
+                " acessaSistema = ?," +
+                " tipoUsuario = ?," +
+                " codigoEmail = ?," +
+                " cpf = ?," +
+                " fotoBase64 = ?" +
+                " WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = getPreparedStatement(query);
+            preparedStatement.setString(1, usuario.getEmail());
+            preparedStatement.setString(2, usuario.getSenha());
+            preparedStatement.setBoolean(3, usuario.isAcessaSistema());
+            preparedStatement.setString(4, usuario.getTipoUsuario().toString());
+            preparedStatement.setString(5, usuario.getCodigoEmail());
+            preparedStatement.setString(6, usuario.getCpf());
+            preparedStatement.setString(7, usuario.getPessoa().getFotoBase64());
+            preparedStatement.setInt(8, usuario.getId());
+            int i = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuario;
+    }
+
+    @Override
     public void atualizar(Object o) {
 
     }

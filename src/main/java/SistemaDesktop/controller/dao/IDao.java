@@ -7,6 +7,7 @@ import java.util.List;
 public interface IDao {
 
     Object salvar(Object o);
+    Object update(Object o);
 
     void atualizar(Object o);
 

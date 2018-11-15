@@ -1,12 +1,11 @@
 package SistemaBatch.controller;
 
+import SistemaDesktop.config.Constantes;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import org.apache.commons.mail.MultiPartEmail;
 
 import java.io.File;
-
-import static SistemaDesktop.config.Constantes.OPEN_GATES;
 
 public class EmailController {
 
@@ -33,7 +32,7 @@ public class EmailController {
             email.addTo(emailTo.getDestinatario());
             email.addTo(emailSistema);
 
-            email.setFrom(emailSistema, OPEN_GATES);
+            email.setFrom(emailSistema, Constantes.OPEN_GATES);
 
             email.setSubject(emailTo.getAssunto());
 

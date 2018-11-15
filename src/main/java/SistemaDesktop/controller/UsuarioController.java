@@ -1,7 +1,7 @@
 package SistemaDesktop.controller;
 
-import SistemaDesktop.model.Usuario;
 import SistemaDesktop.controller.dao.UsuarioDAO;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
 
 public class UsuarioController {
@@ -22,12 +22,11 @@ public class UsuarioController {
         return usuarioDao.getByEmail(email);
     }
 
-    public void alterarSenha(Usuario usuario, String novaSenha) {
-
+    public Usuario alterarSenha(Usuario usuario, String novaSenha) {
         String novaSenhaCriptografada = CriptografiaUtil.gerarMD5(novaSenha);
         usuario.setSenha(novaSenhaCriptografada);
         usuario.setCodigoEmail(null);
-
-
+        usuario = (Usuario) usuarioDao.update(usuario);
+        return usuario;
     }
 }

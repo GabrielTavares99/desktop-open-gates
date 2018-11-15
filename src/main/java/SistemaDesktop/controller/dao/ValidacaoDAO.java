@@ -7,19 +7,14 @@ import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.DataUtil;
 import SistemaTerminal.model.Validacao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.List;
 
 import static SistemaDesktop.util.DAOUtil.executeSelectQuery;
 import static SistemaDesktop.util.DAOUtil.getPreparedStatement;
 
 public class ValidacaoDAO implements IDao {
-
 
     @Override
     public Object salvar(Object o) {
@@ -42,6 +37,11 @@ public class ValidacaoDAO implements IDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Object update(Object o) {
         return null;
     }
 
@@ -147,13 +147,22 @@ public class ValidacaoDAO implements IDao {
 
     @Override
     public Validacao monstarObjetoFromResultSet(ResultSet resultSet) throws SQLException {
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int qtd = metaData.getColumnCount();
+        Set<String> colunas = new HashSet<>();
+        for (int i = 1; i <= qtd; i++) {
+            colunas.add(metaData.getColumnName(i));
+        }
         Validacao validacao = new Validacao();
-        validacao.getPessoa().getUsuario().setCpf(resultSet.getString("cpf"));
+        if (colunas.contains("cpf"))
+            validacao.getPessoa().getUsuario().setCpf(resultSet.getString("cpf"));
         validacao.setAcaoPortaria(AcaoPortaria.valueOf(resultSet.getString("acao")));
         validacao.setData(resultSet.getDate("data"));
         validacao.setPermitida(resultSet.getBoolean("permitida"));
-        validacao.getPessoa().setNome(resultSet.getString("nome"));
-        validacao.getPessoa().getUsuario().setTipoUsuario(TipoUsuario.valueOf(resultSet.getString("tipoUsuario")));
+        if (colunas.contains("nome"))
+            validacao.getPessoa().setNome(resultSet.getString("nome"));
+        if (colunas.contains("tipoUsuario"))
+            validacao.getPessoa().getUsuario().setTipoUsuario(TipoUsuario.valueOf(resultSet.getString("tipoUsuario")));
         return validacao;
     }
 

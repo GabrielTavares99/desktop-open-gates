@@ -41,6 +41,11 @@ public class EmailDAO implements IDao {
     }
 
     @Override
+    public Object update(Object o) {
+        return null;
+    }
+
+    @Override
     public void atualizar(Object o) {
         Email email = (Email) o;
         String query = String.format("UPDATE %s\n" +
