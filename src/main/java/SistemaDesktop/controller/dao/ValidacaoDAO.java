@@ -121,7 +121,7 @@ public class ValidacaoDAO implements IDao {
     }
 
     public AcaoPortaria getUltimaAcaoByUsuarioId(int usuarioId) {
-        String query = "SELECT acao from Validacao where usuarioId = ? ORDER BY id DESC LIMIT 1";
+        String query = "SELECT acao from Validacao where usuarioId = ? ORDER BY id DESC";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setInt(1, usuarioId);
