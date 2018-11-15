@@ -44,4 +44,8 @@ dependencies {
     compile 'com.google.zxing:zxingorg:3.3.3'
 
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+
+    // https://mvnrepository.com/artifact/com.toedter/jcalendar
+    compile group: 'com.toedter', name: 'jcalendar', version: '1.4'
+
 }

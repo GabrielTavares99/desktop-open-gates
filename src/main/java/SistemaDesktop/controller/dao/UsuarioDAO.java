@@ -61,7 +61,7 @@ public class UsuarioDAO implements IDao {
 
     @Override
     public Usuario getById(int id) {
-        String query = "SELECT * FROM Usuario WHERE id = ?";
+        String query = "SELECT * FROM Usuario WHERE id = ? LIMIT 1";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setInt(1, id);

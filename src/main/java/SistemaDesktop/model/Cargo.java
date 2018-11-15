@@ -10,6 +10,8 @@ public class Cargo {
         this.descricao = descricao;
     }
 
+    public Cargo(){}
+
     public int getId() {
         return id;
     }

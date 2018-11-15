@@ -68,7 +68,7 @@ public class MatriculaController {
             credenciamentoAluno.setSemestre(Integer.parseInt(linhaCsv.get("semestre")));
             credenciamentoAluno.setPeriodo(Periodo.valueOf(linhaCsv.get("periodo")));
             credenciamentoAluno.setDataCredenciamento(new Date());
-            arquivoCredenciamentoAlunoDAO.cadastrar(credenciamentoAluno);
+            arquivoCredenciamentoAlunoDAO.salvar(credenciamentoAluno);
         }
         JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
     }

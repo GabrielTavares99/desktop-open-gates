@@ -1,6 +1,8 @@
 package SistemaDesktop;
 
+import SistemaDesktop.view.telas.TelaCadastroFuncionario;
 import SistemaDesktop.view.telas.TelaMatricula;
+import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
 public class SistemaDesktop {
     public static void main(String[] args) {
@@ -31,7 +33,8 @@ public class SistemaDesktop {
 //        new Thread(() -> new TelaMatricula()).start();
 
 //        new TelaLogin();
-        new TelaMatricula();
-//        new TelaRelatorioEntradaSaida();
+//        new TelaMatricula();
+        new TelaRelatorioEntradaSaida();
+//        new TelaCadastroFuncionario();
     }
 }

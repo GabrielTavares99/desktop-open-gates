@@ -67,3 +67,12 @@ INSERT INTO Validacao(usuarioId, acao, mensagem, permitida)
 VALUES ();
 
 SELECT acao from Validacao where usuarioId = ?;
+
+select * from Validacao where data = date(11-11-2018);
+select * from Validacao where date('2018-11-11');
+
+
+SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario FROM Validacao v
+inner join Usuario u on v.usuarioId = u.id
+WHERE data between date('2017-01-01') and date('2019-01-01')
+ORDER BY v.id desc LIMIT 20;
