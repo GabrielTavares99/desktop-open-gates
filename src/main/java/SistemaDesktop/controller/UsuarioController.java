@@ -1,8 +1,16 @@
 package SistemaDesktop.controller;
 
+import SistemaBatch.controller.EmailController;
+import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.controller.dao.UsuarioDAO;
+import SistemaDesktop.model.Aluno;
+import SistemaDesktop.model.Email;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
+import SistemaDesktop.util.FileUtil;
+import SistemaDesktop.util.QRCodeUtil;
+
+import java.io.File;
 
 public class UsuarioController {
     private UsuarioDAO usuarioDao;
@@ -28,5 +36,26 @@ public class UsuarioController {
         usuario.setCodigoEmail(null);
         usuario = (Usuario) usuarioDao.update(usuario);
         return usuario;
+    }
+
+    private Email fazerEmailEsqueciSenha(Usuario usuario) {
+        Email email = new Email();
+        email.setAssunto("Redefinição de Senha");
+        email.setDestinatario(usuario.getEmail());
+        File file = FileUtil.getFileFromResource("html/esqueci-senha.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        String novoCodigoEmail = CriptografiaUtil.generateUUID().substring(0,5);
+        usuario.setCodigoEmail(novoCodigoEmail);
+        htmlEmTexto = String.format(htmlEmTexto, novoCodigoEmail);
+        email.setHmtl(htmlEmTexto);
+        return email;
+    }
+    public void enviarCodigoEsqueciSenha(Usuario usuario) {
+
+        Email emailEsqueciSenha = fazerEmailEsqueciSenha(usuario);
+        EmailDAO emailDAO = new EmailDAO();
+        emailDAO.salvar(emailEsqueciSenha);
+        usuarioDao.update(usuario);
+
     }
 }

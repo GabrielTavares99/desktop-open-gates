@@ -1,5 +1,8 @@
 # open-gates
 
+
+- Criar variável de ambiente com a senha do seu banco local
+
 new File(PrincipalTerminal.class.getClassLoader().getResource("oi.html").getPath()).exists()
 
 
