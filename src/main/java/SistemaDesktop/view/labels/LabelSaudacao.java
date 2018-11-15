@@ -25,7 +25,7 @@ public class LabelSaudacao extends LabelCustom {
         else
             saudacao = "Boa Noite, %s";
         Usuario usuario = TelasUtil.USUARIO_LOGADO;
-        Pessoa pessoa;
+        Pessoa pessoa = new Pessoa();
         if (TipoUsuario.FUNCIONARIO.equals(usuario)) {
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             pessoa = funcionarioDAO.findByEmail(usuario.getEmail());
@@ -35,7 +35,8 @@ public class LabelSaudacao extends LabelCustom {
         } else {
             // TODO: 08/11/18 ARRUMAR ISSO - BUSCAR PELO PERFIL SECRETARIA - AINDA NÃO TEM NADA
             AlunoDAO alunoDao = AlunoDAO.getInstance();
-            pessoa = alunoDao.getByEmail(usuario.getEmail());
+            pessoa.setNome("TÁ-NULO");
+            TelasUtil.USUARIO_LOGADO.setPessoa(pessoa);
         }
         saudacao = String.format(saudacao, pessoa.getNome().split(" ")[0]);
         setText(String.format(saudacao, nome));

@@ -1,5 +1,7 @@
 package SistemaDesktop.view.telas;
 
+import SistemaDesktop.model.Usuario;
+import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.PainelRealatorioColetivo;

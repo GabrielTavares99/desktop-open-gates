@@ -15,6 +15,10 @@ public class Usuario {
     private String cpf;
     private Pessoa pessoa;
 
+    public Usuario(){
+        pessoa = new Pessoa();
+    }
+
     public String getCodigoEmail() {
         return codigoEmail;
     }

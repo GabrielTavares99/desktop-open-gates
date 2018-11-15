@@ -1,7 +1,5 @@
 package SistemaDesktop.controller;
 
-import SistemaDesktop.controller.dao.FuncionarioDAO;
-import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.controller.dao.ValidacaoDAO;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
@@ -25,4 +23,8 @@ public class ValidacaoController {
         return validacaos;
     }
 
+    public List<Validacao> pegarValidacoesIndividuais(Usuario usuario, Date date, Date date1) {
+        List<Validacao> validacoes = validacaoDAO.getValidacoesIndividuais(usuario, date, date1);
+        return validacoes;
+    }
 }

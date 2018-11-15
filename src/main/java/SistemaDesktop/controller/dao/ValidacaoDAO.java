@@ -1,6 +1,7 @@
 package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.AcaoPortaria;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.DataUtil;
@@ -159,5 +160,24 @@ public class ValidacaoDAO implements IDao {
     @Override
     public List<Object> pegarTodos() {
         return null;
+    }
+
+    public List<Validacao> getValidacoesIndividuais(Usuario usuario, Date date, Date date1) {
+
+        String query = "SELECT v.acao, v.data, v.permitida FROM Validacao v where id = ?";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = getPreparedStatement(query);
+            preparedStatement.setInt(1, usuario.getId());
+            ResultSet resultSet = executeSelectQuery(preparedStatement);
+            List<Validacao> validacaos = new ArrayList<>();
+            while (resultSet.next())
+                validacaos.add(monstarObjetoFromResultSet(resultSet));
+            return validacaos;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 }

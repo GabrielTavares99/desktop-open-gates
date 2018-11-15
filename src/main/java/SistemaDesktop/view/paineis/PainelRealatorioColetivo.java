@@ -1,22 +1,26 @@
 package SistemaDesktop.view.paineis;
 
-import SistemaDesktop.controller.modelosTabela.ModeloTabelaEntradaSaidaIndividual;
 import SistemaDesktop.model.RelatorioValidacoesColetivaModel;
+import SistemaDesktop.model.RelatorioValidacoesIndividualModel;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
+import SistemaDesktop.util.DataUtil;
+import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.listeners.BuscarRelatorioValidacoes;
 import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Vector;
 
 public class PainelRealatorioColetivo extends PainelCustom {
 
     JTextField txtPesquisa = new JTextField();
-    private int margemEsquerda = 20;
-    JDateChooser dtInicial = new JDateChooser(new Date(), "dd/MM/yyyy"); //Aqui ele seta a data de hoje no formato dd/mm/aaaa
+    JDateChooser dtInicial = new JDateChooser(DataUtil.subtractDays(new Date(), 30), "dd/MM/yyyy"); //Aqui ele seta a data de hoje no formato dd/mm/aaaa
     JDateChooser dtFinal = new JDateChooser(new Date(), "dd/MM/yyyy"); //Aqui ele seta a data de hoje no formato dd/mm/aaaa
+    private int margemEsquerda = 20;
 
     public PainelRealatorioColetivo() {
         super();
@@ -45,16 +49,27 @@ public class PainelRealatorioColetivo extends PainelCustom {
         add(dtFinal);
 
 //        ModeloTabelaEntradaSaidaIndividual modeloTabelaEntradaSaidaIndividual = new ModeloTabelaEntradaSaidaIndividual();
-        RelatorioValidacoesColetivaModel relatorioValidacoesColetivaModel = new RelatorioValidacoesColetivaModel();
-        JTable table = new JTable(relatorioValidacoesColetivaModel);
+        Usuario usuarioLogado = TelasUtil.USUARIO_LOGADO;
+        ActionListener listener;
+        JTable table;
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.getViewport().add(table);
+
+        if (TipoUsuario.SECRETARIA.equals(usuarioLogado.getTipoUsuario())) {
+            RelatorioValidacoesColetivaModel relatorioValidacoesColetivaModel = new RelatorioValidacoesColetivaModel();
+            table = new JTable(relatorioValidacoesColetivaModel);
+            scrollPane.getViewport().add(table);
+            listener = new BuscarRelatorioValidacoes(table, relatorioValidacoesColetivaModel, txtPesquisa, dtInicial, dtFinal, objectJComboBox);
+        } else {
+            RelatorioValidacoesIndividualModel relatorioValidacoesIndividualModel = new RelatorioValidacoesIndividualModel();
+            table = new JTable(relatorioValidacoesIndividualModel);
+            scrollPane.getViewport().add(table);
+            listener = new BuscarRelatorioValidacoes(table, relatorioValidacoesIndividualModel, dtInicial, dtFinal);
+        }
         scrollPane.setBounds(margemEsquerda, 90, getWidth() - margemEsquerda * 2, 250);
         add(scrollPane);
 
-        BuscarRelatorioValidacoes listener = new BuscarRelatorioValidacoes(table,relatorioValidacoesColetivaModel, txtPesquisa, dtInicial, dtFinal, objectJComboBox);
         JButton pesquisar = new JButton("PESQUISAR");
-        pesquisar.setBounds(590,30,90,35);
+        pesquisar.setBounds(590, 30, 90, 35);
         pesquisar.addActionListener(listener);
         add(pesquisar);
 

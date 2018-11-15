@@ -17,6 +17,7 @@ public class EmailController {
     public void sendEmail(Email emailTo) {
         try {
             MultiPartEmail email = new MultiPartEmail();
+            email.setDebug(true);
             if (emailTo.getAnexos().size() > 0) {
                 for (String anexoPath : emailTo.getAnexos()) {
                     email.attach(new File(anexoPath));
