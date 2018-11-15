@@ -1,10 +1,8 @@
 package SistemaDesktop.view.telas;
 
-import SistemaDesktop.controller.dao.CargoDAO;
 import SistemaDesktop.controller.modelosTabela.ModeloTabelaCadastroFuncionario;
 import SistemaDesktop.model.Cargo;
 import SistemaDesktop.util.TelasUtil;
-import SistemaDesktop.view.ComboBoxModel;
 import SistemaDesktop.view.camposTexto.CampoTextoCadastro;
 import SistemaDesktop.view.labels.LabelTitulo;
 import SistemaDesktop.view.menu.MenuSuperior;
@@ -13,7 +11,6 @@ import SistemaDesktop.view.paineis.GroupForm;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static SistemaDesktop.config.Constantes.TITULO_TELA_CADASTRO_FUNCIONARIO;

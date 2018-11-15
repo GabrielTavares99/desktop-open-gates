@@ -1,4 +1,4 @@
-package SistemaDesktop.view;
+package SistemaDesktop.view.combobox;
 
 import SistemaDesktop.model.Cargo;
 

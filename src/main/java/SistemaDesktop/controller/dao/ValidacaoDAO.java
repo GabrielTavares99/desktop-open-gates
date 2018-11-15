@@ -171,13 +171,15 @@ public class ValidacaoDAO implements IDao {
         return null;
     }
 
-    public List<Validacao> getValidacoesIndividuais(Usuario usuario, Date date, Date date1) {
+    public List<Validacao> getValidacoesIndividuais(Usuario usuario, Date dataInicial, Date dataFinal) {
 
-        String query = "SELECT v.acao, v.data, v.permitida FROM Validacao v where usuarioId = ?";
+        String query = "SELECT v.acao, v.data, v.permitida FROM Validacao v where usuarioId = ? and data between date(?) and date(?)";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = getPreparedStatement(query);
             preparedStatement.setInt(1, usuario.getId());
+            preparedStatement.setDate(2, DataUtil.dataUtilToSqlDate(dataInicial));
+            preparedStatement.setDate(3, DataUtil.dataUtilToSqlDate(dataFinal));
             ResultSet resultSet = executeSelectQuery(preparedStatement);
             List<Validacao> validacaos = new ArrayList<>();
             while (resultSet.next())

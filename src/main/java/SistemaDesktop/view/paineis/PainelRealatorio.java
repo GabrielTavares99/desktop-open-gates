@@ -29,18 +29,8 @@ public class PainelRealatorio extends PainelCustom {
         setBounds(10, 80, 700, 400);
         setLayout(null);
 
-        txtPesquisa.setBounds(margemEsquerda, 30, 200, 35);
-        add(txtPesquisa);
-
-        Vector<String> tiposUsuario = new Vector<>();
-        tiposUsuario.add("TODOS");
-        tiposUsuario.add(TipoUsuario.VISITANTE.toString());
-        tiposUsuario.add(TipoUsuario.ALUNO.toString());
-        tiposUsuario.add(TipoUsuario.FUNCIONARIO.toString());
-        tiposUsuario.add(TipoUsuario.SECRETARIA.toString());
-        JComboBox<String> objectJComboBox = new JComboBox(new DefaultComboBoxModel<>(tiposUsuario));
-        objectJComboBox.setBounds(230, 30, 120, 35);
-        add(objectJComboBox);
+//        txtPesquisa.setBounds(margemEsquerda, 30, 200, 35);
+//        add(txtPesquisa);
 
         dtInicial.setBounds(370, 30, 100, 35);
         add(dtInicial);
@@ -48,13 +38,23 @@ public class PainelRealatorio extends PainelCustom {
         dtFinal.setBounds(480, 30, 100, 35);
         add(dtFinal);
 
-
         Usuario usuarioLogado = TelasUtil.USUARIO_LOGADO;
         ActionListener listener;
         JTable table;
         JScrollPane scrollPane = new JScrollPane();
 
         if (TipoUsuario.SECRETARIA.equals(usuarioLogado.getTipoUsuario())) {
+
+            Vector<String> tiposUsuario = new Vector<>();
+            tiposUsuario.add("TODOS");
+            tiposUsuario.add(TipoUsuario.VISITANTE.toString());
+            tiposUsuario.add(TipoUsuario.ALUNO.toString());
+            tiposUsuario.add(TipoUsuario.FUNCIONARIO.toString());
+            tiposUsuario.add(TipoUsuario.SECRETARIA.toString());
+            JComboBox<String> objectJComboBox = new JComboBox(new DefaultComboBoxModel<>(tiposUsuario));
+            objectJComboBox.setBounds(230, 30, 120, 35);
+            add(objectJComboBox);
+
             RelatorioValidacoesColetivaModel relatorioValidacoesColetivaModel = new RelatorioValidacoesColetivaModel();
             table = new JTable(relatorioValidacoesColetivaModel);
             scrollPane.getViewport().add(table);
