@@ -64,9 +64,9 @@ public class MatriculaController {
                     novoAluno.setFotoBase64(ImageUtil.fromImageToBase64(foto.getAbsolutePath()));
                     alunoDao.salvar(novoAluno);
 
-                    Email email = fazerEmailBoasVindas(novoAluno);
+                    Email email = EmailController.fazerEmailBoasVindas(novoAluno);
                     emailDAO.salvar(email);
-                    email = fazerEmailQrCode(novoAluno, foto.getAbsolutePath());
+                    email = EmailController.fazerEmailQrCode(novoAluno, foto.getAbsolutePath());
                     emailDAO.salvar(email);
                     novos++;
                 }
@@ -83,29 +83,6 @@ public class MatriculaController {
         return true;
     }
 
-    private Email fazerEmailBoasVindas(Aluno novoAluno) {
-        Email email = new Email();
-        email.setAssunto("ACESSO LIBERADO A FATEC ZL");
-        email.setDestinatario(novoAluno.getUsuario().getEmail());
-        File file = FileUtil.getFileFromResource("novo-login.html");
-        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
-        htmlEmTexto = String.format(htmlEmTexto, novoAluno.getNome(), novoAluno.getUsuario().getCodigoEmail());
-        email.setHmtl(htmlEmTexto);
-        return email;
-    }
-
-    private Email fazerEmailQrCode(Aluno novoAluno, String fotoPath) {
-        Email email = new Email();
-        email.setAssunto("Seu QRCode de acesso!");
-        email.setDestinatario(novoAluno.getUsuario().getEmail());
-        File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
-        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
-        String qrCodePath = fotoPath;
-        QRCodeUtil.createQRCode(novoAluno.getUsuario().getEmail(), qrCodePath, 200, 200);
-        email.getAnexos().add(qrCodePath);
-        email.setHmtl(htmlEmTexto);
-        return email;
-    }
 
     public void enviaEmailsMatricula(List<String> emails) {
 

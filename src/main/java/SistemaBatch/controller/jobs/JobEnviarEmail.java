@@ -24,7 +24,7 @@ public class JobEnviarEmail extends Thread {
             }
             System.out.println("FINALIZANDO JOB DE ENVIO DE EMAIL");
             try {
-                Thread.sleep(MINUTO / 2);
+                Thread.sleep(MINUTO / 4);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
