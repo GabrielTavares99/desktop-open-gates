@@ -14,10 +14,13 @@ public class FuncionarioDAO implements IDao {
     @Override
     public Funcionario salvar(Object o) {
         Funcionario funcionario = (Funcionario) o;
-        String query = "INSERT INTO (nome, fotoBase64, usuarioId, cargoId)\n" +
+        String query = "INSERT INTO Funcionario(nome, fotoBase64, usuarioId, cargoId) " +
                 "VALUES (?,?,?,?)";
 
         try {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            funcionario.setUsuario(usuarioDAO.salvar(funcionario.getUsuario()));
+
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setString(1, funcionario.getNome());
             preparedStatement.setString(2, funcionario.getFotoBase64());

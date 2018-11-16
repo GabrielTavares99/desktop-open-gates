@@ -7,6 +7,7 @@ import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.camposTexto.CampoTextoCadastro;
 import SistemaDesktop.view.combobox.ComboBoxCargoModel;
 import SistemaDesktop.view.labels.LabelTitulo;
+import SistemaDesktop.view.listeners.CadastrarFuncionario;
 import SistemaDesktop.view.menu.MenuSuperior;
 import SistemaDesktop.view.paineis.GroupForm;
 
@@ -26,17 +27,15 @@ public class TelaCadastroFuncionario extends TelaCustom {
 
     JLabel lblFuncionario = new JLabel();
     JLabel lblNome = new JLabel("NOME");
-    JTextField txtNome = new CampoTextoCadastro();
-    JLabel lblMatricula = new JLabel("MATRICULA");
-    JTextField txtMatricula = new CampoTextoCadastro();
+    public static JTextField txtNome = new CampoTextoCadastro();
     JLabel lblCPF = new JLabel("CPF");
-    JTextField txtCPF = new CampoTextoCadastro();
+    public static JTextField txtCPF = new CampoTextoCadastro();
     JLabel lblCargo = new JLabel("CARGO");
     JLabel lblEmail = new JLabel("EMAIL");
-    JTextField txtEmail = new CampoTextoCadastro();
+    public static JTextField txtEmail = new CampoTextoCadastro();
     JLabel lblAtivo = new JLabel("Ativo");
-    JRadioButton checkbox = new JRadioButton();
-    JComboBox<Cargo> comboBoxCargo;
+    public static JRadioButton rdAtivo = new JRadioButton();
+    public static JComboBox<Cargo> comboBoxCargo;
     List<JComponent> components = new ArrayList<>();
 
     public TelaCadastroFuncionario() {
@@ -75,10 +74,6 @@ public class TelaCadastroFuncionario extends TelaCustom {
         e2.setBounds(230, 10, 200, 60);
         components.add(e2);
 
-        GroupForm e1 = new GroupForm(lblMatricula, txtMatricula);
-        e1.setBounds(10, 80, 200, 60);
-        components.add(e1);
-
         GroupForm e4 = new GroupForm(lblCPF, txtCPF);
         e4.setBounds(230, 80, 200, 60);
         components.add(e4);
@@ -87,8 +82,8 @@ public class TelaCadastroFuncionario extends TelaCustom {
         e3.setBounds(450, 10, 200, 60);
         components.add(e3);
 
-        checkbox.setLabel("ATIVO");
-        GroupForm e5 = new GroupForm(lblAtivo, checkbox);
+        rdAtivo.setLabel("ATIVO");
+        GroupForm e5 = new GroupForm(lblAtivo, rdAtivo);
         e5.setBounds(450, 80, 200, 60);
         components.add(e5);
         TelasUtil.addItensToTela(pnCadastro, components);
@@ -101,6 +96,8 @@ public class TelaCadastroFuncionario extends TelaCustom {
         JButton btnCancelar = new JButton("Cancelar");
         JButton btnSalvar = new JButton("SALVAR");
         pnBotoes.add(btnCancelar);
+
+        btnSalvar.addActionListener(new CadastrarFuncionario());
         pnBotoes.add(btnSalvar);
 
         add(pnBotoes);
