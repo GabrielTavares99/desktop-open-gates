@@ -87,3 +87,5 @@ u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario, u.id, CONCAT(COALESCE(a.
 
 
 select concat('a', COALESCE(null ,'') ,'sd');
+
+DROP TABLE ArquivoCredenciamentoAluno;

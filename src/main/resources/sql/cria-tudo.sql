@@ -76,8 +76,10 @@ CREATE TABLE ArquivoCredenciamentoAluno(
   id INT NOT NULL AUTO_INCREMENT,
   nomeArquivoFotos VARCHAR(100) ,
   nomeArquivoCsv VARCHAR(100),
-  numeroMatriculas int(4),
+  qtdCredenciamentosFeitos int(4),
+  qtdTotal int(4),
   quantidadeErros int (4),
+  data DATETIME,
   CONSTRAINT PK_ArquivosMatricula PRIMARY KEY (id)
 );
 
