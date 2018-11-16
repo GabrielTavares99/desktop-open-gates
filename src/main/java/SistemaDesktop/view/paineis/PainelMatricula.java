@@ -64,14 +64,14 @@ public class PainelMatricula extends PainelCustom {
         lblDescricaoArquivoCSV.setHorizontalAlignment(SwingConstants.CENTER);
         pnArquivoCSV.add(lblDescricaoArquivoCSV);
 
-        btnBuscarArquivoCSV.setBounds(2, 199, 196, 28);;
+        btnBuscarArquivoCSV.setBounds(2, 199, 196, 28);
         pnArquivoCSV.add(btnBuscarArquivoCSV);
 
         btnFazerMatricula.setBounds(500, 200, 150, 30);
 
         btnBuscarArquivoCSV.addActionListener(new SelecionarCsvListener(tela));
         btnBuscarArquivoFotos.addActionListener(new SelecionarArquivoFotos(tela));
-        btnFazerMatricula.addActionListener(new FazerMatriculaListener(tela));
+        btnFazerMatricula.addActionListener(new FazerMatriculaListener());
 
         add(btnFazerMatricula);
         add(pnArquivoCSV);

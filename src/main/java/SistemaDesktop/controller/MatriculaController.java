@@ -33,7 +33,10 @@ public class MatriculaController {
     }
 
 
-    public void fazerMatricula() {
+    public boolean fazerMatricula() {
+        if (TelasUtil.URL_CSV == null || TelasUtil.URL_ARQUIVO_FOTOS == null)
+            return false;
+
         ArquivoCredenciamentoAluno arquivoCredenciamentoAluno = new ArquivoCredenciamentoAluno();
         // TODO: 15/11/18 FAZER VALIDAÇÃO DOS PATHS
         List<Map<String, String>> linhasCSV = CsvUtil.lerCSV(TelasUtil.URL_CSV);
@@ -75,7 +78,9 @@ public class MatriculaController {
         arquivoCredenciamentoAluno.setQtdTotal(linhasCSV.size());
         arquivoCredenciamentoAluno.setQuantidadeErros(erro);
         arquivoCredenciamentoAlunoDAO.salvar(arquivoCredenciamentoAluno);
+
         JOptionPane.showMessageDialog(null, "CADASTRO FEITO COM SUCESSO!");
+        return true;
     }
 
     private Email fazerEmailBoasVindas(Aluno novoAluno) {

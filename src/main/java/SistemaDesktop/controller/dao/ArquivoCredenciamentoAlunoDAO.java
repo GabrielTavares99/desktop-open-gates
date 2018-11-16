@@ -64,8 +64,8 @@ public class ArquivoCredenciamentoAlunoDAO implements IDao {
     }
 
 
-    public List<ArquivoCredenciamentoAluno> pegarTodosImp(){
-        String query = "SELECT * FROM ArquivoCredenciamentoAluno";
+    public List<ArquivoCredenciamentoAluno> pegarTodosImp() {
+        String query = "SELECT * FROM ArquivoCredenciamentoAluno ORDER BY id DESC";
         List<ArquivoCredenciamentoAluno> arquivosCredenciamentoAluno = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
