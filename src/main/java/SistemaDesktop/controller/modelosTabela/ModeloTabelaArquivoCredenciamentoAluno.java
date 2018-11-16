@@ -10,6 +10,17 @@ import java.util.List;
 public class ModeloTabelaArquivoCredenciamentoAluno extends AbstractTableModel {
 
     private List<String> cabecalho = new ArrayList<>();
+    private List<ArquivoCredenciamentoAluno> arquivosCredenciamento = new ArrayList<>();
+
+    public ModeloTabelaArquivoCredenciamentoAluno() {
+        cabecalho.add("#");
+        cabecalho.add("Arquivo Fotos");
+        cabecalho.add("Arquivo CSV");
+        cabecalho.add("Qtd Novos");
+        cabecalho.add("Qtd Total");
+        cabecalho.add("Qtd Erros");
+        cabecalho.add("Data");
+    }
 
     public List<ArquivoCredenciamentoAluno> getArquivosCredenciamento() {
         return arquivosCredenciamento;
@@ -19,32 +30,23 @@ public class ModeloTabelaArquivoCredenciamentoAluno extends AbstractTableModel {
         this.arquivosCredenciamento = arquivosCredenciamento;
     }
 
-    private List<ArquivoCredenciamentoAluno> arquivosCredenciamento = new ArrayList<>();
-
-    public ModeloTabelaArquivoCredenciamentoAluno() {
-        cabecalho.add("Arquivo Fotos");
-        cabecalho.add("Arquivo CSV");
-        cabecalho.add("Qtd Novos");
-        cabecalho.add("Qtd Total");
-        cabecalho.add("Qtd Erros");
-        cabecalho.add("Data");
-    }
-
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         ArquivoCredenciamentoAluno arquivoCredenciamentoAluno = arquivosCredenciamento.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return arquivoCredenciamentoAluno.getNomeArquivoFotos();
+                return rowIndex;
             case 1:
-                return arquivoCredenciamentoAluno.getNomeArquivoCsv();
+                return arquivoCredenciamentoAluno.getNomeArquivoFotos();
             case 2:
-                return arquivoCredenciamentoAluno.getQtdCredenciamentosFeitos();
+                return arquivoCredenciamentoAluno.getNomeArquivoCsv();
             case 3:
-                return arquivoCredenciamentoAluno.getQtdTotal();
+                return arquivoCredenciamentoAluno.getQtdCredenciamentosFeitos();
             case 4:
-                return arquivoCredenciamentoAluno.getQuantidadeErros();
+                return arquivoCredenciamentoAluno.getQtdTotal();
             case 5:
+                return arquivoCredenciamentoAluno.getQuantidadeErros();
+            case 6:
                 return arquivoCredenciamentoAluno.getData();
         }
         return null;
@@ -54,16 +56,18 @@ public class ModeloTabelaArquivoCredenciamentoAluno extends AbstractTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return String.class;
+                return Integer.class;
             case 1:
                 return String.class;
             case 2:
-                return Integer.class;
+                return String.class;
             case 3:
                 return Integer.class;
             case 4:
                 return Integer.class;
             case 5:
+                return Integer.class;
+            case 6:
                 return Date.class;
         }
         return String.class;
