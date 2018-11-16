@@ -1,24 +1,47 @@
-package SistemaDesktop.model;
+package SistemaDesktop.controller.modelosTabela;
 
 import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaTerminal.model.Validacao;
 
 import javax.swing.event.TableModelListener;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RelatorioValidacoesColetivaModel extends TabelaValidacoesModelCustom {
+public class RelatorioValidacoesIndividualModel extends TabelaValidacoesModelCustom {
 
     List<String> cabecalho = new ArrayList<>();
 
-    public RelatorioValidacoesColetivaModel() {
-        cabecalho.add("Nome");
-        cabecalho.add("CPF");
+    public RelatorioValidacoesIndividualModel() {
         cabecalho.add("Ação");
         cabecalho.add("Data");
         cabecalho.add("Valido");
-        cabecalho.add("Tipo Usuario");
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Validacao validacao = getValidacaos().get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return validacao.getAcaoPortaria().toString();
+            case 1:
+                return validacao.getData().toString();
+            case 2:
+                return validacao.isPermitida();
+        }
+        return null;
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return String.class;
+            case 1:
+                return String.class;
+            case 2:
+                return Boolean.class;
+        }
+        return null;
     }
 
     @Override
@@ -39,45 +62,6 @@ public class RelatorioValidacoesColetivaModel extends TabelaValidacoesModelCusto
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
-    }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        Validacao validacao = getValidacaos().get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return validacao.getPessoa().getNome();
-            case 1:
-                return validacao.getPessoa().getUsuario().getCpf();
-            case 2:
-                return validacao.getAcaoPortaria().toString();
-            case 3:
-                return validacao.getData().toString();
-            case 4:
-                return validacao.isPermitida();
-            case 5:
-                return validacao.getPessoa().getUsuario().getTipoUsuario().toString();
-        }
-        return null;
-    }
-
-    @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        switch (columnIndex) {
-            case 0:
-                return String.class;
-            case 1:
-                return String.class;
-            case 2:
-                return String.class;
-            case 3:
-                return Data.class;
-            case 4:
-                return Boolean.class;
-            case 5:
-                return String.class;
-        }
-        return null;
     }
 
     @Override

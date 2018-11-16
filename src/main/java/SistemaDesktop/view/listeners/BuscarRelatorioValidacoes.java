@@ -2,8 +2,8 @@ package SistemaDesktop.view.listeners;
 
 import SistemaDesktop.controller.ValidacaoController;
 import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
-import SistemaDesktop.model.RelatorioValidacoesColetivaModel;
-import SistemaDesktop.model.RelatorioValidacoesIndividualModel;
+import SistemaDesktop.controller.modelosTabela.RelatorioValidacoesColetivaModel;
+import SistemaDesktop.controller.modelosTabela.RelatorioValidacoesIndividualModel;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.TelasUtil;
 import SistemaTerminal.model.Validacao;

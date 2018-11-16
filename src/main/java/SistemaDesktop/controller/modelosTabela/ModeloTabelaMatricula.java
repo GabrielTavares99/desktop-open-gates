@@ -20,7 +20,7 @@ public class ModeloTabelaMatricula extends AbstractTableModel {
         this.listaMoradores = listaMoradores;
     }
 
-    //	Método para atualzar a tabela
+    //	Método para atualzar a tabelaCredenciamentoAluno
     public static void atualizar(AbstractTableModel modelo, JTable tabela, List<Object> lista, String[] cabecalhos) {
         modelo = new ModeloTabelaMatricula(cabecalhos, lista);
         tabela.setModel(modelo);
@@ -36,7 +36,7 @@ public class ModeloTabelaMatricula extends AbstractTableModel {
 
     }
 
-    //	Pega a quatidade de colunas da tabela
+    //	Pega a quatidade de colunas da tabelaCredenciamentoAluno
     @Override
     public int getColumnCount() {
         return colunas.length;
@@ -47,7 +47,7 @@ public class ModeloTabelaMatricula extends AbstractTableModel {
         return listaMoradores.get(indice);
     }
 
-    //	Pega a quantidade de linhas da tabela
+    //	Pega a quantidade de linhas da tabelaCredenciamentoAluno
     @Override
     public int getRowCount() {
         return listaMoradores.size();

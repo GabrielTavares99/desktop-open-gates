@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ArquivoCredenciamentoAlunoDAO implements IDao {
 
+    private Connection connection = Conexao.getInstance().getConnection();
     private List<CredenciamentoAluno> credenciamentoAlunos = new ArrayList<>();
 
     @Override
@@ -24,7 +25,7 @@ public class ArquivoCredenciamentoAlunoDAO implements IDao {
             preparedStatement.setString(2, arquivoCredenciamentoAluno.getNomeArquivoCsv());
             preparedStatement.setInt(3, arquivoCredenciamentoAluno.getQtdCredenciamentosFeitos());
             preparedStatement.setInt(4, arquivoCredenciamentoAluno.getQtdTotal());
-            preparedStatement.setInt(5,arquivoCredenciamentoAluno.getQuantidadeErros());
+            preparedStatement.setInt(5, arquivoCredenciamentoAluno.getQuantidadeErros());
             Object dataEmTimestamp = new java.sql.Timestamp(arquivoCredenciamentoAluno.getData().getTime());
             preparedStatement.setObject(6, dataEmTimestamp);
             int i = preparedStatement.executeUpdate();
@@ -51,7 +52,31 @@ public class ArquivoCredenciamentoAlunoDAO implements IDao {
     }
 
     @Override
-    public Object monstarObjetoFromResultSet(ResultSet resultSet) {
+    public ArquivoCredenciamentoAluno monstarObjetoFromResultSet(ResultSet resultSet) throws SQLException {
+        ArquivoCredenciamentoAluno arquivoCredenciamentoAluno = new ArquivoCredenciamentoAluno();
+        arquivoCredenciamentoAluno.setNomeArquivoFotos(resultSet.getString("nomeArquivoFotos"));
+        arquivoCredenciamentoAluno.setNomeArquivoCsv(resultSet.getString("nomeArquivoCsv"));
+        arquivoCredenciamentoAluno.setQtdCredenciamentosFeitos(resultSet.getInt("qtdCredenciamentosFeitos"));
+        arquivoCredenciamentoAluno.setQtdTotal(resultSet.getInt("qtdTotal"));
+        arquivoCredenciamentoAluno.setQuantidadeErros(resultSet.getInt("quantidadeErros"));
+        arquivoCredenciamentoAluno.setData(resultSet.getDate("data"));
+        return arquivoCredenciamentoAluno;
+    }
+
+
+    public List<ArquivoCredenciamentoAluno> pegarTodosImp(){
+        String query = "SELECT * FROM ArquivoCredenciamentoAluno";
+        List<ArquivoCredenciamentoAluno> arquivosCredenciamentoAluno = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                arquivosCredenciamentoAluno.add(monstarObjetoFromResultSet(resultSet));
+            }
+            return arquivosCredenciamentoAluno;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
