@@ -10,6 +10,10 @@ import SistemaDesktop.view.paineis.PainelMatricula;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static SistemaDesktop.config.Constantes.TITULO_TELA_MATRICULA;
@@ -34,6 +38,24 @@ public class TelaMatricula extends TelaCustom {
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         tabelaCredenciamentoAluno.setDefaultRenderer(Integer.class, centerRenderer);
 //        table.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+
+
+        TableCellRenderer tableCellRenderer = new DefaultTableCellRenderer() {
+
+            SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+            public Component getTableCellRendererComponent(JTable table,
+                                                           Object value, boolean isSelected, boolean hasFocus,
+                                                           int row, int column) {
+                if (value instanceof Date) {
+                    value = f.format(value);
+                }
+                return super.getTableCellRendererComponent(table, value, isSelected,
+                        hasFocus, row, column);
+            }
+        };
+
+        tabelaCredenciamentoAluno.getColumnModel().getColumn(6).setCellRenderer(tableCellRenderer);
         JScrollPane scroolPane = new JScrollPane(tabelaCredenciamentoAluno);
         scroolPane.setBounds(50, 85, 700, 200);
         add(scroolPane);

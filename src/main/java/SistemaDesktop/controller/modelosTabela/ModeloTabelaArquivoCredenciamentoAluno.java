@@ -35,7 +35,7 @@ public class ModeloTabelaArquivoCredenciamentoAluno extends AbstractTableModel {
         ArquivoCredenciamentoAluno arquivoCredenciamentoAluno = arquivosCredenciamento.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return rowIndex;
+                return rowIndex+1;
             case 1:
                 return arquivoCredenciamentoAluno.getNomeArquivoFotos();
             case 2:
