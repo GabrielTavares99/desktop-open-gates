@@ -3,6 +3,9 @@ package SistemaBatch.controller;
 import SistemaDesktop.config.Constantes;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
+import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.util.FileUtil;
+import SistemaDesktop.util.QRCodeUtil;
 import org.apache.commons.mail.MultiPartEmail;
 
 import java.io.File;
@@ -13,10 +16,36 @@ public class EmailController {
     private final String senhaSistema = "opengates2018";
     private EmailDAO emailDAO = new EmailDAO();
 
+    public static Email fazerEmailBoasVindas(Pessoa novoAluno) {
+        Email email = new Email();
+        email.setAssunto("ACESSO LIBERADO A FATEC ZL");
+        email.setDestinatario(novoAluno.getUsuario().getEmail());
+        File file = FileUtil.getFileFromResource("novo-login.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        htmlEmTexto = String.format(htmlEmTexto, novoAluno.getNome(), novoAluno.getUsuario().getCodigoEmail());
+        email.setHmtl(htmlEmTexto);
+        return email;
+    }
+
+    public static Email fazerEmailQrCode(Pessoa pessoa, String destino) {
+        Email email = new Email();
+        email.setAssunto("Seu QRCode de acesso!");
+        email.setDestinatario(pessoa.getUsuario().getEmail());
+        File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        String qrCodePath = destino;
+        QRCodeUtil.createQRCode(pessoa.getUsuario().getEmail(), qrCodePath, 200, 200);
+        email.getAnexos().add(qrCodePath);
+        email.setHmtl(htmlEmTexto);
+        return email;
+    }
+
     public void sendEmail(Email emailTo) {
+        System.out.println(emailTo.getDestinatario());
+        System.out.println(emailTo.getAssunto());
         try {
             MultiPartEmail email = new MultiPartEmail();
-            email.setDebug(true);
+            email.setDebug(false);
             if (emailTo.getAnexos().size() > 0) {
                 for (String anexoPath : emailTo.getAnexos()) {
                     email.attach(new File(anexoPath));
@@ -48,7 +77,6 @@ public class EmailController {
             e.printStackTrace();
         }
     }
-
 
     public Email getEmailNaoEnviado() {
         return emailDAO.getEmailNaoEnviado();

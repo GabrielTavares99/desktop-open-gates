@@ -1,7 +1,7 @@
 package SistemaDesktop.view.paineis;
 
-import SistemaDesktop.model.RelatorioValidacoesColetivaModel;
-import SistemaDesktop.model.RelatorioValidacoesIndividualModel;
+import SistemaDesktop.controller.modelosTabela.RelatorioValidacoesColetivaModel;
+import SistemaDesktop.controller.modelosTabela.RelatorioValidacoesIndividualModel;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.DataUtil;

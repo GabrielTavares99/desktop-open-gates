@@ -1,14 +1,17 @@
 package SistemaDesktop.model;
 
+import java.util.Date;
+
 public class ArquivoCredenciamentoAluno {
 
     private String nomeArquivoFotos;
     private String nomeArquivoCsv;
     private String urlArquivoFotos;
     private String urlCsv;
-    private int numeroMatriculas;
+    private int qtdCredenciamentosFeitos;
+    private int qtdTotal;
     private int quantidadeErros;
-
+    private Date data;
     public String getNomeArquivoFotos() {
         return nomeArquivoFotos;
     }
@@ -41,12 +44,12 @@ public class ArquivoCredenciamentoAluno {
         this.urlCsv = urlCsv;
     }
 
-    public int getNumeroMatriculas() {
-        return numeroMatriculas;
+    public int getQtdCredenciamentosFeitos() {
+        return qtdCredenciamentosFeitos;
     }
 
-    public void setNumeroMatriculas(int numeroMatriculas) {
-        this.numeroMatriculas = numeroMatriculas;
+    public void setQtdCredenciamentosFeitos(int qtdCredenciamentosFeitos) {
+        this.qtdCredenciamentosFeitos = qtdCredenciamentosFeitos;
     }
 
     public int getQuantidadeErros() {
@@ -57,4 +60,19 @@ public class ArquivoCredenciamentoAluno {
         this.quantidadeErros = quantidadeErros;
     }
 
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public int getQtdTotal() {
+        return qtdTotal;
+    }
+
+    public void setQtdTotal(int qtdTotal) {
+        this.qtdTotal = qtdTotal;
+    }
 }

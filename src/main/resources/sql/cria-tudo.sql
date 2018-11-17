@@ -14,12 +14,11 @@ CREATE TABLE Email(
 
 CREATE TABLE EmailAnexo(
   id int NOT NULL AUTO_INCREMENT,
-  caminhoAnexo VARCHAR (50),
+  caminhoAnexo VARCHAR (200),
   emailId int,
   FOREIGN KEY (emailId) REFERENCES Email(id),
   CONSTRAINT PK_EmailAnexo PRIMARY KEY (id)
 );
-
 CREATE TABLE Cargo(
   id int NOT NULL AUTO_INCREMENT,
   descricao VARCHAR(60),
@@ -76,8 +75,10 @@ CREATE TABLE ArquivoCredenciamentoAluno(
   id INT NOT NULL AUTO_INCREMENT,
   nomeArquivoFotos VARCHAR(100) ,
   nomeArquivoCsv VARCHAR(100),
-  numeroMatriculas int(4),
+  qtdCredenciamentosFeitos int(4),
+  qtdTotal int(4),
   quantidadeErros int (4),
+  data DATETIME,
   CONSTRAINT PK_ArquivosMatricula PRIMARY KEY (id)
 );
 

@@ -31,8 +31,8 @@ public class PrincipalDesktop {
 //        new Thread(() -> new TelaLeituraCarteirinha()).start();
 //        new Thread(() -> new TelaMatricula()).start();
 
-//        new TelaLogin();
-        new TelaCadastroFuncionario();
+        new TelaLogin();
+//        new TelaCadastroFuncionario();
 //        new TelaMatricula();
 //        new TelaRelatorioEntradaSaida();
 //        new TelaCadastroFuncionario();

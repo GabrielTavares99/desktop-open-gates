@@ -24,5 +24,9 @@ public class FileUtil {
         return new File(resource.getPath());
     }
 
+    public static String getNomeArquivoFromPath(String path){
+        return new File(path).getName();
+    }
+
 
 }
