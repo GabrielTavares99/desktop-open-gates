@@ -1,6 +1,7 @@
 package SistemaBatch.controller.jobs;
 
 import SistemaBatch.controller.EmailController;
+import SistemaBatch.view.JobEnvioEmail;
 import SistemaDesktop.model.Email;
 
 import java.util.Date;
@@ -9,10 +10,13 @@ import static SistemaBatch.config.Settings.MINUTO;
 
 public class JobEnviarEmail extends Thread {
 
+    private EmailController emailController = new EmailController();
+    public JobEnviarEmail() {
+    }
+
     @Override
     public void run() {
-        EmailController emailController = new EmailController();
-        while (true) {
+        while (JobEnvioEmail.ativo) {
             System.out.println("INICIANDO JOB DE ENVIO DE EMAIL " + new Date().getHours() + ":" + new Date().getMinutes());
             Email emailNaoEnviado = emailController.getEmailNaoEnviado();
 

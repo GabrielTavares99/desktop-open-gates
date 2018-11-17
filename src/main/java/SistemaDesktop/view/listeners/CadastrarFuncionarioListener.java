@@ -22,7 +22,7 @@ public class CadastrarFuncionarioListener implements ActionListener {
         funcionarioController.cadastrar();
         if (TelaCadastroFuncionario.ID_FUNCIONARIO == null) {
             JOptionPane.showMessageDialog(null, "Funcionário cadastrado com sucesso!");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Funcionário Atualizado com sucesso!");
         }
         modeloTabelaCadastroFuncionario.atualizar();
