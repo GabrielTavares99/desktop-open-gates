@@ -32,7 +32,20 @@ public class CargoDAO implements IDao {
     }
 
     @Override
-    public Object getById(int id) {
+    public Cargo getById(int id) {
+
+        String query = "SELECT id,descricao FROM Cargo where id = ? LIMIT 1";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = getPreparedStatement(query);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = executeSelectQuery(preparedStatement);
+            while (resultSet.next()) {
+                return monstarObjetoFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

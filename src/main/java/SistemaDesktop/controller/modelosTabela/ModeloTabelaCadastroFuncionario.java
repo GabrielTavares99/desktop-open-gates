@@ -1,81 +1,99 @@
 package SistemaDesktop.controller.modelosTabela;
 
+import SistemaDesktop.controller.dao.FuncionarioDAO;
+import SistemaDesktop.model.Funcionario;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 public class ModeloTabelaCadastroFuncionario extends AbstractTableModel {
-    //	Variaveis da classe
-    private String colunas[];
-    private List<Object> listaMoradores;
+    private String colunas[] = new String[]{"#", "Nome", "CPF", "Email", "Cargo", "Ativo"};
 
-    //	Método contrutor
-    public ModeloTabelaCadastroFuncionario(String[] cabecalho, List<Object> listaMoradores) {
-        this.listaMoradores = listaMoradores;
-        this.colunas = cabecalho;
+    private List<Object> funcionarios;
+    private JTable table;
+    private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+    public ModeloTabelaCadastroFuncionario(JTable table) {
+        this.table = table;
+        funcionarios = funcionarioDAO.pegarTodos();
     }
 
-    public ModeloTabelaCadastroFuncionario(List<Object> listaMoradores) {
-        this.listaMoradores = listaMoradores;
+    public List<Object> getFuncionarios() {
+        return funcionarios;
     }
 
-    //	Método para atualzar a tabelaCredenciamentoAluno
-    public static void atualizar(AbstractTableModel modelo, JTable tabela, List<Object> lista, String[] cabecalhos) {
-        modelo = new ModeloTabelaMatricula(cabecalhos, lista);
-        tabela.setModel(modelo);
+    public void setFuncionarios(List<Object> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
-    //	Dando nome as colunas
+    public void atualizar() {
+        funcionarios = funcionarioDAO.pegarTodos();
+        table.invalidate();
+        table.revalidate();
+        table.repaint();
+    }
+
     @Override
     public String getColumnName(int column) {
         if (column > colunas.length || column < 0) {
             return null;
         }
         return colunas[column];
-
     }
 
-    //	Pega a quatidade de colunas da tabelaCredenciamentoAluno
     @Override
     public int getColumnCount() {
         return colunas.length;
     }
 
-    //	Pegar indice do item
-    public Object getMorador(int indice) {
-        return listaMoradores.get(indice);
-    }
-
-    //	Pega a quantidade de linhas da tabelaCredenciamentoAluno
     @Override
     public int getRowCount() {
-        return listaMoradores.size();
+        return funcionarios.size();
     }
 
-    //	Nega edição da célula
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
     }
 
-    //	Pega um valor de um campo unico
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-//        Morador morador = listaMoradores.get(rowIndex);
-//        switch (columnIndex) {
-//            case 0:
-//                return morador.getNome();
-//            case 1:
-//                return morador.getBloco();
-//            case 2:
-//                return morador.getNumeroApartamento();
-//            case 3:
-//                return morador.getRg();
-//
-//            default:
-//                break;
-//        }
-//
+        Funcionario funcionario = (Funcionario) funcionarios.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return rowIndex + 1;
+            case 1:
+                return funcionario.getNome();
+            case 2:
+                return funcionario.getUsuario().getCpf();
+            case 3:
+                return funcionario.getUsuario().getEmail();
+            case 4:
+                return funcionario.getCargo().getDescricao();
+            case 5:
+                return funcionario.getUsuario().isAtivo();
+        }
         return null;
     }
 
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return Integer.class;
+            case 1:
+                return String.class;
+            case 2:
+                return String.class;
+            case 3:
+                return String.class;
+            case 4:
+                return String.class;
+            case 5:
+                return Boolean.class;
+        }
+        return null;
+    }
 }

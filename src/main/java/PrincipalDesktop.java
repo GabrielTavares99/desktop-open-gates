@@ -3,6 +3,8 @@ import SistemaDesktop.view.telas.TelaLogin;
 import SistemaDesktop.view.telas.TelaMatricula;
 import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
+import java.io.File;
+
 public class PrincipalDesktop {
     public static void main(String[] args) {
 //        new TelaLogin();
@@ -31,8 +33,10 @@ public class PrincipalDesktop {
 //        new Thread(() -> new TelaLeituraCarteirinha()).start();
 //        new Thread(() -> new TelaMatricula()).start();
 
-        new TelaLogin();
-//        new TelaCadastroFuncionario();
+//        new TelaLogin();
+        boolean mkdirs = new File("/tmp/opengates/qrcode").mkdirs();
+        System.out.println("CRIOU DIRETORIOS "+ mkdirs);
+        new TelaCadastroFuncionario();
 //        new TelaMatricula();
 //        new TelaRelatorioEntradaSaida();
 //        new TelaCadastroFuncionario();

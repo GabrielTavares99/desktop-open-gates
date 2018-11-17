@@ -66,7 +66,9 @@ public class MatriculaController {
 
                     Email email = EmailController.fazerEmailBoasVindas(novoAluno);
                     emailDAO.salvar(email);
-                    email = EmailController.fazerEmailQrCode(novoAluno, foto.getAbsolutePath());
+                    String s = CriptografiaUtil.generateUUID();
+                    String pathQrCode = String.format("/tmp/opengates/qrcode/%s.jpg", s);
+                    email = EmailController.fazerEmailQrCode(novoAluno, pathQrCode);
                     emailDAO.salvar(email);
                     novos++;
                 }

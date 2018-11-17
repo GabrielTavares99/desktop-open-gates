@@ -1,5 +1,6 @@
 package SistemaDesktop.util;
 
+import SistemaDesktop.model.Funcionario;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.view.telas.TelaDashboard;
 
@@ -10,6 +11,8 @@ import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
 
 public class TelasUtil {
 
+    public static Funcionario FUNCIONARIO_SELECIONADO;
+    public static String URL_FOTO_FUNCIONARIO;
     public static TelaDashboard TELA_DASHBOARD;
     public static Usuario USUARIO_LOGADO;
     public static String EMAIL_RECUPERACAO;

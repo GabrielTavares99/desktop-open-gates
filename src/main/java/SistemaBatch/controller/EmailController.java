@@ -27,13 +27,12 @@ public class EmailController {
         return email;
     }
 
-    public static Email fazerEmailQrCode(Pessoa pessoa, String destino) {
+    public static Email fazerEmailQrCode(Pessoa pessoa, String qrCodePath) {
         Email email = new Email();
         email.setAssunto("Seu QRCode de acesso!");
         email.setDestinatario(pessoa.getUsuario().getEmail());
         File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
         String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
-        String qrCodePath = destino;
         QRCodeUtil.createQRCode(pessoa.getUsuario().getEmail(), qrCodePath, 200, 200);
         email.getAnexos().add(qrCodePath);
         email.setHmtl(htmlEmTexto);
