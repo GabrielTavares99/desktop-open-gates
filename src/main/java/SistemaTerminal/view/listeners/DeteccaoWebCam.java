@@ -6,12 +6,15 @@ import SistemaDesktop.controller.dao.ValidacaoDAO;
 import SistemaDesktop.model.Funcionario;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.AcaoPortaria;
+import SistemaDesktop.util.CriptografiaUtil;
 import SistemaTerminal.model.Validacao;
 import SistemaTerminal.view.telas.TelaStatusValidacao;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.util.Date;
+
+import static SistemaBatch.config.Settings.QRCODE_SALT;
 
 public class DeteccaoWebCam {
 
@@ -25,6 +28,7 @@ public class DeteccaoWebCam {
         System.out.println("VALIDACAO VALIDACAO VALIDACAO");
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         Validacao validacao = new Validacao();
+        codigoLido = CriptografiaUtil.decrypt(codigoLido, QRCODE_SALT);
         Usuario usuario = usuarioDAO.getByEmail(codigoLido);
         validacao.setData(new Date());
         if (usuario == null) {
