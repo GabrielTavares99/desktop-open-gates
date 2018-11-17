@@ -12,6 +12,7 @@ public class Aluno extends Pessoa {
         return ra;
     }
 
+    //alteração
     public void setRa(int ra) {
         this.ra = ra;
     }
