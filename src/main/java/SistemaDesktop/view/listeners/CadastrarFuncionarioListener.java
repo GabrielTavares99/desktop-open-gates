@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static SistemaDesktop.view.telas.TelaCadastroFuncionario.limparCampos;
+
 public class CadastrarFuncionarioListener implements ActionListener {
 
     private ModeloTabelaCadastroFuncionario modeloTabelaCadastroFuncionario;
@@ -26,5 +28,7 @@ public class CadastrarFuncionarioListener implements ActionListener {
             JOptionPane.showMessageDialog(null, "Funcionário Atualizado com sucesso!");
         }
         modeloTabelaCadastroFuncionario.atualizar();
+        limparCampos();
+
     }
 }

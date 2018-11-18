@@ -1,9 +1,9 @@
 package SistemaTerminal.view.listeners;
 
 import SistemaDesktop.controller.dao.AlunoDAO;
+import SistemaDesktop.controller.dao.FuncionarioDAO;
 import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.controller.dao.ValidacaoDAO;
-import SistemaDesktop.model.Funcionario;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.AcaoPortaria;
 import SistemaDesktop.util.CriptografiaUtil;
@@ -49,7 +49,7 @@ public class DeteccaoWebCam {
                     usuario.setPessoa(new AlunoDAO().getByEmail(usuario.getEmail()));
                     break;
                 default:
-                    usuario.setPessoa(new Funcionario().getByEmail(usuario.getEmail()));
+                    usuario.setPessoa(new FuncionarioDAO().findByEmail(usuario.getEmail()));
                     break;
             }
             validacao.setImagemBase64(usuario.getPessoa().getFotoBase64());

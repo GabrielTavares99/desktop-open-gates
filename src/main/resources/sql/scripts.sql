@@ -77,12 +77,13 @@ inner join Usuario u on v.usuarioId = u.id
 WHERE data between date('2017-01-01') and date('2019-01-01')
 ORDER BY v.id desc LIMIT 20;
 
-SELECT u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v
+SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v
                 inner join Usuario u on v.usuarioId = u.id
                 left JOIN Funcionario f ON u.id = f.usuarioId
                 left JOIN Aluno a ON u.id = a.usuarioId
-                WHERE v.data between date('2017-01-01') and date('2019-01-01')
+                WHERE v.data between date('2018-10-19') and date('2018-11-19 23:59:00');
                 ORDER BY v.id desc LIMIT 50;
+
 u.cpf, v.acao, v.data, v.permitida, u.comboTipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v inner join Usuario u on v.usuarioId = u.id                  left JOIN Funcionario f ON u.id = f.usuarioId                left JOIN Aluno a ON u.id = a.usuarioIdWHERE data between date(?) and date(?) ORDER BY v.id desc LIMIT 50
 
 
@@ -90,3 +91,10 @@ select concat('a', COALESCE(null ,'') ,'sd');
 
 DROP TABLE ArquivoCredenciamentoAluno;
 SELECT * FROM ArquivoCredenciamentoAluno ORDER BY id DESC;
+
+INSERT INTO Cargo(descricao)
+VALUES ('SECRETARIA'),
+ ('BIBLIOTECARIA'),
+ ('PROFESSOR'),
+ ('DIRETO'),
+ ('TOP DAS GALÁXIAS')

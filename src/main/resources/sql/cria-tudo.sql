@@ -106,4 +106,4 @@ CREATE TABLE CredenciamentoAluno(
     CONSTRAINT PK_CredenciamentoAluno PRIMARY KEY (id)
 );
 
-INSERT INTO Aluno(nome, )
+ALTER TABLE Usuario drop column fotoBase64;

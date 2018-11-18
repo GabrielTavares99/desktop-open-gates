@@ -22,7 +22,7 @@ public class FuncionarioController {
     public void cadastrar() {
 
         String nome = TelaCadastroFuncionario.txtNome.getText();
-        String cpf = TelaCadastroFuncionario.txtCPF.getText().replace(".","").replace("-","");
+        String cpf = TelaCadastroFuncionario.txtCPF.getText().replace(".", "").replace("-", "");
         String email = TelaCadastroFuncionario.txtEmail.getText();
         boolean isAtivo = TelaCadastroFuncionario.rdAtivo.isSelected();
         Cargo cargo = (Cargo) TelaCadastroFuncionario.comboBoxCargo.getSelectedItem();
@@ -39,7 +39,10 @@ public class FuncionarioController {
         usuario.setCodigoEmail(uuid.substring(0, 5));
         usuario.setId(TelaCadastroFuncionario.ID_USUARIO);
         usuario.setPessoa(funcionario);
-        usuario.setTipoUsuario(TipoUsuario.FUNCIONARIO);
+        if (cargo.getDescricao().equalsIgnoreCase("secretaria"))
+            usuario.setTipoUsuario(TipoUsuario.SECRETARIA);
+        else
+            usuario.setTipoUsuario(TipoUsuario.FUNCIONARIO);
         usuario.setCpf(cpf);
         usuario.setSenha(uuid);
         usuario.setEmail(email);
@@ -59,7 +62,6 @@ public class FuncionarioController {
             System.out.println("UPDATE DE FUNCIONARIO");
             funcionarioDAO.update(funcionario);
         }
-        limparCampos();
     }
 
 

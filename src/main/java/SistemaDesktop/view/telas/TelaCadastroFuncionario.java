@@ -69,7 +69,7 @@ public class TelaCadastroFuncionario extends TelaCustom {
         pnCadastro.setBounds(50, 240, 700, 300);
 
         List<Object> cargos = new CargoDAO().pegarTodos();
-        Cargo[] c = new Cargo[1];
+        Cargo[] c = new Cargo[cargos.size()];
         for (int i = 0; i < cargos.size(); i++) {
             c[i] = (Cargo) cargos.get(i);
         }
@@ -119,11 +119,6 @@ public class TelaCadastroFuncionario extends TelaCustom {
 
         pnBotoes.add(btnSalvar);
         pnBotoes.add(btnCancelar);
-
-        btnCancelar.addActionListener(e1 -> {
-            ID_FUNCIONARIO = null;
-            ID_USUARIO = null;
-        });
 
 
         tabela.addMouseListener(new MouseListener() {
@@ -193,5 +188,10 @@ public class TelaCadastroFuncionario extends TelaCustom {
         rdAtivo.setSelected(false);
         comboBoxCargo.setSelectedItem(0);
         lblImagemFuncionario.setIcon(new ImageIcon(ImageUtil.getImagemProporcional("image/avatar.png", lblImagemFuncionario.getWidth(), lblImagemFuncionario.getHeight())));
+
+        ID_FUNCIONARIO = null;
+        ID_USUARIO = null;
+        TelasUtil.URL_FOTO_FUNCIONARIO = null;
+        txtEmail.enable(true);
     }
 }

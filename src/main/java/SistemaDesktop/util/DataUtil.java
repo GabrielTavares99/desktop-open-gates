@@ -1,17 +1,19 @@
 package SistemaDesktop.util;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class DataUtil {
 
-    public static Date dataUtilToSqlDate(java.util.Date dataUtil) {
+    public static Timestamp dataUtilToSqlDate(java.util.Date dataUtil) {
         long time = dataUtil.getTime();
-        Date sqlDate = new Date(time);
-        return sqlDate;
+        Timestamp timestamp = new java.sql.Timestamp(time);
+        return timestamp;
     }
-    public static java.util.Date addDays(Date date, int days) {
+
+    public static java.util.Date addDays(java.util.Date date, int days) {
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(date);
         cal.add(Calendar.DATE, days);

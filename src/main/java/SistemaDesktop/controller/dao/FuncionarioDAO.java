@@ -2,7 +2,6 @@ package SistemaDesktop.controller.dao;
 
 import SistemaDesktop.model.Cargo;
 import SistemaDesktop.model.Funcionario;
-import SistemaDesktop.model.Pessoa;
 import SistemaDesktop.model.Usuario;
 
 import java.sql.PreparedStatement;
@@ -72,7 +71,7 @@ public class FuncionarioDAO implements IDao {
     }
 
     @Override
-    public Object monstarObjetoFromResultSet(ResultSet resultSet) throws SQLException {
+    public Funcionario monstarObjetoFromResultSet(ResultSet resultSet) throws SQLException {
 
         Funcionario funcionario = new Funcionario();
 
@@ -112,7 +111,19 @@ public class FuncionarioDAO implements IDao {
         return null;
     }
 
-    public Pessoa findByEmail(String email) {
+    public Funcionario findByEmail(String email) {
+        String query = "SELECT f.id,f.nome, f.fotoBase64, f.usuarioId, f.cargoId FROM Funcionario f INNER JOIN Usuario u ON f.usuarioId = u.id WHERE email = ? LIMIT 1";
+        try {
+            PreparedStatement preparedStatement = getPreparedStatement(query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                return monstarObjetoFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

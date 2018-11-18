@@ -57,8 +57,8 @@ public class ValidacaoDAO implements IDao {
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setString(1, String.valueOf(tipoUsuario));
-            preparedStatement.setDate(2, DataUtil.dataUtilToSqlDate(dtInicial));
-            preparedStatement.setDate(3, DataUtil.dataUtilToSqlDate(dtFinal));
+            preparedStatement.setObject(2, DataUtil.dataUtilToSqlDate(dtInicial));
+            preparedStatement.setObject(3, DataUtil.dataUtilToSqlDate(dtFinal));
             ResultSet resultSet = executeSelectQuery(preparedStatement);
             while (resultSet.next()) {
                 validacaos.add(monstarObjetoFromResultSet(resultSet));
@@ -70,26 +70,27 @@ public class ValidacaoDAO implements IDao {
     }
 
     public List<Validacao> getValidacoes(Date dtInicial, Date dtFinal) {
-        //-- BUSCA DATA INICIAL/FINAL - LIMIT 20
+        //-- BUSCA DATA INICIAL/FINAL - LIMIT 50
         List<Validacao> validacaos = new ArrayList<>();
         String query = "SELECT u.cpf, v.acao, v.data, v.permitida, u.tipoUsuario, u.id, CONCAT(COALESCE(a.nome,''), COALESCE(f.nome,'')) nome FROM Validacao v " +
-                "inner join Usuario u on v.usuarioId = u.id  " +
+                "                inner join Usuario u on v.usuarioId = u.id  " +
                 "                left JOIN Funcionario f ON u.id = f.usuarioId" +
                 "                left JOIN Aluno a ON u.id = a.usuarioId " +
-                " WHERE data between date(?) and date(?) " +
+                " WHERE v.data between date(?) and date(?) " +
                 " ORDER BY v.id desc LIMIT 50";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
-            preparedStatement.setDate(1, DataUtil.dataUtilToSqlDate(dtInicial));
-            preparedStatement.setDate(2, DataUtil.dataUtilToSqlDate(dtFinal));
+            preparedStatement.setObject(1, DataUtil.dataUtilToSqlDate(dtInicial));
+            preparedStatement.setObject(2, DataUtil.dataUtilToSqlDate(dtFinal));
             ResultSet resultSet = executeSelectQuery(preparedStatement);
             while (resultSet.next()) {
                 validacaos.add(monstarObjetoFromResultSet(resultSet));
             }
+            return validacaos;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return validacaos;
+        return null;
     }
 
     public List<Validacao> getValidacoesByTipoUsuarioCpfNome(Pessoa pessoa, Date dtInicial, Date dtFinal) {
@@ -104,8 +105,8 @@ public class ValidacaoDAO implements IDao {
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
             preparedStatement.setString(1, pessoa.getUsuario().getTipoUsuario().toString());
-            preparedStatement.setDate(2, DataUtil.dataUtilToSqlDate(dtInicial));
-            preparedStatement.setDate(3, DataUtil.dataUtilToSqlDate(dtFinal));
+            preparedStatement.setObject(2, DataUtil.dataUtilToSqlDate(dtInicial));
+            preparedStatement.setObject(3, DataUtil.dataUtilToSqlDate(dtFinal));
             preparedStatement.setString(4, pessoa.getNome());
             preparedStatement.setString(5, pessoa.getUsuario().getCpf());
             ResultSet resultSet = executeSelectQuery(preparedStatement);
@@ -154,6 +155,8 @@ public class ValidacaoDAO implements IDao {
             colunas.add(metaData.getColumnName(i));
         }
         Validacao validacao = new Validacao();
+        validacao.setPessoa(new Pessoa());
+        validacao.getPessoa().setUsuario(new Usuario());
         if (colunas.contains("cpf"))
             validacao.getPessoa().getUsuario().setCpf(resultSet.getString("cpf"));
         validacao.setAcaoPortaria(AcaoPortaria.valueOf(resultSet.getString("acao")));
@@ -178,8 +181,8 @@ public class ValidacaoDAO implements IDao {
         try {
             preparedStatement = getPreparedStatement(query);
             preparedStatement.setInt(1, usuario.getId());
-            preparedStatement.setDate(2, DataUtil.dataUtilToSqlDate(dataInicial));
-            preparedStatement.setDate(3, DataUtil.dataUtilToSqlDate(dataFinal));
+            preparedStatement.setObject(2, DataUtil.dataUtilToSqlDate(dataInicial));
+            preparedStatement.setObject(3, DataUtil.dataUtilToSqlDate(dataFinal));
             ResultSet resultSet = executeSelectQuery(preparedStatement);
             List<Validacao> validacaos = new ArrayList<>();
             while (resultSet.next())
