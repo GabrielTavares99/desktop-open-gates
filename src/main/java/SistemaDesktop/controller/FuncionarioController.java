@@ -9,9 +9,13 @@ import SistemaDesktop.model.Funcionario;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoUsuario;
 import SistemaDesktop.util.CriptografiaUtil;
+import SistemaDesktop.util.ImageUtil;
+import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.telas.TelaCadastroFuncionario;
 
 public class FuncionarioController {
+
+    private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
     public void cadastrar() {
 
@@ -20,16 +24,18 @@ public class FuncionarioController {
         String email = TelaCadastroFuncionario.txtEmail.getText();
         boolean isAtivo = TelaCadastroFuncionario.rdAtivo.isSelected();
         Cargo cargo = (Cargo) TelaCadastroFuncionario.comboBoxCargo.getSelectedItem();
-        // TODO: 16/11/18 FOTO BASE64 FUNCIONÁRIO
+        String fotoBase64 = ImageUtil.fromImageToBase64(TelasUtil.URL_FOTO_FUNCIONARIO);
 
         Usuario usuario = new Usuario();
         Funcionario funcionario = new Funcionario();
         funcionario.setCargo(cargo);
         funcionario.setNome(nome);
-//        funcionario.setFotoBase64();
+        funcionario.setFotoBase64(fotoBase64);
+        funcionario.setId(TelaCadastroFuncionario.ID_FUNCIONARIO);
 
         String uuid = CriptografiaUtil.generateUUID();
         usuario.setCodigoEmail(uuid.substring(0, 5));
+        usuario.setId(TelaCadastroFuncionario.ID_USUARIO);
         usuario.setPessoa(funcionario);
         usuario.setTipoUsuario(TipoUsuario.FUNCIONARIO);
         usuario.setCpf(cpf);
@@ -39,15 +45,18 @@ public class FuncionarioController {
         usuario.setAtivo(isAtivo);
         funcionario.setUsuario(usuario);
 
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        funcionarioDAO.salvar(funcionario);
-
-        String path;
-        Email email1 = EmailController.fazerEmailBoasVindas(funcionario);
-        Email email2 = EmailController.fazerEmailQrCode(funcionario, "/tmp/opengates/" + uuid + ".jpg");
-        EmailDAO emailDAO = new EmailDAO();
-        emailDAO.salvar(email1);
-        emailDAO.salvar(email2);
+        if (TelaCadastroFuncionario.ID_FUNCIONARIO == null) {
+            System.out.println("NOVO FUNCIONARIO");
+            funcionarioDAO.salvar(funcionario);
+            Email email1 = EmailController.fazerEmailBoasVindas(funcionario);
+            Email email2 = EmailController.fazerEmailQrCode(funcionario, "/tmp/opengates/qrcode/" + uuid + ".jpg");
+            EmailDAO emailDAO = new EmailDAO();
+            emailDAO.salvar(email1);
+            emailDAO.salvar(email2);
+        } else {
+            System.out.println("UPDATE DE FUNCIONARIO");
+            funcionarioDAO.update(funcionario);
+        }
     }
 
 

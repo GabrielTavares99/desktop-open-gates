@@ -27,8 +27,8 @@ public class UsuarioDAO implements IDao {
         usuario.setCodigoEmail(codigoEmail);
         System.out.println("CODIGO EMAIL " + usuario.getCodigoEmail());
         String sql = String.format(
-                "INSERT INTO %s (email,senha,acessaSistema,tipoUsuario,codigoEmail,cpf)" +
-                        "VALUES (?,?,?,?,?,?)", TB_USUARIO);
+                "INSERT INTO %s (email,senha,acessaSistema,tipoUsuario,codigoEmail,cpf, ativo)" +
+                        "VALUES (?,?,?,?,?,?,?)", TB_USUARIO);
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, usuario.getEmail());
@@ -37,6 +37,7 @@ public class UsuarioDAO implements IDao {
             preparedStatement.setString(4, usuario.getTipoUsuario().toString());
             preparedStatement.setString(5, usuario.getCodigoEmail());
             preparedStatement.setString(6, usuario.getCpf());
+            preparedStatement.setBoolean(7, usuario.isAtivo());
             int linesAfetadas = preparedStatement.executeUpdate();
             int idUsuario;
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
@@ -63,7 +64,9 @@ public class UsuarioDAO implements IDao {
                 " acessaSistema = ?," +
                 " tipoUsuario = ?," +
                 " codigoEmail = ?," +
-                " cpf = ?" +
+
+                " cpf = ?," +
+                " ativo = ?" +
                 " WHERE id = ?";
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
@@ -74,7 +77,8 @@ public class UsuarioDAO implements IDao {
             preparedStatement.setString(5, usuario.getCodigoEmail());
             preparedStatement.setString(6, usuario.getCpf());
 
-            preparedStatement.setInt(7, usuario.getId());
+            preparedStatement.setBoolean(7, usuario.isAtivo());
+            preparedStatement.setInt(8, usuario.getId());
             int i = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,6 +154,7 @@ public class UsuarioDAO implements IDao {
         usuario.setEmail(resultSet.getString("email"));
         usuario.setCodigoEmail(resultSet.getString("codigoEmail"));
         usuario.setSenha(resultSet.getString("senha"));
+        usuario.setAtivo(resultSet.getBoolean("ativo"));
         usuario.setCpf(resultSet.getString("cpf"));
         return usuario;
     }

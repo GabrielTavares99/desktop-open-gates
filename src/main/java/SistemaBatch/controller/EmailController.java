@@ -4,11 +4,14 @@ import SistemaDesktop.config.Constantes;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.util.FileUtil;
 import SistemaDesktop.util.QRCodeUtil;
 import org.apache.commons.mail.MultiPartEmail;
 
 import java.io.File;
+
+import static SistemaBatch.config.Settings.QRCODE_SALT;
 
 public class EmailController {
 
@@ -27,14 +30,14 @@ public class EmailController {
         return email;
     }
 
-    public static Email fazerEmailQrCode(Pessoa pessoa, String destino) {
+    public static Email fazerEmailQrCode(Pessoa pessoa, String qrCodePath) {
         Email email = new Email();
         email.setAssunto("Seu QRCode de acesso!");
         email.setDestinatario(pessoa.getUsuario().getEmail());
         File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
         String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
-        String qrCodePath = destino;
-        QRCodeUtil.createQRCode(pessoa.getUsuario().getEmail(), qrCodePath, 200, 200);
+        String qrCodeCriptografado = CriptografiaUtil.encriptarBase64(pessoa.getUsuario().getEmail(), QRCODE_SALT);
+        QRCodeUtil.createQRCode(qrCodeCriptografado, qrCodePath, 200, 200);
         email.getAnexos().add(qrCodePath);
         email.setHmtl(htmlEmTexto);
         return email;

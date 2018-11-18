@@ -50,14 +50,13 @@ CREATE TABLE Aluno(
 CREATE TABLE Funcionario(
   id INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(200),
-  fotoBase64 TEXT,
+  fotoBase64 LONGTEXT,
   usuarioId INT,
   cargoId INT,
   FOREIGN KEY (usuarioId) REFERENCES Usuario(id),
   FOREIGN KEY (cargoId) REFERENCES Cargo(id),
   CONSTRAINT PK_Funcionario PRIMARY KEY (id)
 );
-
 
 CREATE TABLE Usuario(
   id INT NOT NULL AUTO_INCREMENT,
@@ -70,6 +69,7 @@ CREATE TABLE Usuario(
   ativo BOOL default true,
   CONSTRAINT PK_Usuario PRIMARY KEY (id)
 );
+alter table Usuario add COLUMN ativo BOOL;
 
 CREATE TABLE ArquivoCredenciamentoAluno(
   id INT NOT NULL AUTO_INCREMENT,

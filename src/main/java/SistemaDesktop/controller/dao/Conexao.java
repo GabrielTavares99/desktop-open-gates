@@ -22,14 +22,17 @@ public class Conexao {
     }
 
     public Connection getConnection() {
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            connection = DriverManager.getConnection(STRING_CONEXAO, USER_BD, SENHA_BD);
+        if (connection == null) {
+            try {
+                Class.forName("org.mariadb.jdbc.Driver");
+                connection = DriverManager.getConnection(STRING_CONEXAO, USER_BD, SENHA_BD);
+                return connection;
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             return connection;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return connection;
     }
