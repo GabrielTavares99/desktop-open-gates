@@ -19,18 +19,23 @@ import static SistemaBatch.config.Settings.QRCODE_SALT;
 public class DeteccaoWebCam {
 
     private String codigoLido;
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private ValidacaoDAO validacaoDAO = new ValidacaoDAO();
 
     public DeteccaoWebCam(String codigoLido) {
         this.codigoLido = codigoLido;
     }
 
     public void run() {
-        System.out.println("VALIDACAO VALIDACAO VALIDACAO");
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
         Validacao validacao = new Validacao();
-        codigoLido = CriptografiaUtil.decrypt(codigoLido, QRCODE_SALT);
-        Usuario usuario = usuarioDAO.getByEmail(codigoLido);
+
+        Usuario usuario = null;
         validacao.setData(new Date());
+
+        codigoLido = CriptografiaUtil.decrypt(codigoLido, QRCODE_SALT);
+        if (codigoLido != null)
+            usuario = usuarioDAO.getByEmail(codigoLido);
+
         if (usuario == null) {
             validacao.setMensagem("ACESSO NEGADO");
             validacao.setAcaoPortaria(AcaoPortaria.DESCONHECIDO);
@@ -43,23 +48,22 @@ public class DeteccaoWebCam {
                 case ALUNO:
                     usuario.setPessoa(new AlunoDAO().getByEmail(usuario.getEmail()));
                     break;
-                case FUNCIONARIO:
+                default:
                     usuario.setPessoa(new Funcionario().getByEmail(usuario.getEmail()));
                     break;
             }
             validacao.setImagemBase64(usuario.getPessoa().getFotoBase64());
             validacao.setPessoa(usuario.getPessoa());
 
-            AcaoPortaria ultimaAcaoPortaria = new ValidacaoDAO().getUltimaAcaoByUsuarioId(usuario.getId());
+            AcaoPortaria ultimaAcaoPortaria = validacaoDAO.getUltimaAcaoByUsuarioId(usuario.getId());
             validacao.setAcaoPortaria(AcaoPortaria.ENTRADA);
             if (AcaoPortaria.ENTRADA.equals(ultimaAcaoPortaria))
                 validacao.setAcaoPortaria(AcaoPortaria.SAIDA);
             else if (AcaoPortaria.SAIDA.equals(ultimaAcaoPortaria))
                 validacao.setAcaoPortaria(AcaoPortaria.ENTRADA);
-
         }
 
-        new ValidacaoDAO().salvar(validacao);
+        validacaoDAO.salvar(validacao);
         TelaStatusValidacao telaStatusValidacao = new TelaStatusValidacao(validacao);
         try {
             Thread.sleep(4000);

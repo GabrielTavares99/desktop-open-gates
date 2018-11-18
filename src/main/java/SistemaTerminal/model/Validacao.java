@@ -19,9 +19,6 @@ public class Validacao {
 
     public Validacao() {
         uuidImagem = String.valueOf(CriptografiaUtil.generateUUID());
-        pessoa = new Pessoa();
-        Usuario usuario = new Usuario();
-        pessoa.setUsuario(usuario);
     }
 
     public String getImagemBase64() {

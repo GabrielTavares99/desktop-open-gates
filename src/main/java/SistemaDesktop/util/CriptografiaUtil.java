@@ -32,9 +32,13 @@ public class CriptografiaUtil {
     }
 
     public static String decrypt(String encstr, String salt) {
-        byte[] decodedBytes = Base64.getDecoder().decode(encstr);
-        encstr = new String(decodedBytes);
-        encstr = encstr.replace(salt, "").replace(new StringBuilder(salt).reverse().toString(), "");
+        try {
+            byte[] decodedBytes = Base64.getDecoder().decode(encstr);
+            encstr = new String(decodedBytes);
+            encstr = encstr.replace(salt, "").replace(new StringBuilder(salt).reverse().toString(), "");
+        } catch (Exception e) {
+            return null;
+        }
         return encstr;
     }
 

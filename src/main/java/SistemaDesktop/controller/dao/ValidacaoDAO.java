@@ -24,7 +24,7 @@ public class ValidacaoDAO implements IDao {
 
         try {
             PreparedStatement preparedStatement = getPreparedStatement(query);
-            if (validacao.getPessoa().getUsuario().getId() != null)
+            if (validacao.getPessoa() != null && validacao.getPessoa().getUsuario().getId() != null)
                 preparedStatement.setInt(1, validacao.getPessoa().getUsuario().getId());
             else
                 preparedStatement.setNull(1, Types.INTEGER);
