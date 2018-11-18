@@ -20,7 +20,7 @@ public class FuncionarioController {
     public void cadastrar() {
 
         String nome = TelaCadastroFuncionario.txtNome.getText();
-        String cpf = TelaCadastroFuncionario.txtCPF.getText();
+        String cpf = TelaCadastroFuncionario.txtCPF.getText().replaceAll(".", "").replaceAll("-", "");
         String email = TelaCadastroFuncionario.txtEmail.getText();
         boolean isAtivo = TelaCadastroFuncionario.rdAtivo.isSelected();
         Cargo cargo = (Cargo) TelaCadastroFuncionario.comboBoxCargo.getSelectedItem();

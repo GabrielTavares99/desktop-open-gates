@@ -15,11 +15,10 @@ public class PainelRelatorioDashboard extends PainelFuncaoDashboard {
         super();
         LabelIconeFuncaoDashboard icone = new LabelIconeFuncaoDashboard();
         ImageIcon imageIcon = new ImageIcon(PainelMatriculaDashboard.class.getClassLoader().getResource("image/icone-relatorio.png").getPath());
-        imageIcon.setImage(imageIcon.getImage().getScaledInstance(64, 64, 100));
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(icone.getWidth(), icone.getHeight(), 100));
         icone.setIcon(imageIcon);
         add(icone);
         add(new LabelDescricaoFuncaoDashborad("RELATORIO"));
-        setBackground(COR_PAINEL_FEATURE_LARANJA);
         addMouseListener(new PainelFeatureListener(TelaRelatorioEntradaSaida.class));
     }
 

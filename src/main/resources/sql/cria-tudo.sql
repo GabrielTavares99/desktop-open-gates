@@ -60,10 +60,10 @@ CREATE TABLE Funcionario(
 
 CREATE TABLE Usuario(
   id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR (200),
+  email VARCHAR (200) NOT NULL UNIQUE,
   senha VARCHAR (200),
   acessaSistema BOOL DEFAULT false,
-  comboTipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
+  tipoUsuario ENUM('ADMINISTRADOR', 'VISITANTE','FUNCIONARIO', 'SECRETARIA', 'ALUNO') NOT null ,
   codigoEmail varchar (10),
   cpf VARCHAR (11) NOT NULL UNIQUE ,
   ativo BOOL default true,

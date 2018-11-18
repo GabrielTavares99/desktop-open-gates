@@ -10,6 +10,6 @@ public class LabelTitulo extends LabelCustom {
         super(descricao);
         setFont(new Font("Sarif", Font.BOLD, 30));
         setHorizontalAlignment(SwingConstants.CENTER);
-        setBounds(0, 35, TELA_DEFAULT_WIDTH, 40);
+        setBounds(0, 25, TELA_DEFAULT_WIDTH, 40);
     }
 }

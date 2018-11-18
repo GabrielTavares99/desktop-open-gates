@@ -1,6 +1,5 @@
 package SistemaDesktop.controller.modelosTabela;
 
-import SistemaDesktop.controller.modelosTabela.TabelaValidacoesModelCustom;
 import SistemaTerminal.model.Validacao;
 
 import javax.swing.event.TableModelListener;
@@ -9,9 +8,10 @@ import java.util.List;
 
 public class RelatorioValidacoesIndividualModel extends TabelaValidacoesModelCustom {
 
-    List<String> cabecalho = new ArrayList<>();
+    private List<String> cabecalho = new ArrayList<>();
 
     public RelatorioValidacoesIndividualModel() {
+        cabecalho.add("#");
         cabecalho.add("Ação");
         cabecalho.add("Data");
         cabecalho.add("Valido");
@@ -22,10 +22,12 @@ public class RelatorioValidacoesIndividualModel extends TabelaValidacoesModelCus
         Validacao validacao = getValidacaos().get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return validacao.getAcaoPortaria().toString();
+                return rowIndex + 1;
             case 1:
-                return validacao.getData().toString();
+                return validacao.getAcaoPortaria().toString();
             case 2:
+                return validacao.getData().toString();
+            case 3:
                 return validacao.isPermitida();
         }
         return null;
@@ -35,10 +37,12 @@ public class RelatorioValidacoesIndividualModel extends TabelaValidacoesModelCus
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return String.class;
+                return Integer.class;
             case 1:
                 return String.class;
             case 2:
+                return String.class;
+            case 3:
                 return Boolean.class;
         }
         return null;

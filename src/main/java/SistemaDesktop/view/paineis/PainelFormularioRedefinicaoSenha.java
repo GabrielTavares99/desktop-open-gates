@@ -10,11 +10,13 @@ import SistemaDesktop.view.labels.LabelFormulario;
 import SistemaDesktop.view.listeners.AlterarSenhaListener;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static SistemaDesktop.config.ViewSettings.VERMELHO_PADRAO;
 
 public class PainelFormularioRedefinicaoSenha extends PainelCustom {
 
@@ -33,8 +35,8 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
     public PainelFormularioRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha, Usuario usuario) {
         int width = 400;
         setOpaque(true);
-        setBackground(new Color(20, 100, 68, 100));
-        setBounds(MEIO_TELA_X - (width / 2), 200, width, 300);
+        setBackground(VERMELHO_PADRAO);
+        setBounds(MEIO_TELA_X - (width / 2), 150, width, 300);
 
         if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
             itens.add(lblCodigoEmail);
@@ -52,7 +54,8 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
 
         btnRedefinicaoSenha.addActionListener(new AlterarSenhaListener(usuario));
 
-        setLayout(new GridLayout(itens.size(), 1));
+        setLayout(new GridLayout(itens.size(), 1, 2,4));
+        setBorder(new EmptyBorder(5,3,5,3));
         TelasUtil.addItensToTela(this, itens);
     }
 

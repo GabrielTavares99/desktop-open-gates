@@ -9,9 +9,10 @@ public class LabelDescricaoFuncaoDashborad extends JLabel {
 
     public LabelDescricaoFuncaoDashborad(String descricao) {
         setText(descricao);
-        setBounds(0, 100, PAINEL_FUNCAO_WIDTH, 30);
+        setBounds(0, 130, PAINEL_FUNCAO_WIDTH, 30);
         setHorizontalAlignment(SwingConstants.CENTER);
         setForeground(Color.WHITE);
+        setFont(new Font("Sarif", Font.BOLD, 14));
     }
 
 }

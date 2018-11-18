@@ -1,18 +1,22 @@
 package SistemaDesktop.view.paineis;
 
+import SistemaDesktop.util.ImageUtil;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class PainelFotoFuncionario extends JPanel {
+public class PainelFotoFuncionario extends PainelCustom {
 
     public PainelFotoFuncionario(JLabel label, JComponent component) {
-        setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        setSize(200, 200);
-        setBackground(Color.RED);
-        label.setBounds(1,1,getWidth()-2,170);
-        component.setBounds(1,getHeight()-32,getWidth()-2,30);
+        setSize(210, 260);
+        setBackground(Color.WHITE);
+
+        label.setBounds(2, 2, getWidth() - 4, 220);
+        label.setIcon(new ImageIcon(ImageUtil.getImagemProporcional("image/avatar.png", label.getWidth(), label.getHeight())));
         add(label);
+
+        component.setBounds(2, getHeight() - 34, getWidth() - 4, 30);
         add(component);
     }
 }

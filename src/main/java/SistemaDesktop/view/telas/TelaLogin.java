@@ -15,7 +15,6 @@ import java.util.List;
 
 import static SistemaDesktop.config.Constantes.*;
 import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
-import static org.bridj.Platform.getClassLoader;
 
 public class TelaLogin extends TelaCustom {
 
@@ -26,14 +25,11 @@ public class TelaLogin extends TelaCustom {
     JButton btnEnviar = new BotaoSubmissao(this, ENTRAR);
     List<JComponent> itensFormularioLogin = new ArrayList<>();
     private JLabel lblOpenGates;
-    private JPanel pnGeral = new JPanel();
     private JPanel pnFormularioLogin = new PainelFormularioLogin();
     private JLabel lblEsqueciSenha = new LabelEsqueciSenha(this, ESQUECI_SENHA);
 
     public TelaLogin() {
         super();
-        pnGeral.setLayout(null);
-        pnGeral.setOpaque(false);
 
         itensFormularioLogin.add(lblUsername);
         itensFormularioLogin.add(txtUsername);
@@ -49,10 +45,9 @@ public class TelaLogin extends TelaCustom {
         img.setImage(img.getImage().getScaledInstance(128, 140, 100));
         lblOpenGates = new JLabel(img);
         lblOpenGates.setBounds(MEIO_TELA_X - 64, 30, 128, 140);
-        pnGeral.add(lblOpenGates);
+        add(lblOpenGates);
 
-        pnGeral.add(pnFormularioLogin);
-        setContentPane(pnGeral);
+        add(pnFormularioLogin);
         setVisible(true);
     }
 

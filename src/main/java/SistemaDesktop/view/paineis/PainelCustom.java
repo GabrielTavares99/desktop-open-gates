@@ -1,15 +1,17 @@
 package SistemaDesktop.view.paineis;
 
 import javax.swing.*;
+import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.DEFAULT_COLOR_PAINEL;
-import static SistemaDesktop.config.ViewSettings.PAINEL_DEFAULT_COLOR;
+import static SistemaDesktop.config.ViewSettings.VERMELHO_PADRAO;
 
 public abstract class PainelCustom extends JPanel {
 
     public PainelCustom() {
         setOpaque(true);
-        setBackground(DEFAULT_COLOR_PAINEL);
+        setLayout(null);
+        setBackground(VERMELHO_PADRAO);
+        setBorder(BorderFactory.createLineBorder(Color.BLACK, 3, true));
     }
 
 }

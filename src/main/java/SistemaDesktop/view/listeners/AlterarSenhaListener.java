@@ -32,6 +32,8 @@ public class AlterarSenhaListener implements ActionListener {
                 (novaSenha.equals(confirmacaoSenha) && CriptografiaUtil.gerarMD5(senhaAtualText).equals(usuario.getSenha()))) {
             usuario = usuarioController.alterarSenha(usuario, novaSenha);
             JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
+        }else {
+            JOptionPane.showMessageDialog(null, "Erro ao alterar senha!");
         }
 
     }

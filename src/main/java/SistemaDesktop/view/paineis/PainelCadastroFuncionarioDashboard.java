@@ -16,11 +16,10 @@ public class PainelCadastroFuncionarioDashboard extends PainelFuncaoDashboard {
         super();
         LabelIconeFuncaoDashboard icone = new LabelIconeFuncaoDashboard();
         ImageIcon imageIcon = new ImageIcon(PainelMatriculaDashboard.class.getClassLoader().getResource("image/icone-funcionario.png").getPath());
-        imageIcon.setImage(imageIcon.getImage().getScaledInstance(64, 64, 100));
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(icone.getWidth(), icone.getHeight(), 100));
         icone.setIcon(imageIcon);
         add(icone);
-        add(new LabelDescricaoFuncaoDashborad("CADASTRAR FUNCIONARIO"));
-        setBackground(COR_PAINEL_FEATURE_VERDE);
+        add(new LabelDescricaoFuncaoDashborad("CADASTRAR FUNCIONÁRIO"));
         addMouseListener(new PainelFeatureListener(TelaCadastroFuncionario.class));
     }
 

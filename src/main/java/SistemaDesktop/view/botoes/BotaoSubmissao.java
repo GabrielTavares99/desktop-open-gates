@@ -4,6 +4,7 @@ import SistemaDesktop.view.listeners.FazerLoginListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class BotaoSubmissao extends BotaoCustom {
     public BotaoSubmissao(JFrame tela, String descricao) {
@@ -15,4 +16,5 @@ public class BotaoSubmissao extends BotaoCustom {
         setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0, 200), 1, true));
         setFont(new Font("Sarif", Font.BOLD, 15));
     }
+
 }

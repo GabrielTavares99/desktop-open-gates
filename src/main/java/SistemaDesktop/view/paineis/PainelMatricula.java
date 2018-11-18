@@ -1,5 +1,6 @@
 package SistemaDesktop.view.paineis;
 
+import SistemaDesktop.view.botoes.BotaoSimples;
 import SistemaDesktop.view.listeners.FazerMatriculaListener;
 import SistemaDesktop.view.listeners.SelecionarArquivoFotos;
 import SistemaDesktop.view.listeners.SelecionarCsvListener;
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import static SistemaDesktop.config.ViewSettings.COR_PAINEL_FEATURE_LARANJA;
+import static SistemaDesktop.config.ViewSettings.DEFAULT_COLOR_BOTAO;
 
 public class PainelMatricula extends PainelCustom {
 
@@ -17,14 +19,14 @@ public class PainelMatricula extends PainelCustom {
     JLabel lblArquivoCSV;
     JPanel painelArquivoFotos = new JPanel();
     JPanel pnArquivoCSV = new JPanel();
-    JButton btnBuscarArquivoFotos = new JButton("PROCURAR");
-    JButton btnBuscarArquivoCSV = new JButton("PROCURAR");
-    JButton btnFazerMatricula = new JButton("MATRICULAR");
+    JButton btnBuscarArquivoFotos = new BotaoSimples("PROCURAR");
+    JButton btnBuscarArquivoCSV = new BotaoSimples("PROCURAR");
+    JButton btnFazerMatricula = new BotaoSimples("MATRICULAR");
 
     public PainelMatricula(JFrame tela) {
         super();
         setBounds(50, 290, 700, 250);
-        setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         setLayout(null);
 
         ImageIcon imageIcon = new ImageIcon(PainelMatricula.class.getClassLoader().getResource("image/icone-zip.png"));
@@ -40,7 +42,7 @@ public class PainelMatricula extends PainelCustom {
         lblArquivoFotos.setBounds(10, 10, 180, 100);
         painelArquivoFotos.add(lblArquivoFotos);
 
-        lblDescricaoArquivoFoto.setBounds(0, 100, 200, 30);
+        lblDescricaoArquivoFoto.setBounds(0, 130, 200, 30);
         lblDescricaoArquivoFoto.setHorizontalAlignment(SwingConstants.CENTER);
         painelArquivoFotos.add(lblDescricaoArquivoFoto);
 
@@ -60,7 +62,7 @@ public class PainelMatricula extends PainelCustom {
         lblArquivoCSV.setBounds(10, 10, 180, 100);
         pnArquivoCSV.add(lblArquivoCSV);
 
-        lblDescricaoArquivoCSV.setBounds(0, 100, 200, 30);
+        lblDescricaoArquivoCSV.setBounds(0, 130, 200, 30);
         lblDescricaoArquivoCSV.setHorizontalAlignment(SwingConstants.CENTER);
         pnArquivoCSV.add(lblDescricaoArquivoCSV);
 
@@ -70,7 +72,9 @@ public class PainelMatricula extends PainelCustom {
         btnFazerMatricula.setBounds(500, 200, 150, 30);
 
         btnBuscarArquivoCSV.addActionListener(new SelecionarCsvListener(tela));
+
         btnBuscarArquivoFotos.addActionListener(new SelecionarArquivoFotos(tela));
+
         btnFazerMatricula.addActionListener(new FazerMatriculaListener());
 
         add(btnFazerMatricula);

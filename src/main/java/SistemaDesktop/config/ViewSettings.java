@@ -20,9 +20,11 @@ public class ViewSettings {
 
     public static Color PAINEL_DEFAULT_COLOR = new Color(116, 193, 188, 10);
 
-    public static Color DEFAULT_COLOR_BOTAO = new Color(38, 60, 119);
-    public static Color DEFAULT_COLOR_PAINEL = new Color(25, 136, 255);
-    public static Color DEFAULT_COLOR_TELA = new Color(215, 228, 242);
+    public static Color DEFAULT_COLOR_BOTAO = new Color(49, 67, 116);
+    public static Color VERMELHO_PADRAO = new Color(168, 59, 67);
+
+    public static Color DEFAULT_COLOR_TELA = new Color(180, 194, 208);
+    public static Color BORDA_VERDE = new Color(8, 168, 46);
     public static Color COR_PAINEL_FEATURE_LARANJA = new Color(255, 162, 0);
     public static Color COR_PAINEL_FEATURE_VERDE = new Color(18, 178, 87);
     public static Color COR_PAINEL_FEATURE_ROXA = new Color(162, 25, 255);
