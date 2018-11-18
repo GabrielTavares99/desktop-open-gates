@@ -64,8 +64,8 @@ public class UsuarioDAO implements IDao {
                 " acessaSistema = ?," +
                 " tipoUsuario = ?," +
                 " codigoEmail = ?," +
+
                 " cpf = ?," +
-                " fotoBase64 = ?," +
                 " ativo = ?" +
                 " WHERE id = ?";
         try {
@@ -76,9 +76,9 @@ public class UsuarioDAO implements IDao {
             preparedStatement.setString(4, usuario.getTipoUsuario().toString());
             preparedStatement.setString(5, usuario.getCodigoEmail());
             preparedStatement.setString(6, usuario.getCpf());
-            preparedStatement.setString(7, usuario.getPessoa().getFotoBase64());
-            preparedStatement.setBoolean(8, usuario.isAtivo());
-            preparedStatement.setInt(9, usuario.getId());
+
+            preparedStatement.setBoolean(7, usuario.isAtivo());
+            preparedStatement.setInt(8, usuario.getId());
             int i = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
