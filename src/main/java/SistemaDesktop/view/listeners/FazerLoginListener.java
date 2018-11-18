@@ -26,12 +26,12 @@ public class FazerLoginListener implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         UsuarioController usuarioController = new UsuarioController();
 
-        String text = TelaLogin.txtUsername.getText();
+        String email = TelaLogin.txtUsername.getText();
         String senha = TelaLogin.txtPassword.getText();
 
-        boolean isLogado = usuarioController.podeLogar(text, senha);
+        boolean isLogado = usuarioController.podeLogar(email, senha);
         if (isLogado) {
-            TelasUtil.USUARIO_LOGADO = usuarioController.findByEmail(text);
+            TelasUtil.USUARIO_LOGADO = usuarioController.findByEmail(email);
             new TelaDashboard();
             telaLogin.dispose();
         } else {
