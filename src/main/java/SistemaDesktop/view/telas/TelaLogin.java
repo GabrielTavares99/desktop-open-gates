@@ -21,10 +21,14 @@ public class TelaLogin extends TelaCustom {
 
     public static JTextField txtUsername = new CampoTextoFormulario();
     public static JTextField txtPassword = new CampoSenhaFormulario();
+
     JLabel lblUsername = new LabelFormulario(USERNAME);
     JLabel lblPassword = new LabelFormulario(PASSWORD);
+
     JButton btnEnviar = new BotaoSubmissao(this, ENTRAR);
+
     List<JComponent> itensFormularioLogin = new ArrayList<>();
+
     private JLabel lblOpenGates;
     private JPanel pnGeral = new JPanel();
     private JPanel pnFormularioLogin = new PainelFormularioLogin();
@@ -46,6 +50,8 @@ public class TelaLogin extends TelaCustom {
         TelasUtil.addItensToTela(pnFormularioLogin, itensFormularioLogin);
 
         ImageIcon img = new ImageIcon(tela.getClass().getClassLoader().getResource("image/open-gate-com-texto.png").getPath());
+
+
         img.setImage(img.getImage().getScaledInstance(128, 140, 100));
         lblOpenGates = new JLabel(img);
         lblOpenGates.setBounds(MEIO_TELA_X - 64, 30, 128, 140);

@@ -42,16 +42,18 @@ public class UsuarioController {
         Email email = new Email();
         email.setAssunto("Redefinição de Senha");
         email.setDestinatario(usuario.getEmail());
+
         File file = FileUtil.getFileFromResource("html/esqueci-senha.html");
         String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+
         String novoCodigoEmail = CriptografiaUtil.generateUUID().substring(0,5);
         usuario.setCodigoEmail(novoCodigoEmail);
+
         htmlEmTexto = String.format(htmlEmTexto, novoCodigoEmail);
         email.setHmtl(htmlEmTexto);
         return email;
     }
     public void enviarCodigoEsqueciSenha(Usuario usuario) {
-
         Email emailEsqueciSenha = fazerEmailEsqueciSenha(usuario);
         EmailDAO emailDAO = new EmailDAO();
         emailDAO.salvar(emailEsqueciSenha);
