@@ -9,9 +9,12 @@ import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 
+import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
+import java.util.StringJoiner;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
@@ -32,8 +35,24 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
 
         Dimension size = WebcamResolution.VGA.getSize();
 
-        // TODO: 08/11/18 FAZER MENUZINHO DE ESCOLHA
-        webcam = Webcam.getWebcams().get(0);
+        List<Webcam> webcams = Webcam.getWebcams();
+        if (webcams.size() > 1) {
+            StringJoiner joiner = new StringJoiner("\n");
+            joiner.add("Qual webcam usar?\nDigite apenas números");
+            for (int i = 0; i < webcams.size(); i++) {
+                joiner.add(String.format("%d - %s", i + 1, webcams.get(i).getName()));
+            }
+            String s = JOptionPane.showInputDialog(joiner.toString());
+            try {
+                webcam= webcams.get(Integer.valueOf(s)-1);
+            } catch (Exception e) {
+                webcam = Webcam.getWebcams().get(0);
+            }
+        } else if (webcams.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Câmeras não disponíveis!");
+        } else {
+            webcam = Webcam.getWebcams().get(0);
+        }
         webcam.setViewSize(size);
 
         panel = new WebcamPanel(webcam);
