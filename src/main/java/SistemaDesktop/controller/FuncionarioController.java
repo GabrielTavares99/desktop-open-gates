@@ -13,6 +13,8 @@ import SistemaDesktop.util.ImageUtil;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.telas.TelaCadastroFuncionario;
 
+import static SistemaDesktop.view.telas.TelaCadastroFuncionario.limparCampos;
+
 public class FuncionarioController {
 
     private FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
@@ -20,7 +22,7 @@ public class FuncionarioController {
     public void cadastrar() {
 
         String nome = TelaCadastroFuncionario.txtNome.getText();
-        String cpf = TelaCadastroFuncionario.txtCPF.getText().replaceAll(".", "").replaceAll("-", "");
+        String cpf = TelaCadastroFuncionario.txtCPF.getText().replace(".","").replace("-","");
         String email = TelaCadastroFuncionario.txtEmail.getText();
         boolean isAtivo = TelaCadastroFuncionario.rdAtivo.isSelected();
         Cargo cargo = (Cargo) TelaCadastroFuncionario.comboBoxCargo.getSelectedItem();
@@ -57,6 +59,7 @@ public class FuncionarioController {
             System.out.println("UPDATE DE FUNCIONARIO");
             funcionarioDAO.update(funcionario);
         }
+        limparCampos();
     }
 
 

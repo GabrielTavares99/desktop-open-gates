@@ -4,6 +4,8 @@ import SistemaDesktop.controller.dao.CargoDAO;
 import SistemaDesktop.controller.modelosTabela.ModeloTabelaCadastroFuncionario;
 import SistemaDesktop.model.Cargo;
 import SistemaDesktop.model.Funcionario;
+import SistemaDesktop.util.CriptografiaUtil;
+import SistemaDesktop.util.ImageUtil;
 import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.botoes.BotaoSimples;
 import SistemaDesktop.view.camposTexto.CampoTextoCadastro;
@@ -19,6 +21,8 @@ import SistemaDesktop.view.paineis.PainelSimples;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.ParseException;
@@ -121,14 +125,29 @@ public class TelaCadastroFuncionario extends TelaCustom {
             ID_USUARIO = null;
         });
 
+
         tabela.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int selectedRow = tabela.getSelectedRow();
                 Funcionario funcionario = (Funcionario) modeloTabelaCadastroFuncionario.getFuncionarios().get(selectedRow);
+
                 txtNome.setText(funcionario.getNome());
+                txtCPF.setText(funcionario.getUsuario().getCpf());
+                txtEmail.setText(funcionario.getUsuario().getEmail());
+                txtEmail.setEnabled(false);
+                comboBoxCargo.setSelectedItem(funcionario.getCargo());
+                rdAtivo.setSelected(funcionario.getUsuario().isAtivo());
+
+                String pathImage = String.format("/tmp/funcionario/%s.jpg", CriptografiaUtil.generateUUID());
+                ImageUtil.fromBaseToImage(funcionario.getFotoBase64(), pathImage);
+                ImageIcon imageIcon = new ImageIcon(pathImage);
+                imageIcon.setImage(imageIcon.getImage().getScaledInstance(198, 170, 100));
+                lblImagemFuncionario.setIcon(imageIcon);
+
                 ID_FUNCIONARIO = funcionario.getId();
                 ID_USUARIO = funcionario.getUsuario().getId();
+                TelasUtil.URL_FOTO_FUNCIONARIO = pathImage;
             }
 
             @Override
@@ -152,11 +171,27 @@ public class TelaCadastroFuncionario extends TelaCustom {
             }
         });
 
+        btnCancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                limparCampos();
+            }
+        });
+
         add(pnBotoes);
         add(pnCadastro);
         add(txtPesquisa);
         setJMenuBar(new MenuSuperior(tela));
 
         setVisible(true);
+    }
+
+    public static void limparCampos() {
+        txtNome.setText("");
+        txtCPF.setText("");
+        txtEmail.setText("");
+        rdAtivo.setSelected(false);
+        comboBoxCargo.setSelectedItem(0);
+        lblImagemFuncionario.setIcon(new ImageIcon(ImageUtil.getImagemProporcional("image/avatar.png", lblImagemFuncionario.getWidth(), lblImagemFuncionario.getHeight())));
     }
 }
