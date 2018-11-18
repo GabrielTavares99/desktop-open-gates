@@ -15,20 +15,20 @@ import java.awt.event.MouseListener;
 
 public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
-    private JFrame frame;
+    private JFrame tela;
     private Cursor cursor;
     private TipoRedefinicaoSenha tipoRedefinicaoSenha;
 
     private UsuarioController usuarioController = new UsuarioController();
 
     public RedefinicaoSenhaListener(JFrame frame, TipoRedefinicaoSenha tipoRedefinicaoSenha) {
-        this.frame = frame;
+        this.tela = frame;
         this.tipoRedefinicaoSenha = tipoRedefinicaoSenha;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        func();
+        redefinirSenha();
     }
 
     @Override
@@ -43,22 +43,22 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        cursor = frame.getCursor();
-        frame.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cursor = tela.getCursor();
+        tela.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        frame.setCursor(cursor);
+        tela.setCursor(cursor);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        func();
+        redefinirSenha();
     }
 
 
-    private void func() {
+    private void redefinirSenha() {
         Usuario usuario;
         if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
             String emailRecuperacao = JOptionPane.showInputDialog(null, "Para recuperar sua senha, informe seu endereço de e-mail cadastrado no sistema.", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE);
@@ -67,18 +67,18 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
                 return;
             usuario = usuarioController.findByEmail(emailRecuperacao);
             if (usuario == null) {
-                JOptionPane.showMessageDialog(frame, "Email não encontrado!");
+                JOptionPane.showMessageDialog(tela, "Email não encontrado!");
             } else {
                 if (usuario.getCodigoEmail() == null) {
-                    JOptionPane.showMessageDialog(frame, "Você receberá um email em breve com o seu código para redefinição de senha!");
+                    JOptionPane.showMessageDialog(tela, "Você receberá um email em breve com o seu código para redefinição de senha!");
                     usuarioController.enviarCodigoEsqueciSenha(usuario);
                 }
                 new TelaRedefinicaoSenha(tipoRedefinicaoSenha, usuario);
-                frame.dispose();
+                tela.dispose();
             }
         } else {
             new TelaRedefinicaoSenha(tipoRedefinicaoSenha, TelasUtil.USUARIO_LOGADO);
-            frame.dispose();
+            tela.dispose();
         }
 
     }
