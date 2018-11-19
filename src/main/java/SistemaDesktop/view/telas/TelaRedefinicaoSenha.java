@@ -16,16 +16,18 @@ public class TelaRedefinicaoSenha extends TelaCustom {
 
     public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha, Usuario usuario) {
         super();
-        Usuario byEmail = usuario;
 
         JLabel lblTitulo = new LabelTitulo("TELA REDEFINIÇÃO SENHA");
         add(lblTitulo);
-        add(new PainelFormularioRedefinicaoSenha(tipoRedefinicaoSenha, byEmail));
+
+        add(new PainelFormularioRedefinicaoSenha(tipoRedefinicaoSenha, usuario));
 
         JMenu menuSair = new JMenu("VOLTAR");
+
         menuSuperior.add(menuSair);
         JMenuItem sair = new JMenuItem("SAIR");
         menuSair.add(sair);
+
         sair.addActionListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha));
         setJMenuBar(menuSuperior);
         setVisible(true);

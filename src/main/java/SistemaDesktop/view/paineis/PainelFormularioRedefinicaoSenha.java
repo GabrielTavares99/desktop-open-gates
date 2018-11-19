@@ -29,6 +29,7 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
     LabelFormulario lblCodigoEmail = new LabelFormulario("CODIGO EMAIL");
     LabelFormulario lblSenhaNova = new LabelFormulario("NOVA SENHA");
     LabelFormulario lblConfirmacaoSenhaNova = new LabelFormulario("CONFIRMACAO NOVA SENHA");
+
     BotaoRedefinicaoSenha btnRedefinicaoSenha = new BotaoRedefinicaoSenha();
     List<JComponent> itens = new ArrayList<>();
 

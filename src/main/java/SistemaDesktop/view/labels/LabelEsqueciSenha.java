@@ -14,6 +14,7 @@ public class LabelEsqueciSenha extends LabelCustom {
         super(descricao);
         setText("<html><u>" + getText() + "</ul></html>");
         addMouseListener(new RedefinicaoSenhaListener(frame, TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL));
+
         setForeground(new Color(255, 255, 255, 180));
         setBorder(new EmptyBorder(0, 6, 0, 0));//top,left,bottom,right
     }
