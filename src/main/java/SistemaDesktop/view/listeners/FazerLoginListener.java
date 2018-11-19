@@ -33,6 +33,8 @@ public class FazerLoginListener implements ActionListener, MouseListener {
         if (isLogado) {
             TelasUtil.USUARIO_LOGADO = usuarioController.findByEmail(email);
             new TelaDashboard();
+
+            TelaLogin.txtPassword.setText("");
             telaLogin.dispose();
         } else {
             JOptionPane.showMessageDialog(telaLogin, "Email ou Senha inválidos!!!", "LOGIN", JOptionPane.WARNING_MESSAGE);
