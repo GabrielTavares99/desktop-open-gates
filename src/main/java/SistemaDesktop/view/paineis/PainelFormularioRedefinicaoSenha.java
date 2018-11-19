@@ -15,8 +15,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
-import static SistemaDesktop.config.ViewSettings.VERMELHO_PADRAO;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.VERMELHO_PADRAO;
 
 public class PainelFormularioRedefinicaoSenha extends PainelCustom {
 
@@ -55,8 +55,8 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
 
         btnRedefinicaoSenha.addActionListener(new AlterarSenhaListener(usuario));
 
-        setLayout(new GridLayout(itens.size(), 1, 2,4));
-        setBorder(new EmptyBorder(5,3,5,3));
+        setLayout(new GridLayout(itens.size(), 1, 2, 4));
+        setBorder(new EmptyBorder(5, 3, 5, 3));
         TelasUtil.addItensToTela(this, itens);
     }
 

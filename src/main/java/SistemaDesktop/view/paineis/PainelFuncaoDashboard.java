@@ -3,7 +3,7 @@ package SistemaDesktop.view.paineis;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.DEFAULT_COLOR_BOTAO;
+import static commoms.config.ViewSettings.DEFAULT_COLOR_BOTAO;
 
 public class PainelFuncaoDashboard extends PainelCustom {
 

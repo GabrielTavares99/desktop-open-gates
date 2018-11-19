@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.ViewSettings.*;
+import static commoms.config.ViewSettings.*;
 
 public class PainelValidacao extends PainelCustom {
 

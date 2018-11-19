@@ -7,8 +7,6 @@ import SistemaDesktop.view.telas.TelaMatricula;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.ViewSettings.COR_PAINEL_FEATURE_ROXA;
-
 public class PainelMatriculaDashboard extends PainelFuncaoDashboard {
 
     public PainelMatriculaDashboard() {

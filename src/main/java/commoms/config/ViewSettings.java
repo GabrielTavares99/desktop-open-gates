@@ -1,4 +1,4 @@
-package SistemaDesktop.config;
+package commoms.config;
 
 import java.awt.*;
 

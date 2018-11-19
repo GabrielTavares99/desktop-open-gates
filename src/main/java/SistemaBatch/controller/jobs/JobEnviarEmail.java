@@ -6,11 +6,12 @@ import SistemaDesktop.model.Email;
 
 import java.util.Date;
 
-import static SistemaBatch.config.Settings.MINUTO;
+import static commoms.config.Settings.MINUTO;
 
 public class JobEnviarEmail extends Thread {
 
     private EmailController emailController = new EmailController();
+
     public JobEnviarEmail() {
     }
 

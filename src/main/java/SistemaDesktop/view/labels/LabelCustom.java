@@ -2,8 +2,8 @@ package SistemaDesktop.view.labels;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.ViewSettings.LABEL_DEFAULT_HEIGHT;
-import static SistemaDesktop.config.ViewSettings.LABEL_DEFAULT_WIDTH;
+import static commoms.config.ViewSettings.LABEL_DEFAULT_HEIGHT;
+import static commoms.config.ViewSettings.LABEL_DEFAULT_WIDTH;
 
 public class LabelCustom extends JLabel {
     public LabelCustom(String descricao) {

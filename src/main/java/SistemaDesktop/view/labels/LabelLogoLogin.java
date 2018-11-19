@@ -3,7 +3,7 @@ package SistemaDesktop.view.labels;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
 
 public class LabelLogoLogin extends LabelCustom {
     public LabelLogoLogin(String descricao) {

@@ -2,12 +2,10 @@ package SistemaDesktop.view.botoes;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import static SistemaDesktop.config.ViewSettings.*;
+import static commoms.config.ViewSettings.*;
 
-public abstract class BotaoCustom extends JButton  {
+public abstract class BotaoCustom extends JButton {
 
     private Cursor cursor;
 

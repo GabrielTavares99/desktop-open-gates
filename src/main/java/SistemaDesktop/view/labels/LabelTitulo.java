@@ -3,7 +3,7 @@ package SistemaDesktop.view.labels;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
+import static commoms.config.ViewSettings.TELA_DEFAULT_WIDTH;
 
 public class LabelTitulo extends LabelCustom {
     public LabelTitulo(String descricao) {

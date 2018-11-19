@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.Constantes.DASHBOARD;
+import static commoms.config.Constantes.DASHBOARD;
 
 public class TelaDashboard extends TelaCustom {
 

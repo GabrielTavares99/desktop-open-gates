@@ -7,8 +7,8 @@ import SistemaDesktop.view.telas.TelaCustom;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.COR_VERDE_SUCESSO;
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.COR_VERDE_SUCESSO;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
 
 public class TelaJobs extends TelaCustom {
 
