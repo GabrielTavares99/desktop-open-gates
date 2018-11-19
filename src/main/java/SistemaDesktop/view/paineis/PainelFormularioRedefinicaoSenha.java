@@ -53,7 +53,7 @@ public class PainelFormularioRedefinicaoSenha extends PainelCustom {
         itens.add(txtConfirmacaoSenhaNova);
         itens.add(btnRedefinicaoSenha);
 
-        btnRedefinicaoSenha.addActionListener(new AlterarSenhaListener(usuario));
+        btnRedefinicaoSenha.addActionListener(new AlterarSenhaListener(usuario, tipoRedefinicaoSenha, this));
 
         setLayout(new GridLayout(itens.size(), 1, 2,4));
         setBorder(new EmptyBorder(5,3,5,3));

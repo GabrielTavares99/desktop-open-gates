@@ -5,6 +5,7 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.view.telas.TelaDashboard;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
@@ -28,5 +29,20 @@ public class TelasUtil {
 
     public static void centralizar(JComponent component) {
         component.setLocation(MEIO_TELA_X - (component.getWidth() / 2), component.getY());
+    }
+
+    public static void limpaCampos(JPanel panel){
+        for(int i = 0; i < panel.getComponentCount(); i++){
+            Component component = panel.getComponent(i);
+            if(component instanceof JTextField) {
+                JTextField campo = (JTextField) component;
+                campo.setText("");
+            }
+
+            if(component instanceof JPasswordField){
+                JPasswordField campo = (JPasswordField) component;
+                campo.setText("");
+            }
+        }
     }
 }

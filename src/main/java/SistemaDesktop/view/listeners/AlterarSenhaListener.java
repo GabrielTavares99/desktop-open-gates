@@ -1,9 +1,10 @@
 package SistemaDesktop.view.listeners;
 
 import SistemaDesktop.controller.UsuarioController;
-import SistemaDesktop.controller.dao.UsuarioDAO;
 import SistemaDesktop.model.Usuario;
+import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.CriptografiaUtil;
+import SistemaDesktop.view.Strategy.AlteradorSenha;
 import SistemaDesktop.view.paineis.PainelFormularioRedefinicaoSenha;
 
 import javax.swing.*;
@@ -13,28 +14,19 @@ import java.awt.event.ActionListener;
 public class AlterarSenhaListener implements ActionListener {
 
     private Usuario usuario;
-    private UsuarioController usuarioController = new UsuarioController();
+    TipoRedefinicaoSenha tipoRedefinicaoSenha;
+    JPanel painel;
 
-    public AlterarSenhaListener(Usuario usuario) {
+    public AlterarSenhaListener(Usuario usuario, TipoRedefinicaoSenha tipoRedefinicaoSenha, JPanel painel) {
         this.usuario = usuario;
+        this.tipoRedefinicaoSenha = tipoRedefinicaoSenha;
+        this.painel = painel;
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        String confirmacaoSenha = String.valueOf(PainelFormularioRedefinicaoSenha.txtConfirmacaoSenhaNova.getPassword());
-        String novaSenha = String.valueOf(PainelFormularioRedefinicaoSenha.txtSenhaNova.getPassword());
-        String codigoEmail = PainelFormularioRedefinicaoSenha.txtCodigoEmail.getText();
-        String senhaAtualText = String.valueOf(PainelFormularioRedefinicaoSenha.txtSenhaAtual.getPassword());
-
-        if ((novaSenha.equals(confirmacaoSenha) && codigoEmail.equals(usuario.getCodigoEmail())) ||
-                (novaSenha.equals(confirmacaoSenha) && CriptografiaUtil.gerarMD5(senhaAtualText).equals(usuario.getSenha()))) {
-            usuario = usuarioController.alterarSenha(usuario, novaSenha);
-            JOptionPane.showMessageDialog(null, "Senha alterada com sucesso!");
-        }else {
-            JOptionPane.showMessageDialog(null, "Erro ao alterar senha!");
-        }
-
+        AlteradorSenha alteradorSenha = new AlteradorSenha(tipoRedefinicaoSenha);
+        alteradorSenha.alteracaoDeSenha(usuario, painel);
     }
 }
