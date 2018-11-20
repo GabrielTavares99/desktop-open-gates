@@ -13,14 +13,15 @@ import javax.swing.*;
 
 public class TelaRedefinicaoSenha extends TelaCustom {
     JMenuBar menuSuperior = new JMenuBar();
-
+    PainelFormularioRedefinicaoSenha painel;
     public TelaRedefinicaoSenha(TipoRedefinicaoSenha tipoRedefinicaoSenha, Usuario usuario) {
         super();
 
         JLabel lblTitulo = new LabelTitulo("TELA REDEFINIÇÃO SENHA");
         add(lblTitulo);
 
-        add(new PainelFormularioRedefinicaoSenha(tipoRedefinicaoSenha, usuario));
+        painel = new PainelFormularioRedefinicaoSenha(tipoRedefinicaoSenha, usuario);
+        add(painel);
 
         JMenu menuSair = new JMenu("VOLTAR");
 
@@ -28,7 +29,7 @@ public class TelaRedefinicaoSenha extends TelaCustom {
         JMenuItem sair = new JMenuItem("SAIR");
         menuSair.add(sair);
 
-        sair.addActionListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha));
+        sair.addActionListener(new VoltarRedefinicaoSenhaListener(this, tipoRedefinicaoSenha, painel));
         setJMenuBar(menuSuperior);
         setVisible(true);
     }

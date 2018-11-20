@@ -4,6 +4,7 @@ import SistemaDesktop.controller.UsuarioController;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.CriptografiaUtil;
+import SistemaDesktop.util.TelasUtil;
 import SistemaDesktop.view.Strategy.AlteradorSenha;
 import SistemaDesktop.view.paineis.PainelFormularioRedefinicaoSenha;
 
@@ -28,5 +29,6 @@ public class AlterarSenhaListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         AlteradorSenha alteradorSenha = new AlteradorSenha(tipoRedefinicaoSenha);
         alteradorSenha.alteracaoDeSenha(usuario, painel);
+        TelasUtil.limpaCampos(painel);
     }
 }

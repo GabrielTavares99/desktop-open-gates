@@ -64,7 +64,7 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
         if (tipoRedefinicaoSenha.equals(TipoRedefinicaoSenha.REDEFINICAO_CODIGO_EMAIL)) {
             String emailRecuperacao = JOptionPane.showInputDialog(null, "Para recuperar sua senha, informe seu endereço de e-mail cadastrado no sistema.", "Recuperar Senha", JOptionPane.INFORMATION_MESSAGE);
             TelasUtil.EMAIL_RECUPERACAO = emailRecuperacao;
-            if (emailRecuperacao.isEmpty())
+            if (emailRecuperacao == null || emailRecuperacao.isEmpty())
                 return;
             usuario = usuarioController.findByEmail(emailRecuperacao);
             if (usuario == null) {
