@@ -56,7 +56,7 @@ public class FuncionarioController {
             return true;
         return false;
     }
-    
+
 
     private void salvarEmailAtualizacaoEmail(Funcionario funcionario){
         Email emailAtualizacaoDeEmail = EmailController.fazerEmailAtualizacaoEmail(funcionario);

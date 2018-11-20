@@ -4,6 +4,7 @@ import SistemaDesktop.controller.UsuarioController;
 import SistemaDesktop.model.Usuario;
 import SistemaDesktop.model.enums.TipoRedefinicaoSenha;
 import SistemaDesktop.util.TelasUtil;
+import SistemaDesktop.view.telas.TelaLogin;
 import SistemaDesktop.view.telas.TelaRedefinicaoSenha;
 
 import javax.swing.*;
@@ -74,6 +75,7 @@ public class RedefinicaoSenhaListener implements MouseListener, ActionListener {
                     usuarioController.enviarCodigoEsqueciSenha(usuario);
                 }
                 new TelaRedefinicaoSenha(tipoRedefinicaoSenha, usuario);
+                TelaLogin.txtPassword.setText("");
                 tela.dispose();
             }
         } else {
