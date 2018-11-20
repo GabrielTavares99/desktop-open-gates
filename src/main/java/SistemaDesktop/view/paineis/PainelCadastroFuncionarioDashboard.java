@@ -7,8 +7,6 @@ import SistemaDesktop.view.telas.TelaCadastroFuncionario;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.ViewSettings.COR_PAINEL_FEATURE_VERDE;
-
 
 public class PainelCadastroFuncionarioDashboard extends PainelFuncaoDashboard {
 

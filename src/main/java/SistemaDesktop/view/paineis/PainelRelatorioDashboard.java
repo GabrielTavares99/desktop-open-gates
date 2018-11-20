@@ -7,8 +7,6 @@ import SistemaDesktop.view.telas.TelaRelatorioEntradaSaida;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.ViewSettings.COR_PAINEL_FEATURE_LARANJA;
-
 public class PainelRelatorioDashboard extends PainelFuncaoDashboard {
 
     public PainelRelatorioDashboard() {

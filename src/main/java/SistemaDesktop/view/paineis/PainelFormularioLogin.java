@@ -3,7 +3,7 @@ package SistemaDesktop.view.paineis;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
 
 public class PainelFormularioLogin extends PainelCustom {
 

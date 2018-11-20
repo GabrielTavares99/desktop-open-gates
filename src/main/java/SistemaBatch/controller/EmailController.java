@@ -1,6 +1,5 @@
 package SistemaBatch.controller;
 
-import SistemaDesktop.config.Constantes;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import SistemaDesktop.model.Pessoa;
@@ -8,23 +7,24 @@ import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.util.FileUtil;
 import SistemaDesktop.util.QRCodeUtil;
+import commoms.config.Constantes;
 import org.apache.commons.mail.MultiPartEmail;
 
 import java.io.File;
 
-import static SistemaBatch.config.Settings.QRCODE_SALT;
+import static commoms.config.Settings.*;
 
 public class EmailController {
 
-    private final String emailSistema = "sistema.open.gates@gmail.com";
-    private final String senhaSistema = "opengates2018";
+    private final String emailSistema = EMAIL_SISTEMA;
+    private final String senhaSistema = SENHA_EMAIL_SISTEMA;
     private EmailDAO emailDAO = new EmailDAO();
 
     public static Email fazerEmailBoasVindas(Pessoa novoAluno) {
         Email email = new Email();
         email.setAssunto("ACESSO LIBERADO A FATEC ZL");
         email.setDestinatario(novoAluno.getUsuario().getEmail());
-        File file = FileUtil.getFileFromResource("novo-login.html");
+        File file = FileUtil.getFileFromResource("html/novo-login.html");
         String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
         htmlEmTexto = String.format(htmlEmTexto, novoAluno.getNome(), novoAluno.getUsuario().getCodigoEmail());
         email.setHmtl(htmlEmTexto);
@@ -46,7 +46,7 @@ public class EmailController {
         return email;
     }
 
-    public static Email fazerEmailAtualizacaoEmail(Pessoa pessoa){
+    public static Email fazerEmailAtualizacaoEmail(Pessoa pessoa) {
         Usuario usuario = pessoa.getUsuario();
 
         Email email = new Email();

@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
 
 public class TelasUtil {
 
@@ -31,15 +31,15 @@ public class TelasUtil {
         component.setLocation(MEIO_TELA_X - (component.getWidth() / 2), component.getY());
     }
 
-    public static void limpaCampos(JPanel panel){
-        for(int i = 0; i < panel.getComponentCount(); i++){
+    public static void limpaCampos(JPanel panel) {
+        for (int i = 0; i < panel.getComponentCount(); i++) {
             Component component = panel.getComponent(i);
-            if(component instanceof JTextField) {
+            if (component instanceof JTextField) {
                 JTextField campo = (JTextField) component;
                 campo.setText("");
             }
 
-            if(component instanceof JPasswordField){
+            if (component instanceof JPasswordField) {
                 JPasswordField campo = (JPasswordField) component;
                 campo.setText("");
             }

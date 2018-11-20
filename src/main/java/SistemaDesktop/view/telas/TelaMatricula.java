@@ -16,8 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static SistemaDesktop.config.Constantes.TITULO_TELA_MATRICULA;
 import static SistemaDesktop.util.TelasUtil.TELA_ANTERIOR;
+import static commoms.config.Constantes.TITULO_TELA_MATRICULA;
 
 public class TelaMatricula extends TelaCustom {
     public static JTable tabelaCredenciamentoAluno = new JTable();

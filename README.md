@@ -1,7 +1,18 @@
-# open-gates
+# OPEN-GATES
 
+- Criar variáveis de ambiente:
+    - BD_NOME
+    - BD_HOST
+    - BD_SENHA
+    - QRCODE_SALT
+    - BD_USUARIO
+    - EMAIL_SISTEMA
+    - EMAIL_SISTEMA_SENHA
 
-- Criar variável de ambiente com a senha do seu banco local
+- Banco de dados
+    - Criar banco de dados com o nome [opengates]
+    - Rotar o script [cria-tudo.sql]
+
 
 new File(PrincipalTerminal.class.getClassLoader().getResource("oi.html").getPath()).exists()
 

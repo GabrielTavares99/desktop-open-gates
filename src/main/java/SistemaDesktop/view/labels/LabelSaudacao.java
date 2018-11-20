@@ -9,7 +9,7 @@ import SistemaDesktop.util.TelasUtil;
 
 import java.util.Date;
 
-import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
+import static commoms.config.ViewSettings.TELA_DEFAULT_WIDTH;
 
 public class LabelSaudacao extends LabelCustom {
     public LabelSaudacao(String nome) {

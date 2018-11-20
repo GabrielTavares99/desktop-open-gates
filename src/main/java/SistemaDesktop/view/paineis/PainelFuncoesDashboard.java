@@ -2,11 +2,10 @@ package SistemaDesktop.view.paineis;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_Y;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.ViewSettings.MEIO_TELA_Y;
 
 public class PainelFuncoesDashboard extends PainelCustom {
 

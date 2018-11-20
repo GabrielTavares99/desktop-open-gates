@@ -4,8 +4,8 @@ import SistemaDesktop.util.ImageUtil;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.Constantes.OPEN_GATES;
-import static SistemaDesktop.config.ViewSettings.*;
+import static commoms.config.Constantes.OPEN_GATES;
+import static commoms.config.ViewSettings.*;
 
 public abstract class TelaCustom extends JFrame {
     JFrame tela;
@@ -22,7 +22,7 @@ public abstract class TelaCustom extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(ImageUtil.getImagemProporcional("image/open-gates-sem-texto.png",100,100));
+        setIconImage(ImageUtil.getImagemProporcional("image/open-gates-sem-texto.png", 100, 100));
     }
 
 }

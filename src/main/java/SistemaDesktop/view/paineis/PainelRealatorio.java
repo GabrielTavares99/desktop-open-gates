@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Vector;
 
-import static SistemaDesktop.config.ViewSettings.BORDA_VERDE;
-import static SistemaDesktop.config.ViewSettings.TELA_DEFAULT_WIDTH;
+import static commoms.config.ViewSettings.BORDA_VERDE;
+import static commoms.config.ViewSettings.TELA_DEFAULT_WIDTH;
 
 public class PainelRealatorio extends PainelCustom {
 

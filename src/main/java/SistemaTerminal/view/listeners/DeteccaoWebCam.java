@@ -14,7 +14,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.util.Date;
 
-import static SistemaBatch.config.Settings.QRCODE_SALT;
+import static commoms.config.Settings.QRCODE_SALT;
 
 public class DeteccaoWebCam {
 

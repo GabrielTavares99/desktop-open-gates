@@ -29,7 +29,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.Constantes.TITULO_TELA_CADASTRO_FUNCIONARIO;
+import static commoms.config.Constantes.TITULO_TELA_CADASTRO_FUNCIONARIO;
 
 public class TelaCadastroFuncionario extends TelaCustom {
 

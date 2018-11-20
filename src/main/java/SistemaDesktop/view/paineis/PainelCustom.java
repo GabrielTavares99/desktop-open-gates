@@ -3,7 +3,7 @@ package SistemaDesktop.view.paineis;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.VERMELHO_PADRAO;
+import static commoms.config.ViewSettings.VERMELHO_PADRAO;
 
 public abstract class PainelCustom extends JPanel {
 

@@ -6,18 +6,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static SistemaDesktop.config.ViewSettings.COR_VERDE_SUCESSO;
-import static SistemaDesktop.config.ViewSettings.COR_VERMELHA_ATENCAO;
+import static commoms.config.ViewSettings.COR_VERDE_SUCESSO;
+import static commoms.config.ViewSettings.COR_VERMELHA_ATENCAO;
 
 public class JobEnvioEmail implements ActionListener {
 
     public static Boolean ativo = false;
-    private JobEnviarEmail jobEnviarEmail;
     private JButton jButton;
 
     public JobEnvioEmail(JButton jButton) {
         this.jButton = jButton;
-        jobEnviarEmail = new JobEnviarEmail();
     }
 
     @Override

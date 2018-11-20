@@ -10,10 +10,9 @@ import SistemaDesktop.util.FileUtil;
 import java.io.File;
 
 public class UsuarioController {
-    private UsuarioDAO usuarioDao;
+    private UsuarioDAO usuarioDao = new UsuarioDAO();
 
     public UsuarioController() {
-        usuarioDao = new UsuarioDAO();
     }
 
     public boolean podeLogar(String email, String senha) {

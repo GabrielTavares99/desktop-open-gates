@@ -6,7 +6,7 @@ import SistemaDesktop.view.paineis.PainelRealatorio;
 
 import javax.swing.*;
 
-import static SistemaDesktop.config.Constantes.TITULO_TELA_RELATORIO_ENTRADA_SAIDA;
+import static commoms.config.Constantes.TITULO_TELA_RELATORIO_ENTRADA_SAIDA;
 
 public class TelaRelatorioEntradaSaida extends TelaCustom {
 

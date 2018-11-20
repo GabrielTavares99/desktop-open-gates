@@ -8,8 +8,7 @@ import SistemaDesktop.view.listeners.SelecionarCsvListener;
 import javax.swing.*;
 import java.awt.*;
 
-import static SistemaDesktop.config.ViewSettings.COR_PAINEL_FEATURE_LARANJA;
-import static SistemaDesktop.config.ViewSettings.DEFAULT_COLOR_BOTAO;
+import static commoms.config.ViewSettings.COR_PAINEL_FEATURE_LARANJA;
 
 public class PainelMatricula extends PainelCustom {
 

@@ -13,8 +13,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static SistemaDesktop.config.Constantes.*;
-import static SistemaDesktop.config.ViewSettings.MEIO_TELA_X;
+import static commoms.config.Constantes.*;
+import static commoms.config.ViewSettings.MEIO_TELA_X;
 
 public class TelaLogin extends TelaCustom {
 
