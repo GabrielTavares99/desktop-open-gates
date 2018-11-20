@@ -41,6 +41,7 @@ public class TelaCadastroFuncionario extends TelaCustom {
     public static JLabel lblImagemFuncionario = new JLabel();
     public static Integer ID_FUNCIONARIO = null;
     public static Integer ID_USUARIO;
+
     JLabel lblTitulo = new LabelTitulo(TITULO_TELA_CADASTRO_FUNCIONARIO);
     ModeloTabelaCadastroFuncionario modeloTabelaCadastroFuncionario;
     JTable tabela = new JTable();
@@ -130,7 +131,7 @@ public class TelaCadastroFuncionario extends TelaCustom {
                 txtNome.setText(funcionario.getNome());
                 txtCPF.setText(funcionario.getUsuario().getCpf());
                 txtEmail.setText(funcionario.getUsuario().getEmail());
-                txtEmail.setEnabled(false);
+                txtEmail.setEnabled(true);
                 comboBoxCargo.setSelectedItem(funcionario.getCargo());
                 rdAtivo.setSelected(funcionario.getUsuario().isAtivo());
 

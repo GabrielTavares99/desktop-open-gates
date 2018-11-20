@@ -4,6 +4,7 @@ import SistemaDesktop.config.Constantes;
 import SistemaDesktop.controller.dao.EmailDAO;
 import SistemaDesktop.model.Email;
 import SistemaDesktop.model.Pessoa;
+import SistemaDesktop.model.Usuario;
 import SistemaDesktop.util.CriptografiaUtil;
 import SistemaDesktop.util.FileUtil;
 import SistemaDesktop.util.QRCodeUtil;
@@ -36,9 +37,24 @@ public class EmailController {
         email.setDestinatario(pessoa.getUsuario().getEmail());
         File file = FileUtil.getFileFromResource("html/recebimento-qrcode.html");
         String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+
         String qrCodeCriptografado = CriptografiaUtil.encriptarBase64(pessoa.getUsuario().getEmail(), QRCODE_SALT);
+
         QRCodeUtil.createQRCode(qrCodeCriptografado, qrCodePath, 200, 200);
         email.getAnexos().add(qrCodePath);
+        email.setHmtl(htmlEmTexto);
+        return email;
+    }
+
+    public static Email fazerEmailAtualizacaoEmail(Pessoa pessoa){
+        Usuario usuario = pessoa.getUsuario();
+
+        Email email = new Email();
+        email.setAssunto("ATUALIZAÇÃO DE E-MAIL");
+        email.setDestinatario(usuario.getEmail());
+        File file = FileUtil.getFileFromResource("html/AtualizacaoEmail.html");
+        String htmlEmTexto = FileUtil.fileToText(file.getAbsolutePath());
+        htmlEmTexto = String.format(htmlEmTexto, pessoa.getNome(), usuario.getCodigoEmail(), usuario.getEmail());
         email.setHmtl(htmlEmTexto);
         return email;
     }
