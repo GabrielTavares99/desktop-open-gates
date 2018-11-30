@@ -42,9 +42,9 @@ public class TelaLeituraCarteirinha extends TelaCustom implements Runnable, Thre
             for (int i = 0; i < webcams.size(); i++) {
                 joiner.add(String.format("%d - %s", i + 1, webcams.get(i).getName()));
             }
-            String s = JOptionPane.showInputDialog(joiner.toString());
+            String escolhaCamera = JOptionPane.showInputDialog(joiner.toString());
             try {
-                webcam= webcams.get(Integer.valueOf(s)-1);
+                webcam = webcams.get(Integer.valueOf(escolhaCamera) - 1);
             } catch (Exception e) {
                 webcam = Webcam.getWebcams().get(0);
             }

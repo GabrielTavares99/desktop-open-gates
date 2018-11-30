@@ -47,7 +47,6 @@ public class PainelRealatorio extends PainelCustom {
 
             Vector<String> tiposUsuario = new Vector<>();
             tiposUsuario.add("TODOS");
-            tiposUsuario.add(TipoUsuario.VISITANTE.toString());
             tiposUsuario.add(TipoUsuario.ALUNO.toString());
             tiposUsuario.add(TipoUsuario.FUNCIONARIO.toString());
             tiposUsuario.add(TipoUsuario.SECRETARIA.toString());
