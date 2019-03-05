@@ -113,7 +113,7 @@ public class UsuarioDAO implements IDao {
     }
 
     public Usuario getByEmail(String email) {
-        String query = "SELECT * FROM Usuario WHERE email = ?";
+        String query = "SELECT * FROM Usuario WHERE email = ? LIMIT 1";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = getPreparedStatement(query);
